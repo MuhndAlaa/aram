@@ -1,0 +1,159 @@
+.footer{
+    display: block;
+    clear: both;
+    padding: 70px 0 60px;
+    // background-color: #e9ebee;
+    color: white;
+    font-size: .9em;
+    font-family: "Montserrat","Verdana","Lucida Grande","Gill Sans","Arial","Helvetica",sans-serif;
+    // border-top: 8px solid #821cad;
+    position: relative;
+    overflow: hidden;
+    background-color: #2c7ad2;
+    background-image: radial-gradient(
+        circle at 47% 14%,
+        rgba(205, 205, 205, 0.04) 0%,
+        rgba(205, 205, 205, 0.04) 43%,
+        transparent 43%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 35% 12%,
+        rgba(215, 215, 215, 0.04) 0%,
+        rgba(215, 215, 215, 0.04) 4%,
+        transparent 4%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 1% 35%,
+        rgba(24, 24, 24, 0.04) 0%,
+        rgba(24, 24, 24, 0.04) 37%,
+        transparent 37%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 21% 1%,
+        rgba(0, 0, 0, 0.04) 0%,
+        rgba(0, 0, 0, 0.04) 26%,
+        transparent 26%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 23% 82%,
+        rgba(249, 249, 249, 0.04) 0%,
+        rgba(249, 249, 249, 0.04) 60%,
+        transparent 60%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 11% 54%,
+        rgba(251, 251, 251, 0.04) 0%,
+        rgba(251, 251, 251, 0.04) 23%,
+        transparent 23%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 69% 68%,
+        rgba(234, 234, 234, 0.04) 0%,
+        rgba(234, 234, 234, 0.04) 10%,
+        transparent 10%,
+        transparent 100%
+      ),
+      linear-gradient(90deg, #2c7ad2, #1568c6);
+    .footer-widgets {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .wrap {
+        width: 92%;
+        margin: 0 auto;
+    }
+    .cf:before, .cf:after {
+        content: "";
+        display: table;
+    }
+    .clearfix:after, .cf:after {
+        clear: both;
+    }
+    div{
+        display: block;
+    }
+    h4, .h4 {
+        color: #214293;
+        font-size: 1.5em;
+        font-weight: 400;
+        font-family: "Montserrat", "Verdana", "Lucida Grande", "Gill Sans", "Arial", "Helvetica", sans-serif;
+    }
+    li{
+        list-style: none;
+    }
+    ol, ul {
+        padding: 0;
+    }
+    ul{
+        margin: 0 0 32px;
+            padding: 0;
+            font-weight: 400;
+            color: white;
+            font-size: 15px;
+            line-height: 22px;
+    }
+    p{
+        margin-bottom: 0.677em;
+    }
+    .organization-contact-info, .copyright {
+        margin: 0 auto 0.5em;
+        text-align: center;
+    }
+    .ancillary {
+        padding: 0 4.4% 15px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #424242;
+        text-align: left;
+        border-bottom: 1px solid #c9c9c9;
+    }
+    .widget_text{
+        display: block;
+    }
+    .ancillary {
+        padding: 0 4.4% 15px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #424242;
+        text-align: left;
+        border-bottom: 1px solid #c9c9c9;
+    }
+    .organization-contact .item {
+        display: inline-block;
+        margin-right: 1em;
+        padding-right: 1em;
+        border-right: 1px solid #d3d3d3;
+        line-height: 14px;
+    }
+
+}
+.container{
+    width:90%;
+}
+@media (min-width: 64em)
+{
+
+    .footer-widgets .widget:first-child:nth-last-child(5), .footer-widgets .widget:first-child:nth-last-child(5)~.widget, .full-width .sidebar .widget:first-child:nth-last-child(5), .full-width .sidebar .widget:first-child:nth-last-child(5)~.widget {
+        width: 20%;
+        max-width: 241 px;
+        margin-right: 2%;
+    }
+}
+@media (min-width: 64em)
+{
+
+    .copyright, .organization-address {
+        margin-right: 1em;
+        padding-right: 1em;
+        border-right: 1px
+        solid #d3d3d3;
+        line-height: 14px;
+    }
+}

@@ -1,0 +1,37 @@
+// vendors
+$vendors: "-moz-", "-webkit-", "-o-", "-ms-", ""; 
+
+// colors definitaions
+$navBackground:#7640f2;
+$formsbtncolr:#fe8991;
+$formfootercolr:#8164ff;
+$headercolor:#110330;
+
+$primaryHex: #114685;
+$primaryRGB: rgb(17,70,133);
+$primaryDarkHex: #00274b;
+$primaryDarkRGB: rgb(0,39,75);
+$gradientStartColor: #019cfc;
+$gradientEndColor: #004692;
+$secondaryHex: #fbbe17;
+$white: #fff;
+$black:#000;
+//sizes 
+$FormsBorder :10px 10px 10px 10px;
+$FormsBtnshadow :0 4px 30px 0 #fe8991;
+// font family
+$robotoFont: 'Roboto', sans-serif;
+$openSansFont: 'Open Sans', sans-serif;
+
+// images paths
+$brandLogoEn: '../img/brandLogo_en.svg';
+$brandLogoAr: '../img/brandLogo_ar.svg';
+$favicon: '../img/favicon.svg';
+$heroBg: '../img/heroBg__.png';
+$phoneMockup: '../img/phone_mockup.png';
+$frontArrow: '../img/icon_availableOnArrowFront.svg';
+$opacityArrow: '../img/icon_availableOnArrowBack.svg';
+$featuresDVD: '../img/icon_featuresDVD.svg';
+$availableOnArrowFront: '../img/icon_availableOnArrowFront.svg';
+$availableOnArrowBack: '../img/icon_availableOnArrowBack.svg';
+$servicesIcons: 'governmentalPapers' 'printinAndCopy' 'storesAndMore' 'writtingAndTranslations'

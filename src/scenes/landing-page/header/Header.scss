@@ -1,0 +1,57 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+
+.navbar{
+    padding: 0rem !important;
+   background-color:$navBackground;
+
+    
+  .nav-link{
+  
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:active{
+            color: $white;
+            &::before{
+                content: "";
+                @include background-color($white);
+                position: absolute;
+                bottom: 8px;
+                left: 17rem;
+                width: 5%;
+                height: 3px;
+            }
+        }				
+
+     
+    
+        }
+    // background-image: linear-gradient(to left top, #821cad, #735ecf, #718be1, #8ab1e9, #b9d3eb);
+
+    .Logo{
+        font-size: 50px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .navLinks, .Logo{
+        text-decoration: none;
+        margin: 0 10px 
+    }
+    .btns{
+        .navBtns{
+            text-decoration: none;
+            background-color:$navBackground;
+            color: white;
+            padding: 5px 22px;
+            border: 1.5px solid #b9d3eb;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 2px 2px 16px -6px rgba(185,211,235,0.53);
+            -webkit-box-shadow: 2px 2px 16px -6px rgba(185,211,235,0.53);
+            -moz-box-shadow: 2px 2px 16px -6px rgba(185,211,235,0.53);
+        }
+    }
+}

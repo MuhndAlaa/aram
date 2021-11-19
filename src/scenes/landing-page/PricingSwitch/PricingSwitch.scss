@@ -1,0 +1,59 @@
+@import '../../../style/_variables';
+@import '../../../style/_mixins';
+.pricing{
+    text-align: center;
+    .title{
+        font-weight: 500;
+        color: $navBackground;
+    }
+    Button{
+        background:$navBackground;
+        border-radius:25px;
+        color:#c7c7c7;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .priceBtns__items{
+        margin:0 5px;
+        width: 18%;
+    }
+    .plansItems{
+        margin-top:40px;
+        justify-content:center;
+        .featuer{
+            color:#82858a;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .featuer::after{
+            content: "";
+            height: 0.5px;
+            display: block;
+            text-align: center;
+            background: #b9bec7;
+            margin: 10px auto;
+            opacity: 0.6;
+        }
+        .plansItems_content{
+            .cardData{
+                text-align: center;
+            }
+            .cardPrice{
+                text-decoration: none;
+                font-size: 50px;
+                font-weight: 700;
+                color: red;
+            }
+            .cardTitle{
+                font-size: 22px;
+                color:#6415FF;
+                font-weight: 700;
+            }
+            border: 1px solid #c6c9cf;
+            border-radius: 10px 0 10px 0 ;
+            box-shadow: 1px 1px 23px -6px rgba(139,139,139,0.69);
+            -webkit-box-shadow: 1px 1px 23px -6px rgba(139,139,139,0.69);
+            -moz-box-shadow: 1px 1px 23px -6px rgba(139,139,139,0.69);
+        }
+    }
+}

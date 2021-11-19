@@ -1,0 +1,66 @@
+header {
+  display: grid;
+  grid-template-columns: 50% 75%;
+}
+header .wrapper {
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  color: inherit;
+  overflow: auto;
+  transition: 0.2s;
+}
+header .cu-main-section-header__wrapper-inner:first-child {
+  min-width: 440px;
+  padding-top: 60px;
+}
+header .cu-main-section-header__title {
+  margin: 0;
+  font: 800 50px/69px Axiforma, Arial, serif;
+  color: #292d34;
+  text-align: left;
+}
+header .cu-main-section-header__subtitle {
+  font: 400 14px/29px Axiforma, Arial, serif;
+  color: #292d34;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+header .cu-main-section-header__rating-text {
+  font: 400 12px/12px Axiforma, Arial, serif;
+  color: #7c828d;
+  margin-top: 30px;
+}
+header .cu-main-section-header__rating-text .rating {
+  display: inline-block;
+}
+header .cu-main-section-header__rating-text .rating .rating-star {
+  display: inline-block;
+  color: yellow;
+}
+header .btn {
+  border: 1px solid #7b68ee;
+  border-radius: 25px;
+  padding: 5px 25px;
+  margin-top: 30px;
+  background: #7b68ee;
+  color: white;
+}
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 1440px) {
+  .cu-main-section-header__title {
+    font: 800 39px/53px Axiforma, Arial, serif;
+  }
+}/*# sourceMappingURL=Home.css.map */

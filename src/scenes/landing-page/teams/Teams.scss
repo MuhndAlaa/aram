@@ -1,0 +1,36 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+.title{
+    font-weight: 600;
+    color:$navBackground;
+    text-align: center;
+    font-size: 30px;
+}
+.slideTeam
+{
+    h3{
+        color: $headercolor !important;
+    }
+    .teamContent{
+        margin-top: 10px;
+    }
+    .teamImg{
+        width: 20%;
+        margin: 0 auto;
+        img{
+            border-radius: 50%; 
+            box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+            -webkit-box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+            -moz-box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+        }
+    }
+    .teamData{
+        margin-top:150px ;
+    }
+}
+.container{
+    width: 90%;
+}
+.carousel-dark .carousel-indicators [data-bs-target] {
+    background-color: $formsbtncolr !important;
+}
