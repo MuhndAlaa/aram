@@ -13,7 +13,7 @@ import { setAuth } from "../../../redux/userReducer";
 
 const LoginForm = () => {
 
-  const isLogged = useSelector(state => state.auth)
+  //Check wether is user is logged in or not from state mangment
   const user = useSelector(state => state.user)
   const dispatch = useDispatch();
 
@@ -39,13 +39,15 @@ const LoginForm = () => {
 
 
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values) => { //Login Account function
     try{
       if(!user){
+        //If the email is registered and in DB
         await signInWithEmailAndPassword(auth , values.email , values.password)
         dispatch(setAuth(true))
       }
     }catch(error){
+      //If the email is not registered and not found in DB
       console.log(error.message)
     }
   };

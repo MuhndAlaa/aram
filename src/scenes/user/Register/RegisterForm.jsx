@@ -52,13 +52,14 @@ const RegisterForm = () => {
       .oneOf([yup.ref("password"), null], "it doesn't match your password"),
   });
 
-  const onSubmit = async (values) => {
-    
+  const onSubmit = async (values) => { //Create Account function
     try{
+      //If the email is not registered before
       await createUserWithEmailAndPassword(auth, values.email , values.password)
       dispatch(setAuth(true))
     }
     catch(error){
+      //If the email is already registered before
       console.log(error.message)
     }
   };

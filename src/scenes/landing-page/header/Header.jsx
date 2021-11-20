@@ -6,17 +6,22 @@ import { useSelector } from 'react-redux';
 import { signOut } from '@firebase/auth';
 import { auth } from '../../../firebase/firebase';
 import { useDispatch } from 'react-redux';
-import { setAuth } from "../../../redux/userReducer";
+import { setAuth , setUser } from "../../../redux/userReducer";
 
 
 
 const Header = () => {
 
+    //Check wether is user is logged in or not from state mangment
     const isLogged = useSelector(state=>state.auth)
     const dispatch = useDispatch()
-    const logout = async ()=>{
+
+
+    const logout = async ()=>{//Logout Account function
         await signOut(auth)
+        //reset user data in state mangment
         dispatch(setAuth(false))
+        dispatch(setUser(null))
     }
     return (
     
@@ -38,7 +43,9 @@ const Header = () => {
                                     <Link to="/register" className="navBtns ms-2">Register</Link>
                                 </> 
                                 : 
-                                <Link to="/" onClick={logout} className="navBtns ms-2">LogOut</Link>}
+                                <>
+                                <Link to="/" onClick={logout} className="navBtns ms-2">LogOut</Link>
+                                </> }
                                 
                                 
                         </Nav>

@@ -1,5 +1,5 @@
 //Redux of user is logged or not
-export function authReducer(state = false, action){
+export function authReducer(state=null, action){
     switch(action.type){
         case "SET_AUTH":
             return action.payload;
