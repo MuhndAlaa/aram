@@ -5,8 +5,20 @@ import { BrowserRouter as Br, Route } from 'react-router-dom';
 import { Switch } from 'react-router'
 import RegisterForm from './scenes/user/Register/RegisterForm';
 import { Home } from './scenes/landing-page/home/Home';
+import { useDispatch } from 'react-redux';
+import { onAuthStateChanged } from '@firebase/auth';
+import { auth } from './firebase/firebase';
+import { setAuth, setUser } from './redux/userReducer';
 
 function App() {
+
+  const dispatch = useDispatch();
+  onAuthStateChanged(auth , (currentUser)=>{
+    if(currentUser){
+      dispatch(setUser(currentUser));
+      dispatch(setAuth(true))
+    }
+  })
   return (
     <>
     <Br>
