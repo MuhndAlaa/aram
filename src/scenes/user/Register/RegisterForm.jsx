@@ -4,29 +4,24 @@ import * as yup from "yup";
 import './RegisterForm.css';
 import ReactPlayer from 'react-player';
 import video from '../../../video/register.mp4';
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import { auth } from "../../../firebase/firebase";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../../redux/userReducer";
 const RegisterForm = () => {
+
+  const dispatch = useDispatch();
+
+
   const initialValues = {
     firstName: '',
-    lastName:'',
-    userName:'',
+    lastName: '',
+    userName: '',
     email: "",
     password: "",
-    confirmPass:"",
+    confirmPass: "",
   };
-  const onSubmit=(values) =>{
-      // setTimeout(() => {
-      //      alert(JSON.stringify(values, null, 2));
-      //   axios
-      //     .post("http://localhost:3001/register", {
-      //       username: values.userName,
-      //       password: values.password,
-      //     })
-      //     .then((response) => {
-      //       console.log("the respone",response);
-      //     });
-      //    }, 500)
-    console.log(values);
-      };     
+  
   const validationSchema = yup.object({
     firstName: yup
       .string()
@@ -48,7 +43,7 @@ const RegisterForm = () => {
       .required("Password field is required")
       .min(8, "Password is too short - should be 8 chars minimum.")
       .matches(
-        "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$",
+        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
       ),
     confirmPass: yup
@@ -56,92 +51,105 @@ const RegisterForm = () => {
       .required()
       .oneOf([yup.ref("password"), null], "it doesn't match your password"),
   });
-    return (
-      <section>
-     
-           <div className="row container">
-             <div className="col-5">
-                  <Formik 
-                initialValues={initialValues}
-                onSubmit={onSubmit}
-                validationSchema={validationSchema}
-                  >{(formik) => {
-                return (
-                  <div className="wrapper fadeInDown">
-                    <Form className="regForm">
-                      <div id="formContent">
-                        <h2 className="mt-4">Register</h2>
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="First Name"
-                          name="firstName"
-                          type="text"
-                        />
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="Last Name"
-                          name="lastName"
-                          type="text"
-                        />
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="User Name"
-                          name="userName"
-                          type="text"
-                        />
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="Email"
-                          name="email"
-                          type="email"
-                        />
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="Password"
-                          name="password"
-                          type="password"
-                        />
-                        <FormikField
-                          className="regInput fadeIn"
-                          label="Confirm Password"
-                          name="confirmPass"
-                          type="password"
-                        />
-                     <button  className="mb-5 mt-3 forms_btn" type="submit">
-                          Register
-                        </button>
-                        <div id="formFooter">
-                          <a className="underlineHover" href="#">
-                            Already got an account?
-                          </a>
-                        </div>
-                      </div>
-                    </Form>
-                  </div>
-                );}
-                }</Formik>
-              </div>
-             
-                   <div className='player-wrapper lefttt col-7'>
-   
-                    <ReactPlayer
-                        playing={true}
-                        muted
-                        loop
-                        className='react-player mard'
-                        url={video}
-                        width='80%'
-                        height='80%'
+
+  const onSubmit = async (values) => { //Create Account function
+    try{
+      //If the email is not registered before
+      await createUserWithEmailAndPassword(auth, values.email , values.password)
+      dispatch(setAuth(true))
+    }
+    catch(error){
+      //If the email is already registered before
+      console.log(error.message)
+    }
+  };
+  return (
+    <section>
+
+      <div className="row container">
+        <div className="col-5">
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+          >{() => {
+            return (
+              <div className="wrapper fadeInDown">
+                <Form className="regForm">
+                  <div id="formContent">
+                    <h2 className="mt-4">Register</h2>
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="First Name"
+                      name="firstName"
+                      type="text"
                     />
-             
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="Last Name"
+                      name="lastName"
+                      type="text"
+                    />
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="User Name"
+                      name="userName"
+                      type="text"
+                    />
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="Email"
+                      name="email"
+                      type="email"
+                    />
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="Password"
+                      name="password"
+                      type="password"
+                    />
+                    <FormikField
+                      className="regInput fadeIn"
+                      label="Confirm Password"
+                      name="confirmPass"
+                      type="password"
+                    />
+                    <button className="mb-5 mt-3 forms_btn" type="submit">
+                      Register
+                    </button>
+                    <div id="formFooter">
+                      <a className="underlineHover" href="#">
+                        Already got an account?
+                      </a>
+                    </div>
+                  </div>
+                </Form>
               </div>
-             
-              </div>
-              </section>
-              
- 
-    
- );
+            );
+          }
+            }</Formik>
+        </div>
+
+        <div className='player-wrapper lefttt col-7'>
+
+          <ReactPlayer
+            playing={true}
+            muted
+            loop
+            className='react-player mard'
+            url={video}
+            width='80%'
+            height='80%'
+          />
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+  );
 }
 
 export default RegisterForm;
