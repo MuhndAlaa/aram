@@ -1,0 +1,71 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+li{
+    list-style: none;
+}
+.newTask{
+    color: $navBackground;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    text-align: start;
+}
+.Task-header{
+    display: grid;
+    grid-template-columns: 83% 10%;
+    
+}
+.settingIcon{
+    @include rounded(5px);
+    padding: 1px 5px;
+    justify-content: space-evenly;
+    // border: 1px solid $navBackground;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    .settingName{
+        color: $navBackground;
+        font-size: 18px;
+    }
+    .setting-icon-item{
+        color:$navBackground;
+        font-size: 35px;
+    }
+}
+.file-attachment{
+    border: 3px dotted lightgray;
+    padding: 10px;
+    text-align: center;
+    color: rgb(145, 145, 145);
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0.8;
+    transition: all 0.3 ease;
+}
+.file-attachment:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+.task-items{
+    display: flex;
+    justify-content: space-between;
+    .task-items-wrapper{
+        cursor: pointer;
+        .icon{
+            color: $navBackground;
+            font-size: 20px;
+        }
+    }
+}
+.label{
+    color:$navBackground;
+    font-weight: 500;
+    font-size: 18px;
+}
+.addBtn{
+    background: $navBackground;
+    color:$white;
+    @include rounded(5px);
+    padding: 5px;
+}

@@ -8,6 +8,7 @@ import { CountUpComp } from '../count-up/CountUpComp';
 import { Footer } from '../footer/Footer';
 import Features from '../Features/Features';
 import {Devises} from '../Devices/Devises';
+import { Link } from 'react-router-dom';
 
 
 
@@ -28,9 +29,9 @@ const Home = () => {
                                 <input class="banner__input" data-input-landing-page="" placeholder="Enter your email address" type="email"></input>
                               
                                 <button class="btn btn_v2 btn-round" data-ga-click-tracking="" data-submit-landing-page="" ga-category="" ga-event="landingpage_lead main click" ga-label="" ga-value="" lp-plan="" mail-label="">
-                                    <div class="btn__text">
+                                    <Link class="btn__text" to="/views">
                                         Get Started
-                                    </div>
+                                    </Link>
                                 </button>
                             </div>
                            

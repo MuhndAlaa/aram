@@ -4,12 +4,10 @@
 
 .navbar{
     padding: 0rem !important;
-   background-color:$navBackground;
+    background-color:$navBackground;
 
     
   .nav-link{
-  
-
         &:hover,
         &:focus,
         &:active,
@@ -44,7 +42,7 @@
         .navBtns{
             text-decoration: none;
             background-color:$navBackground;
-            color: white;
+            color: $white;
             padding: 5px 22px;
             border: 1.5px solid #b9d3eb;
             border-radius: 8px;
