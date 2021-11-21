@@ -1,6 +1,10 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
-
+.tasks-display{
+  position: relative;
+  left:260px;
+  padding-left: 50px;
+}
 .sidebar{ 
   position: fixed;
   top:0;
@@ -16,6 +20,8 @@
       text-decoration: none;
       display: flex;
       align-items: center;
+      background: inherit;
+      border:0;
     }
     .link-name{
       font-size: 18px;

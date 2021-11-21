@@ -5,7 +5,7 @@ import { BrowserRouter as Br, Route } from 'react-router-dom';
 import { Switch } from 'react-router'
 import RegisterForm from './scenes/user/Register/RegisterForm';
 import { Home } from './scenes/landing-page/home/Home';
-import { ViewsComp } from './scenes/views/viewsComp/ViewsComp';
+import Dashboard from './scenes/views/Dashboard/Dashboard';
 import { TaskView } from './scenes/views/taskview/TaskView';
 import { Task } from './scenes/views/Task/Task';
 
@@ -37,7 +37,7 @@ function App() {
           <Route component={Home} path="/" exact></Route>
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
-          <Route component={ViewsComp} path="/views"></Route>
+          <Route component={Dashboard} path="/dashboard"></Route>
           <div className="route">
             <Route component={TaskView} path="/taskview"></Route>
             <Route component={Task} path="/task"></Route>
