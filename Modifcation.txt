@@ -1,0 +1,38 @@
+General
+1- Modify SCSS & Variables.
+2-Delete all CSS and Map CSS files
+3-Select Two font one for General and One for headers
+4-Changing the main color to trending color of 2021
+5-Compelete all landing page sections
+6-Fix every section responsive
+7-Remove all unused import and videos and images
+8-Replace all photos with placeholder to fit the section
+9-Restructure the landing page (Most important)
+
+Sections
+1-Counter --> tomorrow
+change the numbers - add icons
+
+2-Devices --> on hold
+add a title
+
+3-Features --done
+replace all images with placeholder and fix the size of every image
+Remove styles.scss for causing all conflict problems in styling
+
+4-Header & Home
+change the name into navbar
+and remove the code part from home section and put it in header component
+so homepage contains only tags
+
+5-Footer
+change the content and mainly the style put some contact
+
+6-Pricing --> Done
+add one more plan and editing the content
+
+7-Teams
+slove the conflict and edit the slider so the next and the prev team members appear faded
+
+8-Login --> Done
+edit the lagging caused by GIF
