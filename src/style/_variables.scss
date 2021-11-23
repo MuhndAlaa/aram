@@ -1,5 +1,9 @@
 // vendors
-$vendors: "-moz-", "-webkit-", "-o-", "-ms-", ""; 
+$vendors: "-moz-",
+"-webkit-",
+"-o-",
+"-ms-",
+"";
 
 // colors definitaions
 $navBackground:#7640f2;
@@ -10,10 +14,47 @@ $headercolor:#110330;
 $subMenuBg:#1d1b31;
 $sideBarBg:#11101d;
 
+$counterBackground:linear-gradient(to right top, #6034c8, #7b4ad3, #9460de, #ab77e9, #c18ef4);
+$footerbackground:radial-gradient(circle at 47% 14%,
+    rgba(205, 205, 205, 0.04) 0%,
+    rgba(205, 205, 205, 0.04) 43%,
+    transparent 43%,
+    transparent 100%),
+radial-gradient(circle at 35% 12%,
+    rgba(215, 215, 215, 0.04) 0%,
+    rgba(215, 215, 215, 0.04) 4%,
+    transparent 4%,
+    transparent 100%),
+radial-gradient(circle at 1% 35%,
+    rgba(24, 24, 24, 0.04) 0%,
+    rgba(24, 24, 24, 0.04) 37%,
+    transparent 37%,
+    transparent 100%),
+radial-gradient(circle at 21% 1%,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.04) 26%,
+    transparent 26%,
+    transparent 100%),
+radial-gradient(circle at 23% 82%,
+    rgba(249, 249, 249, 0.04) 0%,
+    rgba(249, 249, 249, 0.04) 60%,
+    transparent 60%,
+    transparent 100%),
+radial-gradient(circle at 11% 54%,
+    rgba(251, 251, 251, 0.04) 0%,
+    rgba(251, 251, 251, 0.04) 23%,
+    transparent 23%,
+    transparent 100%),
+radial-gradient(circle at 69% 68%,
+    rgba(234, 234, 234, 0.04) 0%,
+    rgba(234, 234, 234, 0.04) 10%,
+    transparent 10%,
+    transparent 100%),
+linear-gradient(90deg, #2c7ad2, #1568c6);
 $primaryHex: #114685;
-$primaryRGB: rgb(17,70,133);
+$primaryRGB: rgb(17, 70, 133);
 $primaryDarkHex: #00274b;
-$primaryDarkRGB: rgb(0,39,75);
+$primaryDarkRGB: rgb(0, 39, 75);
 $gradientStartColor: #019cfc;
 $gradientEndColor: #004692;
 $secondaryHex: #fbbe17;
@@ -25,8 +66,10 @@ $FormsBorder :10px 10px 10px 10px;
 $FormsBtnshadow :0 4px 30px 0 #fe8991;
 
 // font family
-$robotoFont: 'Roboto', sans-serif;
-$openSansFont: 'Open Sans', sans-serif;
+$robotoFont: 'Roboto',
+sans-serif;
+$openSansFont: 'Open Sans',
+sans-serif;
 
 // images paths
 $brandLogoEn: '../img/brandLogo_en.svg';
@@ -39,4 +82,4 @@ $opacityArrow: '../img/icon_availableOnArrowBack.svg';
 $featuresDVD: '../img/icon_featuresDVD.svg';
 $availableOnArrowFront: '../img/icon_availableOnArrowFront.svg';
 $availableOnArrowBack: '../img/icon_availableOnArrowBack.svg';
-$servicesIcons: 'governmentalPapers' 'printinAndCopy' 'storesAndMore' 'writtingAndTranslations'
+$servicesIcons: 'governmentalPapers''printinAndCopy''storesAndMore''writtingAndTranslations'

@@ -38,7 +38,7 @@ const CountUpComp = ()=>{
                 <div class="number fw-bold pt-5"> <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
             {({ isVisible }) => (
             <div style={{ height: 100 }}>
-                {isVisible ? <CountUp end={100} duration="4" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                {isVisible ? <CountUp end={484} duration="4" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
             </div>
             )}
         </VisibilitySensor></div>
@@ -48,7 +48,7 @@ const CountUpComp = ()=>{
                 <div class="number fw-bold pt-5"> <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
             {({ isVisible }) => (
             <div style={{ height: 100 }}>
-                {isVisible ? <CountUp end={100} duration="3" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                {isVisible ? <CountUp end={620} duration="3" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
             </div>
             )}
         </VisibilitySensor></div>
@@ -58,7 +58,7 @@ const CountUpComp = ()=>{
                 <div class="number fw-bold pt-5"> <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
             {({ isVisible }) => (
             <div style={{ height: 100 }}>
-                {isVisible ? <CountUp end={100} duration="5" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                {isVisible ? <CountUp end={1000} duration="5" onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
             </div>
             )}
         </VisibilitySensor></div>

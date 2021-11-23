@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import "./styless.scss";
+import "./features.scss";
 import one from '../../../images/one.jpg';
 import two from '../../../images/two.jpg';
 import three from '../../../images/three.jpg';
@@ -39,7 +39,7 @@ export default function Features() {
 
   return (
     <div>
-      <div className="container1" ref={panelsContainer}>
+      <div className="features__container" ref={panelsContainer}>
         <div
           className="description panel"
           ref={(e) => createPanelsRefs(e, 0)}
@@ -73,7 +73,7 @@ export default function Features() {
               
           </figure>
         </section>
-        <section className="panel orange" ref={(e) => createPanelsRefs(e, 2)} style={{ background: `url(${two})`,
+        <section className="panel " ref={(e) => createPanelsRefs(e, 2)} style={{ background: `url(${two})`,
   
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat'
@@ -81,13 +81,16 @@ export default function Features() {
          }}>
           TWO
         </section>
-        <section className="panel purple" ref={(e) => createPanelsRefs(e, 3)} style={{ background: `url(${three})`,
+        <section className="panel three" ref={(e) => createPanelsRefs(e, 3)} style={{ background: `url(${three})`,
   
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat'
          
          }}>
-          THREE
+           <div className="container">
+           THREE
+           </div>
+          
         </section>
         <section className="panel" ref={(e) => createPanelsRefs(e, 4)}>
         <div className='player-wrapper col-6'>
@@ -101,10 +104,11 @@ export default function Features() {
                                 height='100%'
                              
                             />
-                        </div>        </section>
-        {/* <section className="panel gray" ref={(e) => createPanelsRefs(e, 5)}>
-          FIVE
-        </section> */}
+                        </div>        
+                        
+                        
+                        </section>
+     
       </div>
     </div>
   );

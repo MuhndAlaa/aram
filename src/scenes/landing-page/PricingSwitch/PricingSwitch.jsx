@@ -12,6 +12,10 @@ const PricingSwitch = ({
   primaryButtonText = "Buy Now",
   planDurations = [
     {
+      text: "Week",
+      switcherText: "Weekly",
+    },
+    {
       text: "Month",
       switcherText: "Monthly",
     },
@@ -24,15 +28,21 @@ const PricingSwitch = ({
   const defaultPlans = [
     {
       name: "Free Plan",
-      durationPrices: ["$0", "$0"],
+      durationPrices: ["$0", "$0","$0"],
       mainFeature: "For Personal Blogs",
-      features: [["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"], ["100 Templates", "8 Landing Pages", "10 Internal Pages", "Basic Assistance"]]
+      features: [["5 Templates", "2 Landing Pages", "5 Internal Pages", "Basic Assistance"], ["10 Templates", "5 Landing Pages", "5 Internal Pages", "Basic Assistance"], ["10 Templates", "5 Landing Pages", "5 Internal Pages", "Basic Assistance"]]
+    },
+    {
+      name: "Premium Plan",
+      durationPrices: ["$50", "$100", "$600"],
+      mainFeature: "Suited for Production Websites",
+      features: [["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"], ["100 Templates", "8 Landing Pages", "10 Internal Pages", "Basic Assistance"], ["100 Templates", "8 Landing Pages", "10 Internal Pages", "Basic Assistance"]]
     },
     {
       name: "Pro Plan",
-      durationPrices: ["$49", "$499"],
+      durationPrices: ["$100", "$500", "$800"],
       mainFeature: "Suited for Production Websites",
-      features: [["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"], ["120 Templates", "15 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"]],
+      features: [["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"], ["120 Templates", "15 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"], ["120 Templates", "15 Landing Pages", "22 Internal Pages", "Priority Assistance", "Lifetime Updates"]],
       featured: true
     }
   ];
