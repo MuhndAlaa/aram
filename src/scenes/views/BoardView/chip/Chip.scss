@@ -1,0 +1,18 @@
+@import '../../../../style/mixins';
+@import '../../../../style/variables';
+.chip{
+    display: flex;
+    gap:10px;
+    align-items: center;
+    padding: 4px 15px;
+    @include rounded(40px);
+    color: $white;
+    background-color:$bg-color-4;
+    width: fit-content;
+    font-size: 14px;
+}
+.chip svg{
+    height: 16px;
+    width:16px;
+    cursor: pointer;
+}

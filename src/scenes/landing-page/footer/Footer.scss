@@ -1,0 +1,25 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+.footer{
+    padding: 100px 0 0;
+    overflow: hidden;
+    background-image: $footerbackground;
+    color: $white;
+    ul{
+        padding: 0;
+    }
+    h4{
+        margin-bottom: 2rem;
+    }
+    li{
+        margin-bottom: 10px;
+    }
+    .footer__copyright{
+        padding: 20px 0;
+        margin: 40px 0 0 ;
+        background-color: $black;
+        text-align: center;
+        overflow: hidden;
+    }
+
+}

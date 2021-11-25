@@ -1,0 +1,58 @@
+@import '../../../../style/mixins';
+@import '../../../../style/variables';
+.card{
+    padding: 10px;
+    @include rounded(5px);
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .card-top{
+        display: flex;
+        gap: 5;
+        .card-top-more{
+            position: relative;
+            .card-dropdown{
+                background-color: $white;
+                width: 130px;
+                padding: 2px  0  2px 20px;
+                @include rounded(3px);
+                box-shadow: 1px 0 20px rgba(0,0,0,0.05);
+                p{
+                    cursor: pointer;
+                    color: red;
+                    font-weight: bold;
+                    @extend %fontMontserrat;
+                }
+            }
+        }
+        svg{
+            opacity: 0;
+            transition: 200ms;
+        }
+    }
+    .card-labels{
+        display: flex;
+        flex: 1;
+        gap: 10px;
+    }
+    .card-title{
+        font-weight: bold;
+    }
+    .card-footer{
+        display: flex;
+        justify-content: space-between;
+        p{
+            display: flex;
+            align-items: center;
+            gap:5px;
+        }
+        svg{
+            height: 18px;
+            width:18px;
+        }
+    }
+}
+.card:hover .card-top svg {
+    opacity:1
+}

@@ -1,0 +1,238 @@
+// body{
+// 	@include typoStyle($robotoFont);
+
+// 	.btn-download{
+// 		@extend %appStoresBtn;
+// 	}
+// 	&> header{
+// 		@include background-image($heroBg);
+// 		&> nav{
+// 			@include bgOpacityColor($primaryHex, 0.47);
+// 			.brand-logo{
+// 				width: 15rem;
+// 			}
+// 			.nav-link{
+// 				@extend %mediumOpenSans;
+// 				font-size: 1.1rem;
+// 				line-height: 17px;
+// 				color: $primaryDarkHex;
+
+// 				&:hover,
+// 				&:focus,
+// 				&:active{
+// 					color: $white;
+// 					&::before{
+// 						content: "";
+// 						@include background-color($secondaryHex);
+// 						position: absolute;
+// 						bottom: -28px;
+// 						left: 0;
+// 						width: 100%;
+// 						height: 3px;
+// 					}
+// 				}				
+
+// 				&.language-switcher{
+// 					font-family: 'Cairo', sans-serif;
+// 					@include background-color($primaryDarkHex);
+// 					@include rounded(0.4rem);
+// 					color: $white;
+// 					padding:0.5rem 1rem;
+
+// 					&:hover,
+// 					&.active{
+// 						cursor: pointer;
+// 						@include background-color($white);
+// 						color: $primaryDarkHex;
+// 						&::before{
+// 							content: "";
+// 							@include background-color(transparent);
+// 							position: absolute;
+// 							bottom: 0;
+// 							left: 0;
+// 							width: 0;
+// 							height: 0;
+// 						}
+// 					}	
+// 				}
+// 			}
+// 		}
+
+// 		.hero-section {
+// 			.section-content{
+// 				@extend %regularRoboto;
+// 			}
+// 		}
+// 	}
+// 	&> footer{
+// 		@include background-color($primaryHex);
+// 		&> section,
+// 		&> .container{
+// 			@include bgOpacityColor($primaryHex, 0.47);
+// 		}
+// 	}	
+// }
+
+// .owl-carousel{
+// 	position: relative;
+
+// 	&::before{
+// 		content:"";
+//   	@include background-image($phoneMockup, 0, 0, no-repeat, null, null);
+//     background-size: 100%;
+//     position: absolute;
+//     top: -51px;
+//     left: calc(50% - 6.55rem);
+//     width: 13.48rem;
+//     height: 26rem;
+// 	}
+
+// 	.owl-item{
+// 		z-index: 99;
+// 		.item{
+// 		  opacity:0.4;
+// 		  transition:.4s ease all;
+// 		  margin:0 20px;
+// 		  transform:scale(.8);
+// 		}
+// 		&.active.center{
+// 			.item{
+// 			  opacity:1;
+// 			  transform:scale(1);
+// 			}
+// 		}
+// 	}
+// }
+
+// .info-section{
+// 	.content-wrapper{
+// 		@include rounded(19px);
+// 		@include box-shadow(0, 1px, 14px, 0, opacityColor($primaryHex, 0.47));
+// 		margin-top: -60px;
+
+// 		.content-txt{
+// 			@extend %regularRoboto;
+// 		}
+// 		.service-name{
+// 			@extend %mediumRoboto;
+// 		}
+// 	}
+// } 
+
+// .service-icon{
+// 	display: inline-block;
+// 	width: 100%;
+// 	text-align: center;
+// 	min-width: 45px;
+// 	min-height: 60px;
+// 	@each $name in $servicesIcons {
+// 	  &.icon-#{$name} {
+// 	    @include background-image('../img/icon_#{$name}.svg', 50%, 50%, no-repeat, null, null);
+// 	  }
+// 	}
+// }
+
+// .features-section{
+// 	position: relative;
+
+// 	&:before{
+// 	  content: "";
+// 	  position: absolute;
+// 	  top: -280px;
+// 	  left: -298px;
+// 	  width: 595px;
+// 	  height: 595px;
+// 		@include background-image($featuresDVD, 50%, 50%, no-repeat, null, null);
+// 		z-index: -1;
+// 	}
+
+// 	.feature-item{
+// 		@extend %regularRoboto;
+// 		list-style-type: disc;
+// 	}
+// }
+
+// .screenshots-section{
+// 	@include box-shadow(0, 1px, 14px, 0, opacityColor($black, 0.11));
+// }
+
+// .appdownload-section{
+// 	@extend %radialGradientBG;
+// 	position: relative;
+// 	margin-top: -9rem;
+// 	overflow: hidden;
+	
+// 	&::before,
+// 	&::after{
+// 		content:"";
+// 		@include background-image($opacityArrow, 0, 0, no-repeat, null, null);
+// 		position: absolute;
+// 		top: 0;
+// 		left: 54rem;
+// 		width: 45rem;
+// 		height: 40rem;
+// 	}
+// 	&::after{
+// 		@include background-image($frontArrow, 0, 0, no-repeat, null, null);
+//     top: 12rem;
+//     left: 4rem;
+// 		width: 12rem;
+// 		height: 12rem;
+// 	}
+
+// 	.section-title{
+// 		@extend %mediumRoboto;
+// 		font-size: 3rem;
+// 	}
+// 	.section-content{
+// 		@extend %regularOpenSans;
+// 		font-size: 2rem;
+// 	}
+// }
+
+// footer{
+// 	.contactus-section{
+// 		.form-row{
+// 			.btn-default{
+// 				@include background-color($primaryDarkHex);
+// 				color: $white;
+// 				width: 15%;
+// 		    &:hover{
+// 		    	cursor: pointer;
+// 					@include background-color($white);
+// 					color: $primaryDarkHex;
+// 		  		transition: 500ms ease all;
+// 		    }
+// 			}
+// 		}
+// 	}
+// 	.footer-favicon{
+// 		width: 4rem;
+// 	}
+// 	.social-nav{
+// 		.social-item{
+// 			.social-link{
+// 				color: $white;
+// 				display:inline-block;
+// 				@include background-color($primaryDarkHex);
+// 				@include rounded(50%);
+// 				width: 35px;
+// 				height: 35px;
+// 		    line-height: 25px;
+// 		    /* text-align: left; */
+// 		    margin: 0 5px;
+// 		    padding: 4px 12px;
+
+// 		    &:hover{
+// 					@include background-color($white);
+// 					color: $primaryDarkHex;
+// 		  		transition: 500ms ease all;
+// 		    }
+// 			}
+// 		}
+// 	}
+// }
+
+h1,h2,h3,h4{
+	color: $headercolor !important;
+}

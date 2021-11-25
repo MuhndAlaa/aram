@@ -1,0 +1,18 @@
+@import '../../../../style/mixins';
+@import '../../../../style/variables';
+
+.list{
+    border-left: 4px solid $formfootercolr;
+    border-radius: 5px;
+    @extend %border-style;
+    .newTaskBtn{
+        border: 1px solid $formfootercolr;
+        padding:5px 20px;
+        @include rounded(5px);
+    }
+    .list-header{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 95% 5%;
+    }
+}

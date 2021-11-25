@@ -1,0 +1,17 @@
+@import '../../../../style/mixins';
+@import '../../../../style/variables';
+
+
+li{
+    list-style: none;
+}
+.list-card{
+    border: 1px solid $bg-color-3;
+    border-radius: 5px;
+    padding: 20px;
+    @extend %border-style;
+    .list-card-header{
+        display: flex;  
+        gap:3px; 
+    }
+}

@@ -1,0 +1,12 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+
+.devices{
+    @extend %section-padding;
+    .title{
+        @extend %section-title;
+    }
+    .sub-title{
+        @extend %section-subtitle;
+    }
+}

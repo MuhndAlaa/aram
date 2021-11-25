@@ -1,0 +1,78 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+li{
+    list-style: none;
+}
+.Task-header{
+    display: grid;
+    grid-template-columns: 83% 10%;
+    .newTask{
+        color: $text-color-1;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 600;
+        text-align: start;
+    }
+}
+// .settingIcon{
+//     @include rounded(5px);
+//     padding: 1px 5px;
+//     justify-content: space-evenly;
+//     // border: 1px solid $text-color-1;
+//     display: flex;
+//     justify-content: space-between;
+//     cursor: pointer;
+//     .settingName{
+//         color: $text-color-1;
+//         font-size: 18px;
+//     }
+//     .setting-icon-item{
+//         color:$text-color-1;
+//         font-size: 35px;
+//     }
+// }
+.file-attachment{
+    border: 3px dotted lightgray;
+    padding: 10px;
+    text-align: center;
+    color: rgb(145, 145, 145);
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0.8;
+    transition: all 0.3 ease;
+}
+.file-attachment:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+.task-items{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    @extend %border-style;
+    .task-items-wrapper{
+        cursor: pointer;
+        .icon{
+            color: $text-color-1;
+            font-size: 20px;
+        }
+    }
+}
+.label{
+    color:$text-color-1;
+    font-weight: 500;
+    font-size: 18px;
+}
+.addBtn{
+    background: $text-color-1;
+    color:$white;
+    @include rounded(5px);
+    padding: 5px;
+}
+.task-items-field{
+    margin-top: 20px;
+    padding: 15px 5px;
+    @extend %border-style;
+}

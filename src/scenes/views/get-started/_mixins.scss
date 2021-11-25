@@ -1,0 +1,173 @@
+@mixin rounded($radius: 0.5em) {
+  @each $vendor in $vendors {
+		#{$vendor}border-radius: $radius;
+	}
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
+	@if $inset {
+	  @each $vendor in $vendors {
+			#{$vendor}box-shadow: inset $top $left $blur $spread $color;
+		}
+	} @else {
+	  @each $vendor in $vendors {
+			#{$vendor}box-shadow: $top $left $blur $spread $color;
+		}
+	}
+}
+
+@mixin linear-gradient($direction, $from, $to) { 
+  background: -webkit-linear-gradient($direction, $from 0%, $to 100%);
+  background: -moz-linear-gradient($direction, $from 0%, $to 100%);
+  background: -o-linear-gradient($direction, $from 0%, $to 100%);
+  background: linear-gradient($direction, $from 0%, $to 100%);  
+}
+
+@mixin radial-gradient($from, $to) {
+	background: -moz-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $from), color-stop(100%, $to));
+	background: -webkit-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -o-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -ms-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background-color: $from;
+}
+
+@mixin background-image($filePath, $bgXpos:0, $bgYpos:0, $bgReapeat:no-repeat, $bgSize:cover, $bgAttachment:fixed) {
+  background-image: url($filePath);
+  background-position: $bgXpos $bgYpos;
+  background-repeat: $bgReapeat;
+  background-size: $bgSize;
+  background-attachment: $bgAttachment;
+}
+
+@mixin background-color($background-color) {
+  background-color: $background-color ;
+} 
+
+@mixin bgOpacityColor($color: #000, $value:0.5){
+  $start: "rgb(";
+  $end: ")";
+  background: #{$start} red($color), green($color), blue($color) #{$end};
+  background: rgba($color, $value);
+}
+
+@mixin typoStyle($font, $size:14px, $weight:400){
+	font-family: $font;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $size * 1.618;
+}
+
+%regularRoboto{
+	@include typoStyle($robotoFont, 16px, 400);
+}
+%mediumRoboto{
+	@include typoStyle($robotoFont, 20px, 500);
+}
+%regularOpenSans{
+	@include typoStyle($openSansFont, 16px, 400);
+}
+%mediumOpenSans{
+	@include typoStyle($openSansFont, 20px, 600);
+}
+
+%radialGradientBG{
+	@include radial-gradient($gradientStartColor, $gradientEndColor);
+}
+
+%appStoresBtn{
+	position: relative;
+	display: inline-block;
+	color: $primaryHex;
+	min-width: 170px;
+	text-align: left;
+	line-height: 1;
+	@include background-color($white);
+	@include rounded(2rem);
+	@include box-shadow(5px, 4.5px, 9.5px, 0, lighten($black, 73%));
+	margin: 0.25rem;
+	padding: 0.3rem 2.5rem;
+	small{
+		font-size: 0.75rem;
+	}
+	span{
+		font-weight: 500;
+	}
+	.svg-inline--fa{
+		position: absolute;
+		top: calc(50% - 0.75rem);
+		left: 0.75rem;
+		font-size: 1.4rem;
+
+		&.fa-apple{
+			top: calc(50% - 0.9rem);
+			font-size: 1.6rem;
+		}
+	}
+
+	&:hover{
+		cursor: pointer;
+		@include background-color($primaryDarkHex);
+		color: $white;
+	}
+}
+
+.text-primary{
+	color: $primaryHex !important;
+}
+
+
+
+
+@mixin headersAfter {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: $afterborder_color;
+    transform: translateX(-50%);
+    
+}
+
+@mixin input_animation() {
+	-webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+@mixin scale_animation() {
+	-moz-transform: scale(0.95);
+	-webkit-transform: scale(0.95);
+	-o-transform: scale(0.95);
+	-ms-transform: scale(0.95);
+	transform: scale(0.95);
+}
+%formsButton {
+    background-color: $formsbtncolr;
+    border-radius: 10rem;
+    color: $white;
+    padding: 15px 80px;
+    border: none;
+    text-align: center;
+}
+%getstartedButton {
+    background-color: $formsbtncolr;
+    color: $white;
+    padding: 15px 30px;
+    border: none;
+    text-align: center;
+}
+%input {
+	-webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+	padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
