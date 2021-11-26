@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import MindMap from './MindMap/MindMap'
 function LinkTab(props) {
     return (
       <Tab
@@ -22,8 +23,8 @@ function TasksDisplay({ currentProject, currentBoard }) {
       setValue(newValue);
     };
     return (
-        <>
-   <Box  sx={{ width: '100%', margin:'1rem auto', padding:'1rem' }}>
+        <div className="view-container">
+   <Box  sx={{ width: '100%', margin:'1rem auto',marginTop:'0',borderBottom:'1px solid black', padding:'1rem' }}>
       <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
         <LinkTab label="mind map" href="/drafts" />
         <LinkTab label="drag and drop" href="/trash" />
@@ -33,10 +34,11 @@ function TasksDisplay({ currentProject, currentBoard }) {
     </Stack>
       </Tabs>
     </Box>
-            <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
+          <MindMap id = {currentProject}/>
+            {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
             <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>
-            <h4 className='tasks-display text-black' >Current Board is: {currentBoard}</h4>
-        </>
+            <h4 className='tasks-display text-black' >Current Board is: {currentBoard}</h4> */}
+        </div>
     )
 }
 export default TasksDisplay;

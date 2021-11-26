@@ -1,0 +1,51 @@
+@import '../../../../style/variables';
+@import '../../../../style/mixins';
+.project-node{
+    @include node-size;
+    color:black;
+    background-color: burlywood;
+}
+.board-node {
+    @include node-size;
+    color:burlywood;
+    background-color: black;
+}
+
+/*Tasks Colors is to be variables based on the task progress */
+.completed-task-node{
+    @include node-size;
+    color:burlywood;
+    background-color: green;
+}
+.notOpened-task-node{
+    @include node-size;
+    color:burlywood;
+    background-color: cyan;
+}
+.inProgress-task-node{
+    @include node-size;
+    color:burlywood;
+    background-color: yellow;
+}
+.undefined-task-node{
+    @include node-size;
+    background-color: honeydew;
+}
+.project-board path{
+    stroke:black;
+    
+}
+.inProgress-link path {
+    stroke-width: 2px;
+    stroke: red;
+  }
+.completed-link path {
+    stroke-width: 2px;
+    stroke: green;
+}
+.notOpened-link path, .undefined-link path{
+    stroke-width: 2px;
+    stroke: black;
+}
+
+  

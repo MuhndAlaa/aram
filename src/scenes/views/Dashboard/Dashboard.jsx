@@ -1,8 +1,7 @@
 import Button from "@restart/ui/esm/Button";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import SideBar from "../SideBar/SideBar";
-import TaskDisplay from "../DBTasksDisplay/TasksDisplay";
+import TasksDisplay from "../DBTasksDisplay/TasksDisplay";
 import { Task } from "../Task/Task";
 import "./dashboard.scss";
 import firebase from "../../../firebase/firebase";
@@ -47,13 +46,14 @@ const Dashboard = () => {
   return (
     <div className="d-flex">
       <MiniDrawer
+        className="db-sideBar"
         assigneeProjects={assigneeProjects}
         boards={boards}
         setCurrentProject={setCurrentProject}
         setCurrentBoard={setCurrentBoard}
       />
-      <div>
-        <TaskDisplay
+      <div className="db-view">
+        <TasksDisplay
           currentProject={currentProject}
           currentBoard={currentBoard}
         />
