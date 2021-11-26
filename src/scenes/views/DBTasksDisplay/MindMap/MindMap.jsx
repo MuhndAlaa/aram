@@ -2,7 +2,7 @@ import ReactFlow, {addEdge, Background, Controls, MiniMap} from 'react-flow-rend
 import {useState, useEffect} from 'react';
 import firebase from "../../../../firebase/firebase";
 import MindMapComponent from './MindMapComponent';
-function MindMap (props){
+function MindMap ({currentProject}){
     const [project,setProject] = useState('');
     const ref = firebase.firestore();
     useEffect(()=>{

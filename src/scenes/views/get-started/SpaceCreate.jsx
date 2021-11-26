@@ -8,12 +8,14 @@ import { Link } from "react-router-dom";
 import getstarted from '../../../images/getstarted.png';
 import "./forms.scss";
 import {MDBBtn} from 'mdb-react-ui-kit';
+import { useSelector } from "react-redux";
 
 function SpaceCreate(props) {
   const [dataSent, setDataSent] =useState();
   const [project, setProject] = useState("");
   const [board, setBoard] = useState();
   const ref = firebase.firestore();
+  const user = useSelector(state=>state.user)
 
   const projInitialValues = {
     project: "",
@@ -42,12 +44,12 @@ function SpaceCreate(props) {
   });
   
   const handleCreateProject =(values)=>{
-    ref.collection("projects").add({...values, created_by:'will be dynamic'})
+    ref.collection("projects").add({...values, created_by:user.email})
     .then(docRef => {
       setProject(docRef.id)
-      ref.collection("projects").doc(docRef.id).collection(`${props.title}Assignees`).add({email : 'creator email',project_id:docRef.id, role:'creator'})
+      ref.collection("projects").doc(docRef.id).collection(`${props.title}Assignees`).add({email : user.email ,project_id:docRef.id, role:'creator'})
       ref.collection("projects").doc(docRef.id).update({
-        projectAssigneesEmails: firebase.firestore.FieldValue.arrayUnion('creator email')
+        projectAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(user.email )
         })
     })
   }
@@ -57,9 +59,9 @@ function SpaceCreate(props) {
     ref.collection("projects").doc(props.projId).collection('boards').add(boardDocument)
     .then(docRef => {
      setBoard(docRef.id)
-     ref.collection("projects").doc(props.projId).collection('boards').doc(docRef.id).collection(`${props.title}Assignees`).add({email : 'creator email',board_id:docRef.id, role:'creator'})
+     ref.collection("projects").doc(props.projId).collection('boards').doc(docRef.id).collection(`${props.title}Assignees`).add({email : user.email ,board_id:docRef.id, role:'creator'})
       ref.collection("projects").doc(props.projId).collection('boards').doc(docRef.id).update({
-        boardAssigneesEmails: firebase.firestore.FieldValue.arrayUnion('creator email')
+        boardAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(user.email )
         })
     })
   }

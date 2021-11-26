@@ -17,10 +17,17 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { FormControl, InputLabel, NativeSelect } from '@mui/material';
+import { useEffect } from "react";
+
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import "./Sidenabar.scss";
 
-const drawerWidth = 240;
+const drawerWidth = 350;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -87,7 +94,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject, setCurrentBoard }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -99,18 +106,21 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  useEffect(() => {
+  }, [boards])
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
- 
-     
+
+
       <Drawer className="Drawer_container" variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-            
+            {!open ? null : <ChevronLeftIcon />}
+
           </IconButton>
-          
+
         </DrawerHeader>
         <Toolbar position="fixed" open={open}>
           <IconButton
@@ -126,49 +136,37 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Your Dashboard
           </Typography>
         </Toolbar>
         <Divider />
-        
+
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {[   <FormControl fullWidth>
-<InputLabel variant="standard" htmlFor="uncontrolled-native">
-  Age
-</InputLabel>
-<NativeSelect
-  defaultValue={30}
-  inputProps={{
-    name: 'age',
-    id: 'uncontrolled-native',
-  }}
->
-  <option value={10}>Ten</option>
-  <option value={20}>Twenty</option>
-  <option value={30}>Thirty</option>
-</NativeSelect>
-</FormControl>  , 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {assigneeProjects?.map((project,projectIndex)=>(
+          <ListItem key={projectIndex}>
+            <ListItemIcon><AiOutlineFundProjectionScreen/></ListItemIcon>
+            <ListItemText>
+              <Accordion style={{ width: "250px" }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                  <Typography onClick={()=>{setCurrentProject(project)}}>{project.project}</Typography>
+                </AccordionSummary>
+                <AccordionDetails style={{ width: "250px" }}>
+                  {boards?.map((board,boardIndex)=>(
+                    project.id === board.project_id ?
+                    <Typography onClick={()=>{setCurrentBoard(board)}} key={boardIndex}>
+                      {board.board}
+                    </Typography> :
+                    null
+                  ))}
+                  
+                </AccordionDetails>
+              </Accordion></ListItemText>
+          </ListItem>
           ))}
         </List>
       </Drawer>
- 
+
     </Box>
   );
 }
