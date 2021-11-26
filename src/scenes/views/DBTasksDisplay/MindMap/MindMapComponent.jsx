@@ -3,15 +3,17 @@ import {useState, useEffect} from 'react';
 import firebase from "../../../../firebase/firebase";
 import  './MindMapComponent.scss';
 
-function MindMapComponent (props){ 
+function MindMapComponent ({currentProject}){ 
     const ref = firebase.firestore();
+    const [boardsNodes, setBoardsNodes] = useState([]);
     const [boardsIds,setBoardsIds] = useState([]);
     const [nodes, setNodes] =useState()
     const [links,setLinks] = useState([])
 
-    const projectNode = {id:'1', type:'input', data:{label:'ay klam'}, position:{x:600,y:50}, className:'project-node'}
-    const [boardsNodes, setBoardsNodes] = useState([projectNode]);
+    
     const getBoards = (id)=>{
+      const projectNode = {id:'1', type:'input', data:{label:currentProject.project}, position:{x:600,y:50}, className:'project-node'}
+    setBoardsNodes(boardsNodes.push(projectNode));
       Promise.resolve(ref.collection('projects').doc(id).collection('boards').get())
       .then((querySnapshot)=>{
         querySnapshot && querySnapshot.forEach((doc) =>{
@@ -23,7 +25,7 @@ function MindMapComponent (props){
       .then(()=>{
         console.log(boardsIds);
         boardsIds.forEach((board_id)=>{
-          Promise.resolve(ref.collection('projects').doc(props.p_id).collection('boards').doc(board_id).collection('tasks').get())
+          Promise.resolve(ref.collection('projects').doc(currentProject.id).collection('boards').doc(board_id).collection('tasks').get())
           .then((docs)=>{
             docs.forEach((doc)=>{
               const animated = (doc)=>{if(doc.data().status ==='inProgress'||doc.data().status ==='notOpened'){return true}else{return false;}}
@@ -35,7 +37,7 @@ function MindMapComponent (props){
       }) 
     }
     
-    useEffect(()=>{props.p_id&& getBoards(props.p_id)},[props.p_id])
+    useEffect(()=>{currentProject&& getBoards(currentProject.id)},[currentProject])
 
     const onConnect =(params)=>{setNodes(els=>addEdge(params,els))} 
     const onLoad = (reactFlowInstance)=>{reactFlowInstance.fitView()}
