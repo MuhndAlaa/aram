@@ -1,7 +1,10 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
+.AppBar{
+  height: 200px !important;
+}
 .tasks-display{
-  position: relative;
+  // position: relative;
   left:260px;
   padding-left: 50px;
 }
