@@ -123,7 +123,7 @@ const BoardView = () => {
 
     return (
         <>
-            <div className="container">
+            <div className="">
                 <div className="view">
                     <div className="view-navbar">
                         <h2>Aram</h2>
