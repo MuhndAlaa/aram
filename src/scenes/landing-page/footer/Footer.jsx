@@ -1,8 +1,17 @@
 import './Footer.scss';
+import AOS from 'aos';
 
 export function Footer() {
 	return (
-		<footer className="footer" id="contact">
+		<footer className="footer" id="contact"  data-aos="fade-up"
+		data-aos-offset="200"
+		data-aos-delay="50"
+		data-aos-duration="1000"
+		data-aos-easing="ease-in-out"
+		data-aos-mirror="true"
+		data-aos-once="false"
+		data-aos-anchor-placement="top-center"
+	>
 			<div className="container">
 				<div className="row">
 					<div className="col-4">
@@ -33,7 +42,7 @@ export function Footer() {
 					</div>
 				</div>
 			</div>
-			<p className="footer__copyright">Copyright ©2021 Aram Team.</p>
+			<p  className="footer__copyright">Copyright ©2021 Aram Team.</p>
 		</footer>
 	)
 }

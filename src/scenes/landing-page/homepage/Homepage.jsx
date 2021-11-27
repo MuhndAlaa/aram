@@ -5,6 +5,7 @@ import { Footer } from '../footer/Footer';
 import {Devises} from '../Devices/Devises';
 import { Header } from '../header/Header';
 import {Navigation} from '../navbar/Navigation';
+import Features from '../Features/Features';
 
 export default function Homepage() {
     return (
@@ -12,6 +13,7 @@ export default function Homepage() {
             <Navigation/>
             <Header/>
             <CountUpComp/>
+            <Features/>
             <Teams/>
             <PricingSwitch/>
             <Devises/>

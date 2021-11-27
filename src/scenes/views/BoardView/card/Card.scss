@@ -1,6 +1,7 @@
 @import '../../../../style/mixins';
 @import '../../../../style/variables';
 .card{
+    cursor: pointer;
     padding: 10px;
     @include rounded(5px);
     background-color: $white;
@@ -51,6 +52,10 @@
             height: 18px;
             width:18px;
         }
+    }
+    &:active {
+        transform: rotate(5deg);
+        transition: all .2s ease-in-out infinity;
     }
 }
 .card:hover .card-top svg {

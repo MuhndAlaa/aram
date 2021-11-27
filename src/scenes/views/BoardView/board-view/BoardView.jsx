@@ -90,6 +90,7 @@ const BoardView = () => {
 
 
     const handleDragEnd = (cid, bid) => {
+        console.log(cid, bid)
         let s_bIndex, s_cIndex, t_bIndex, t_cIndex;
 
         s_bIndex = boards.findIndex((item) => item.id === bid);

@@ -14,6 +14,8 @@ import LoginGaurd from './guards/LoginGaurd';
 import Homepage from './scenes/landing-page/homepage/Homepage';
 import BoardTab from './scenes/views/get-started/BoardTab';
 import GetStarted from './scenes/views/get-started/GetStarted';
+import Features from './scenes/landing-page/Features/Features';
+import { BoardView } from './scenes/views/BoardView/board-view/BoardView';
 // import {BoardView} from './scenes/views/BoardView/board-view/BoardView'
 
 
@@ -38,7 +40,9 @@ function App() {
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
           <Route component={Dashboard} path="/dashboard"></Route>
+          <Route component={BoardView} path="/boardview"></Route>
           <Route component={TaskView} path="/taskview"></Route>
+          <Route component={Features} path="/feature"></Route>
           <Route component={Task} path="/task"></Route>
           <Route component= {GetStarted} path ="/get-started"></Route>
           <Route component={BoardTab} path ="/project/:id"></Route>
