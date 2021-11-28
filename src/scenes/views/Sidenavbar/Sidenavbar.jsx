@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -15,6 +16,9 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import HomeIcon from '@mui/icons-material/Home';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useEffect } from "react";
@@ -109,20 +113,16 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
   useEffect(() => {
   }, [boards])
 
-  return (
+  return (<>
+    
     <Box sx={{ display: 'flex' }}>
+      
       <CssBaseline />
 
 
       <Drawer className="Drawer_container" variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {!open ? null : <ChevronLeftIcon />}
-
-          </IconButton>
-
-        </DrawerHeader>
-        <Toolbar position="fixed" open={open}>
+      
+      <Toolbar position="fixed" open={open}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -135,13 +135,36 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography className="pe-5 me-5" variant="h6" noWrap component="div">
             Your Dashboard
           </Typography>
-        </Toolbar>
+          <IconButton onClick={handleDrawerClose}>
+            {!open ? null : <ChevronLeftIcon />}
+
+          </IconButton>
+    </Toolbar>
+        <List>
+        <Link className="Logo" to="/">
+          <ListItem>
+            
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText><Typography> Home</Typography></ListItemText>
+            
+          </ListItem>
+          </Link>
+          <ListItem>
+          <ListItemIcon><NotificationsIcon /></ListItemIcon>
+          <ListItemText><Typography> Notifications</Typography></ListItemText>
+          </ListItem>
+          
+        </List>
         <Divider />
-
-
+        <DrawerHeader className="px-0">
+          <ListItem>
+            <ListItemIcon><WorkspacesIcon /></ListItemIcon>
+            <ListItemText><Typography> Work Space</Typography></ListItemText>
+          </ListItem>
+        </DrawerHeader>
         <List>
           {assigneeProjects?.map((project,projectIndex)=>(
           <ListItem key={projectIndex}>
@@ -167,6 +190,6 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
         </List>
       </Drawer>
 
-    </Box>
+    </Box></>
   );
 }

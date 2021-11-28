@@ -6,9 +6,11 @@ import firebase from "../../../firebase/firebase";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import getstarted from '../../../images/getstarted.png';
-import "./forms.scss";
-import {MDBBtn} from 'mdb-react-ui-kit';
+import CreateIcon from '@mui/icons-material/Create';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useSelector } from "react-redux";
+import "./forms.scss";
 
 function SpaceCreate(props) {
   const [dataSent, setDataSent] =useState();
@@ -65,6 +67,9 @@ function SpaceCreate(props) {
         })
     })
   }
+  function nextTooltip(){
+    if (props.title ==='project'){return 'start creating your boards'}else {return 'check your project and start adding tasks'}
+  }
   const onSubmit = (values) => {
     (props.title ==='project')?handleCreateProject(values):handleCreateBoard(values);
     setDataSent(1)
@@ -100,15 +105,25 @@ function SpaceCreate(props) {
                       />}
 
                       <div className="form_footer mt-5" id="#formFooter">
-                      <button className="btns mb-4 mt-4 getstarted_btn" type="submit">Intialize your {props.title}</button>
-                      <div className="d-flex justify-content-center">
-                      {dataSent && <AssigneesFieldArray project_id={project} board_id={board} name={`${props.title}Assignees`}/>}
-                      {dataSent && 
+                      {/* {!dataSent && } */}
                       
+                      <div className="btns-wrapper">
+                       <Link to="/"><button className="btns navigation-btns"><span class="tooltiptext">go back to the home page</span><ArrowBackIosIcon/> Back</button></Link>
+                      {dataSent ? <AssigneesFieldArray project_id={project} board_id={board} name={`${props.title}Assignees`}/>
+                      :
+                      <button className="btns m-4 navigation-btns" type="submit"><span class="tooltiptext">Click to create your {props.title}</span><CreateIcon className="pe-2"/> 
+                      Intialize your {props.title}</button>
+                      }
+                      {(dataSent && props.title =='project') &&
                       <Link to={`/project/${project}`}>
-                      <MDBBtn variant="secondary" className="btn-close" color="none" aria-label="Close" />
-                        </Link>} 
-                        </div>
+                      <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
+                        </Link>}
+                        
+                        {props.title =='board' &&<Link to={`/dashboard`}>
+                      <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
+                        </Link>
+                        } 
+                      </div>
                     
                         </div>
                    

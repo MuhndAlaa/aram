@@ -32,8 +32,8 @@ const Board =(props)=>{
                         card={item} 
                         removeCard={props.removeCard} 
                         boardId={props.board?.id}
-                        handleDragEnter={props.handleDragEnter}
-                        handleDragEnd={props.handleDragEnd}
+                        // handleDragEnter={props.handleDragEnter}
+                        // handleDragEnd={props.handleDragEnd}
                     />)
                 }
                 <Editable displayClass="board-cards-add" text="Add Card" placeholder="Enter Card Title"

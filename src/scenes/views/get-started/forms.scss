@@ -253,27 +253,63 @@ input:placeholder {
 
 .getStarted {
     align-items: center;
-
 }
 
 // ---------------------------------------
 // add asss
 .add {
-    color: #110330;
-    border-radius: 26px;
+    // color: #110330;
+    border-radius: 20px;
     background-color: #feb3b2;
     color: white;
     align-items: center;
 
 }
+.btns-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.btn-close {
-    padding: 1rem;
-    border-radius: 25px;
-    background-color: #da2626;
+.navigation-btns {
+    @include input_animation();
+    // @extend %getstartedButton;
+
+    &:hover,
+    &:focus,
+    &:active {
+        -webkit-box-shadow: $main-color;
+        box-shadow: $main-color;
+        @include scale_animation();
+    }
+    // color: white;
+    color: #110330;
+    padding: .8rem;
+    border-radius: 20px;
+    background-color: #feb3b2;
+    position: relative;
 }
 
 
+.navigation-btns .tooltiptext {
+    visibility: hidden;
+    font-size: 12px;;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px 6px 6px 0;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom:60px
+  }
+  
+  .navigation-btns:hover .tooltiptext {
+    visibility: visible;
+  }
 .dropdown {
     position: relative;
     color: white;

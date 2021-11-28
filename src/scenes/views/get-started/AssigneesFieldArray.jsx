@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import React from "react";
 import { Field, FieldArray } from "formik";
-import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import { useState } from "react";
 import firebase from "../../../firebase/firebase";
 import { Button, Modal } from "react-bootstrap";
@@ -46,7 +46,7 @@ const AssigneesFieldArray = (props) => {
   return (
     <div className="m-4">
       <button className="getstarted_btn add" variant="primary" onClick={handleShow}>
-        Add your Assignees <BsFillFileEarmarkPlusFill />{props.project}
+        Add your Assignees <AddBoxIcon />{props.project}
       </button>
             <Modal show={show} onHide={handleClose}>
             <Formik
@@ -88,7 +88,7 @@ const AssigneesFieldArray = (props) => {
                                     placeholder="Email"
                                   />
                                   <Field
-                                  className="dropdown"
+                                  className="dropdown pe-1"
                                     as="select"
                                     style={{ width: "20%" }}
                                     name={`${props.name}.${index}.role`}
@@ -116,7 +116,7 @@ const AssigneesFieldArray = (props) => {
                               type="button" className="getstarted_btn add"
                               onClick={() => arrayHelpers.push("")}
                             >
-                              Add an Assignee <BsFillFileEarmarkPlusFill />
+                              Add an Assignee <AddBoxIcon />
                             </button>
                             </div>
                            
