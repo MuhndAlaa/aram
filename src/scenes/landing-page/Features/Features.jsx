@@ -9,9 +9,10 @@ import ReactPlayer from "react-player";
 import video1 from "../../../video/dashbarod1.mp4";
 import video2 from "../../../video/dashbarod2.mp4";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Features() {
+  gsap.registerPlugin(ScrollTrigger);
+
   const panels = useRef([]);
   const panelsContainer = useRef();
 
