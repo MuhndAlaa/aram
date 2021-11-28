@@ -144,7 +144,7 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           </IconButton>
     </Toolbar>
         <List>
-        <Link className="Logo" to="/">
+        <Link className="home-nav" to="/">
           <ListItem>
             
             <ListItemIcon><HomeIcon /></ListItemIcon>
