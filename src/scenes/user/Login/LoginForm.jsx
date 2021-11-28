@@ -7,7 +7,7 @@ import { useSelector , useDispatch } from "react-redux";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import { setAuth } from "../../../redux/userReducer";
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
 import {Navigation} from '../../landing-page/navbar/Navigation';
 
 
@@ -16,6 +16,7 @@ const LoginForm = () => {
   //Check wether is user is logged in or not from state mangment
   const user = useSelector(state => state.user)
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const initialValues = {
     email: "",
@@ -45,6 +46,7 @@ const LoginForm = () => {
         //If the email is registered and in DB
         await signInWithEmailAndPassword(auth , values.email , values.password)
         dispatch(setAuth(true))
+        history.push("/")
       }
     }catch(error){
       //If the email is not registered and not found in DB

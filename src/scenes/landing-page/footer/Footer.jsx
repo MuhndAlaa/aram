@@ -38,7 +38,7 @@ export function Footer() {
 						<h4>Contact US</h4>
 						<input type="text" className="form-control w-75 mb-3" placeholder="Email Address..."/>
 						<textarea placeholder="Your Message..." rows="3" className="w-75 form-control mb-3"></textarea>
-						<button className="btn btn-primary">Send</button>
+						<button className="btn btn-primary btn-footer-form">Send</button>
 					</div>
 				</div>
 			</div>

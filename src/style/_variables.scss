@@ -6,7 +6,8 @@ $vendors: "-moz-",
 "";
 
 
-$main-color: #114685;
+$main-color: #6b5b95;
+$main-color-opacity: #6b5b9520;
 $text-color-1: #0E2431;
 $text-color-2: #666;
 $text-color-3:#fe8991;
@@ -61,7 +62,7 @@ radial-gradient(circle at 69% 68%,
     rgba(234, 234, 234, 0.04) 10%,
     transparent 10%,
     transparent 100%),
-linear-gradient(90deg, #2c7ad2, #1568c6);
+linear-gradient(90deg, #6b5b95, #8071a8);
 $primaryHex: #114685;
 $primaryRGB: rgb(17, 70, 133);
 $primaryDarkHex: #00274b;

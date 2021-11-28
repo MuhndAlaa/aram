@@ -8,13 +8,14 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import { auth } from "../../../firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../../redux/userReducer";
-import { Link } from 'react-router-dom';
+import { Link , useHistory } from 'react-router-dom';
 import {Navigation} from '../../landing-page/navbar/Navigation';
 
 
 const RegisterForm = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   const initialValues = {
@@ -61,6 +62,7 @@ const RegisterForm = () => {
       //If the email is not registered before
       await createUserWithEmailAndPassword(auth, values.email , values.password)
       dispatch(setAuth(true))
+      history.push("/")
     }
     catch(error){
       //If the email is already registered before

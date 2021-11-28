@@ -1,0 +1,43 @@
+@import '../../../style/_variables';
+@import '../../../style/_mixins';
+
+.services{
+    @extend %section-padding;
+    text-align: center;
+    .title{
+        @extend %section-title;
+    }
+    .sub-title{
+        @extend %section-subtitle;
+    }
+
+    .service{
+        box-shadow: $box-shadow;
+        border-radius: 20px;
+        padding: 2rem;
+        width: 85%;
+        margin: auto;
+        margin-bottom: 2rem;
+        .service__icon{
+            font-size: 3rem;
+            color: $main-color;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius:50% ;
+            background-color: $main-color-opacity;
+            margin-bottom: 2.5rem;
+        }
+        h4.service__title{
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        &:hover{
+            background-color: $main-color-opacity;
+            cursor: pointer;
+            .service__icon{
+                color: $text-color-3;
+                background-color: $main-color;
+            }
+        }
+    }
+}

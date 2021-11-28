@@ -32,11 +32,10 @@ const Navigation = () => {
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-between">
                     <Link className="Logo" to="/">ARAM</Link>
                     <Nav>
-                        <a className="nav-link navLinks mt-2" href="#header">Get Started</a>
-                        <a className="nav-link navLinks mt-2" href="#counter">Counter</a>
+                        <a className="nav-link navLinks mt-2" href="#services">Servies</a>
+                        <a className="nav-link navLinks mt-2" href="#devices">Devices</a>
                         <a className="nav-link navLinks mt-2" href="#team">Team</a>
                         <a className="nav-link navLinks mt-2" href="#pricing">Pricing</a>
-                        <a className="nav-link navLinks mt-2" href="#devices">Devices</a>
                         <a className="nav-link navLinks mt-2" href="#contact">Contact US</a>
                     </Nav>
                     <Nav className="btns">
@@ -47,6 +46,7 @@ const Navigation = () => {
                             </>
                             :
                             <>
+                                <Link to="/dashboard" className="navBtns ms-2">My Dashboard</Link>
                                 <Link to="/" onClick={logout} className="navBtns ms-2">LogOut</Link>
                             </>}
 

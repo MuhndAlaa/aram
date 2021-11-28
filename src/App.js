@@ -48,6 +48,7 @@ function App() {
           <Route component={BoardTab} path ="/project/:id"></Route>
           <LoginGaurd Comp={LoginForm} path="/login" exact isLogged={isLogged}/>
           <LoginGaurd Comp={RegisterForm} path="/register" exact isLogged={isLogged}/>
+          <LoginGaurd Comp={Dashboard} path="/dashboard" exact isLogged={!isLogged}/>
       </Switch>
     </Br>
     </>

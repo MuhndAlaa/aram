@@ -1,0 +1,31 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+
+.section-date-wrapper{
+    padding: 70px 0;
+}
+
+.date {
+    background-image: $footerbackground;
+    padding: 4rem 12rem;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4{
+        font-size: 2rem;
+        span{
+            color: $text-color-3;
+        }
+    }
+    .btn-date{
+        background-color: $text-color-3;
+        padding: 0.5rem 2.5rem;
+        border-radius: 50px;
+        font-size: 2rem;
+        color: $white;
+        &:hover{
+            color: $main-color;
+        }
+    }
+}
