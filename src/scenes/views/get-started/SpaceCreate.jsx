@@ -105,7 +105,6 @@ function SpaceCreate(props) {
                       />}
 
                       <div className="form_footer mt-5" id="#formFooter">
-                      {/* {!dataSent && } */}
                       
                       <div className="btns-wrapper">
                        <Link to="/"><button className="btns navigation-btns"><span class="tooltiptext">go back to the home page</span><ArrowBackIosIcon/> Back</button></Link>
@@ -114,12 +113,12 @@ function SpaceCreate(props) {
                       <button className="btns m-4 navigation-btns" type="submit"><span class="tooltiptext">Click to create your {props.title}</span><CreateIcon className="pe-2"/> 
                       Intialize your {props.title}</button>
                       }
-                      {(dataSent && props.title =='project') &&
+                      {(dataSent && props.title ==='project') &&
                       <Link to={`/project/${project}`}>
                       <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
                         </Link>}
                         
-                        {props.title =='board' &&<Link to={`/dashboard`}>
+                        {props.title ==='board' &&<Link to={`/dashboard`}>
                       <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
                         </Link>
                         } 

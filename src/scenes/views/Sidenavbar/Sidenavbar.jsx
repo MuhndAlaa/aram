@@ -21,7 +21,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { useEffect } from "react";
+import {useState, useEffect } from "react";
+import firebase from "../../../firebase/firebase";
 
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import Accordion from '@mui/material/Accordion';
@@ -100,7 +101,28 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject, setCurrentBoard }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const ref = firebase.firestore();
+  // const functions = require('firebase-functions');
+
+// exports.myFunction = functions.firestore
+//   .document('projects/{projectId}')
+//   .onWrite((change, context) => { /* ... */ });
+//   const sendNotification = () =>{
+//     console.log("working")
+//     functions.firestore
+//   .document('projects/{projectId}')
+//   .onUpdate((snap, context) => {
+//     // Get an object representing the document
+//     // e.g. {'name': 'Marie', 'age': 66}
+//     const newValue = snap.data();
+//     console.log(newValue)
+//     // access a particular field as you would any JS property
+//     const name = newValue.name;
+
+//     // perform desired operations ...
+//   })
+// }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -154,9 +176,9 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           </Link>
           <ListItem>
           <ListItemIcon><NotificationsIcon /></ListItemIcon>
-          <ListItemText><Typography> Notifications</Typography></ListItemText>
+          <ListItemText><Typography > Notifications</Typography></ListItemText>
           </ListItem>
-          
+          {/* onClick={sendNotification} */}
         </List>
         <Divider />
         <DrawerHeader className="px-0">

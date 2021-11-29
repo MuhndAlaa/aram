@@ -1,12 +1,13 @@
 import ReactFlow, { addEdge, Background, Controls, MiniMap } from 'react-flow-renderer';
 import { useState, useEffect } from 'react';
+import initaialElements from './MindMapInitialValues';
 import firebase from "../../../../firebase/firebase";
 import './MindMapComponent.scss';
 
 function MindMapComponent({currentProject}) {
   const ref = firebase.firestore();
   const [boardsNodes, setBoardsNodes] = useState([]);
-  const [nodes, setNodes] = useState([])
+  const [nodes, setNodes] = useState(initaialElements)
   const [links, setLinks] = useState([])
 
 
@@ -42,10 +43,11 @@ function MindMapComponent({currentProject}) {
   const onConnect = (params) => { setNodes(els => addEdge(params, els)) }
   const onLoad = (reactFlowInstance) => { reactFlowInstance.fitView() }
   return <>
+  {!currentProject && <p className="tutorial-text alert alert-danger">welcome to our demo mind map, Choose one of your projects from the side bar to start tracking the team work progress</p>}
     {true ?
       <ReactFlow
-        elements={[...boardsNodes, ...links]}
-        style={{ width: '100%', height: '90vh', boarder: '2px' }}
+        elements={(currentProject)?[...boardsNodes, ...links]:nodes}
+        style={{ width: '100%', height: '72vh', boarder: '2px' }}
         onLoad={onLoad}
         onConnect={onConnect}
         connectionLineStyle={{ stroke: 'red', strokeWidth: 2 }}

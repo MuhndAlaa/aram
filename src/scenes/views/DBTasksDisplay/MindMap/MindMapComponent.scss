@@ -1,5 +1,6 @@
 @import '../../../../style/variables';
 @import '../../../../style/mixins';
+.tutorial-text{}
 .project-node{
     @include node-size;
     color:black;

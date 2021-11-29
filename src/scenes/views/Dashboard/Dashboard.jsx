@@ -40,7 +40,6 @@ const Dashboard = () => {
       .collectionGroup("boards")
       .where("boardAssigneesEmails", "array-contains", user.email);
   const [boards] = useCollectionData(boardsQuery, { idField: "id" });
-
   //To update component with live owned projects and assigned projects
   useEffect(() => {}, [user, assigneeProjects, boards]);
   return (
