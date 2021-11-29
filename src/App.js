@@ -19,6 +19,11 @@ import { BoardView } from './scenes/views/BoardView/board-view/BoardView';
 // import {BoardView} from './scenes/views/BoardView/board-view/BoardView'
 
 
+import { DndProvider } from "react-dnd";
+
+import BoardHeader from './scenes/views/Board/BoardHeader';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import BoardHome from './scenes/views/Board/BoardHome';
 function App() {
 
   //Check user is logged or not to pass as props in protected routes
@@ -35,6 +40,10 @@ function App() {
   return (
     <>
     <Br>
+    {/* <DndProvider backend={HTML5Backend}>
+    <BoardHeader/>
+    <BoardHome/>
+     </DndProvider> */}
       <Switch>
           <Route component={Homepage} path="/" exact></Route>
           <Route component={LoginForm} path="/login"></Route>
