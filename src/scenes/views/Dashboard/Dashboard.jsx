@@ -43,7 +43,7 @@ const Dashboard = () => {
   //To update component with live owned projects and assigned projects
   useEffect(() => {}, [user, assigneeProjects, boards]);
   return (
-    <div className="d-flex">
+    <div className="d-flex view-container">
       <MiniDrawer
         className="db-sideBar"
         assigneeProjects={assigneeProjects}

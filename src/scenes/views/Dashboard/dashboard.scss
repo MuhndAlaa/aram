@@ -3,14 +3,20 @@
 .AppBar{
   height: 200px !important;
 }
+.view-container{
+  // overflow-y:hidden;
+}
 .db-sideBar{
   width:100%;
 }
 .db-view{
   width:100%;
+  // overflow-y:hidden;
+}
+.view-container{
+  min-width:100%;
 }
 .tasks-display{
-  // position: relative;
   left:260px;
   padding-left: 50px;
 }

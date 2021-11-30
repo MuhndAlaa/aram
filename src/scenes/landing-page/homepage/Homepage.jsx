@@ -13,7 +13,7 @@ import "./Homepage.scss";
 
 export default function Homepage() {
     return (
-        <>
+        <div className="homepage">
             <Navigation/>
             <Header/>
             <CountUpComp/>
@@ -25,6 +25,6 @@ export default function Homepage() {
             <PricingSwitch/>
             <Footer/>
             <a href="#header" className="btn-scrollup"><FaArrowUp/></a>
-        </>
+        </div>
     )
 }

@@ -5,7 +5,10 @@ import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
-import {BoardView} from '../BoardView/board-view/BoardView'
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import BoardHome from '../Board/BoardHome';
+// import {BoardView} from '../BoardView/board-view/BoardView'
 import { useEffect ,useState } from "react";
 
 function LinkTab(props) {
@@ -33,7 +36,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
   },[currentProject])
   return (
     <div className="view-container">
-      <Box sx={{ width: '100%', margin: '1rem auto', marginTop: '0', borderBottom: '1px solid black', padding: '1rem' }}>
+      <Box sx={{ margin: '1rem auto', marginTop: '0', borderBottom: '1px solid black', padding: '1rem' }}>
         <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
           <LinkTab label="drag and drop" onClick={()=>{setCurrentView("dragndrop")}} />
@@ -44,7 +47,9 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "dragndrop" ? <BoardView/>: null}
+      {currentView === "dragndrop" ? <DndProvider backend={HTML5Backend}>
+    <BoardHome/>
+     </DndProvider>: null}
       
       {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
             <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>

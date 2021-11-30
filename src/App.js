@@ -49,7 +49,7 @@ function App() {
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
           <Route component={Dashboard} path="/dashboard"></Route>
-          <Route component={BoardView} path="/boardview"></Route>
+          <Route component={BoardHome} path="/boardview"></Route>
           <Route component={TaskView} path="/taskview"></Route>
           <Route component={Features} path="/feature"></Route>
           <Route component={Task} path="/task"></Route>
