@@ -33,8 +33,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
   const [currentView , setCurrentView] = useState("mindmap");
 
   useEffect(()=>{
-    if(currentProject)console.log(currentProject)
-  },[currentProject])
+  },[currentProject , currentBoard])
   return (
     <div className="view-container">
       <Box sx={{ margin: '1rem auto', marginTop: '0', borderBottom: '1px solid black', padding: '1rem' }}>
@@ -50,7 +49,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
       {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome/></DndProvider>: null}
-      {currentView === "list" ? <DndProvider currentProject={currentProject} currentBoard={currentBoard} backend={HTML5Backend}><ListView/></DndProvider>: null}
+      {currentView === "list" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><ListView currentBoard={currentBoard}/></DndProvider>: null}
       {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
             <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>
             <h4 className='tasks-display text-black' >Current Board is: {currentBoard}</h4> */}

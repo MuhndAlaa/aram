@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDropdown } from 'react-icons/io'
 import { FcDeleteRow } from 'react-icons/fc'
 import DropWrapper from "../../Board/DropWrapper";
@@ -9,16 +9,20 @@ import firebase from "../../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
 
-const List = (props, { isOver }) => {
-    const [items, setItems] = useState(props.list?.data);
+const List = ({list , currentBoard}, { isOver }) => {
+    const [items, setItems] = useState(list?.data);
     const className = isOver ? " highlight-region" : "";
     const [listDropDown, setListDropDown] = useState(true);
     
     //Code of backend intergration
     const ref = firebase.firestore();
     const user = useSelector((state) => state.user); //State of user
-    const tasksQuery =  user?.uid && ref.collection("tasks").where("taskAssignees", "array-contains", user.email);
+    const tasksQuery =  user?.uid && ref.collectionGroup("tasks").where("board_id" , "==" ,currentBoard?.id).where("taskAssignees", "array-contains", user?.email);
     const [tasks] = useCollectionData(tasksQuery, { idField: "id"});
+
+    useEffect(()=>{
+        if(tasks) console.log(tasks)
+    },[tasks , currentBoard])
 
     const listDd = () => {
         setListDropDown(!listDropDown);
@@ -50,7 +54,7 @@ const List = (props, { isOver }) => {
                 <div className="d-flex">
                     <IoIosArrowDropdown className="mt-2 fs-3 me-2 text-muted" onClick={listDd} />
                     <div className="list-header">
-                        <h2 className="text-danger">{props.list?.title}</h2>
+                        <h2 className="text-danger">{list?.title}</h2>
                     </div>
                 </div>
             </div>

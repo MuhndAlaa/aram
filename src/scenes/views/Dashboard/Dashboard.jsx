@@ -41,7 +41,7 @@ const Dashboard = () => {
       .where("boardAssigneesEmails", "array-contains", user.email);
   const [boards] = useCollectionData(boardsQuery, { idField: "id" });
   //To update component with live owned projects and assigned projects
-  useEffect(() => {}, [user, assigneeProjects, boards]);
+  useEffect(() => {}, [user, assigneeProjects, boards , currentBoard]);
   return (
     <div className="d-flex view-container">
       <MiniDrawer
