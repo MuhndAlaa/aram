@@ -1,4 +1,23 @@
-const data = [{
+import React, { useState } from "react";
+import firebase from "../../../firebase/firebase";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useSelector } from "react-redux";
+
+
+const project_id ='ODmhjrhsHZLpcAw3M79x';
+//Declare firebase
+const ref = firebase.firestore();
+// const user = useSelector((state) => state.user); //State of user
+
+
+
+
+
+
+
+
+
+const data_default = [{
     id: 1,
     icon: "⭕️",
     status: "open",
@@ -34,22 +53,26 @@ const data = [{
 }];
 
 const statuses = [{
-    status: "open",
+    status: "notOpened",
+    progress: "To Do",
     icon: "⭕️",
     color: "#EB5A46"
 }, {
-    status: "in progress",
+    status: "inProgress",
+    progress: "in progress",
     icon: "🔆️",
     color: "#00C2E0"
 }, {
     status: "in review",
+    progress: "in review",
     icon: "📝",
     color: "#C377E0"
 }, {
-    status: "done",
+    status: "completed",
+    progress: "Done",
     icon: "✅",
     color: "#3981DE"
 }];
 
 
-export { data, statuses };
+export { data_default, statuses };

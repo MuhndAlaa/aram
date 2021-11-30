@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import firebase from "../../../firebase/firebase";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useSelector } from "react-redux";
+
 import Card from "./Card";
 import DropWrapper from "./DropWrapper";
 import Col from "./Col";
-import { data, statuses } from "./data";
+import { statuses } from "./data";
 import './board.scss'
-const BoardHome = () => {
-    const [items, setItems] = useState(data);
-    // const [dropDownItems, setDropDownItems] = useState([])
-    // const [dropDown, setDropDown] = useState(statuses)
-    // const [boards, setBoards] = useState([])
+const BoardHome = ({currentProject}) => {
+    const [items, setItems] = useState();
+    const [boards, setBoards] = useState([])
+    const project_id ='ODmhjrhsHZLpcAw3M79x';
+    const ref = firebase.firestore();
+    const user = useSelector((state) => state.user); //State of user
 
     const onDrop = (item, monitor, status) => {
         const mapping = statuses.find(si => si.status === status);
@@ -29,6 +34,38 @@ const BoardHome = () => {
             return  [ ...newItems ];
         });
     };
+    const tasksQuery =()=>{
+        console.log("id ==>",currentProject?.id)
+        ref.collection('projects').doc(project_id).collection('boards')
+        .where("boardAssigneesEmails", "array-contains", user.email).get()
+        .then(querySnapshot => {
+            querySnapshot.docs.map(doc => {
+              console.log('LOG 1', doc.data());
+              setBoards(state=>[...state,doc.data()])
+              ref.collection('projects').doc(project_id).collection('boards').doc(doc.id).collection('tasks')
+                .where("taskAssignees", "array-contains", user.email).get()
+                .then(querySnapshot => {
+                    querySnapshot.docs.map(doc => {
+                    console.log('Task 1', doc.data());
+                    setItems(state => [...state,doc.data()]);
+                    })
+                })
+            })
+        })
+        
+    }
+    async function renderTasks(){
+        await tasksQuery();
+      }
+    
+      useEffect(() => {
+        setItems([]);
+        renderTasks();
+      }, [currentProject, user])
+
+    
+    
+    
 
     // const addBoard = () => {
     //     let statusName = document.getElementById('newBoard').value
@@ -73,12 +110,14 @@ const BoardHome = () => {
         {statuses.map(s => {
                 return (
                     <div key={s.status} className={"col-wrapper"}>
-                        <h2 className={"col-header"}>{s.status.toUpperCase()}</h2>
+                        <h2 className={"col-header"}>{s.progress.toUpperCase()}</h2>
                         <DropWrapper onDrop={onDrop} status={s.status}>
                             <Col className="board-col">
-                                {items
-                                    .filter(i => i.status === s.status)
-                                    .map((i, idx) => <Card key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
+                                {items && items
+                                    .filter(task => task.status === s.status)
+                                    .map((task, idx) => 
+                                    <Card key={task.id} item={task} index={idx} moveItem={moveItem} status={s} />
+                                    )
                                 }
                             </Col>
                         </DropWrapper>

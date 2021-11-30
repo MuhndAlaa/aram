@@ -54,23 +54,28 @@ const Card = ({ item, index, moveItem, status }) => {
     drag(drop(ref));
 
     return (
-        <Fragment>
+        <>
             <div
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
                 className={"item"}
                 onClick={onOpen}
             >
-                <div className={"color-bar"} style={{ backgroundColor: status.color }}/>
-                <p className={"item-title"}>{item.content}</p>
-                <p className={"item-status"}>{item.icon}</p>
+                <div className="d-flex justify-content-between align-items-center">
+                    <div className={"color-bar"} style={{ backgroundColor: status.color }}/>
+                    <p style={{ color: status.color }}>{item.dueDate}</p>
+                    
+                </div>
+                    
+                <p className={"item-title"}>{item.title}</p>
+                <p className={"item-status"}>{status.icon}</p>
             </div>
             <CardWindow
                 item={item}
                 onClose={onClose}
                 show={show}
             />
-        </Fragment>
+        </>
     );
 };
 

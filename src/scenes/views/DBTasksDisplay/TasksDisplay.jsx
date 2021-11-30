@@ -47,7 +47,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "dragndrop" ? <DndProvider backend={HTML5Backend}>
+      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}>
     <BoardHome/>
      </DndProvider>: null}
       
