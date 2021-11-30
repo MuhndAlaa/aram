@@ -16,6 +16,7 @@ import BoardTab from './scenes/views/get-started/BoardTab';
 import GetStarted from './scenes/views/get-started/GetStarted';
 import Features from './scenes/landing-page/Features/Features';
 import { BoardView } from './scenes/views/BoardView/board-view/BoardView';
+import { ListView } from './scenes/views/ListView/ListView';
 // import {BoardView} from './scenes/views/BoardView/board-view/BoardView'
 
 
@@ -43,6 +44,7 @@ function App() {
     {/* <DndProvider backend={HTML5Backend}>
     <BoardHeader/>
     <BoardHome/>
+    <ListView/>
      </DndProvider> */}
       <Switch>
           <Route component={Homepage} path="/" exact></Route>
