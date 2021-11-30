@@ -10,6 +10,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import BoardHome from '../Board/BoardHome';
 // import {BoardView} from '../BoardView/board-view/BoardView'
 import { useEffect ,useState } from "react";
+import {ListView} from '../ListView/ListView'
 
 function LinkTab(props) {
   return (
@@ -40,6 +41,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
         <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
           <LinkTab label="drag and drop" onClick={()=>{setCurrentView("dragndrop")}} />
+          <LinkTab label="list" onClick={()=>{setCurrentView("list")}} />
           <Stack spacing={2} direction="row">
             <Button variant="contained">userS</Button>
 
@@ -47,10 +49,8 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}>
-    <BoardHome/>
-     </DndProvider>: null}
-      
+      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome/></DndProvider>: null}
+      {currentView === "list" ? <DndProvider currentProject={currentProject} currentBoard={currentBoard} backend={HTML5Backend}><ListView/></DndProvider>: null}
       {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
             <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>
             <h4 className='tasks-display text-black' >Current Board is: {currentBoard}</h4> */}

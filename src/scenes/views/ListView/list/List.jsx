@@ -5,11 +5,20 @@ import DropWrapper from "../../Board/DropWrapper";
 import '../ListView.scss'
 import { statuses } from "../listData";
 import ListCards from "../listCards/ListCards";
+import firebase from "../../../../firebase/firebase";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useSelector } from "react-redux";
 
 const List = (props, { isOver }) => {
     const [items, setItems] = useState(props.list?.data);
     const className = isOver ? " highlight-region" : "";
     const [listDropDown, setListDropDown] = useState(true);
+    
+    //Code of backend intergration
+    const ref = firebase.firestore();
+    const user = useSelector((state) => state.user); //State of user
+    const tasksQuery =  user?.uid && ref.collection("tasks").where("taskAssignees", "array-contains", user.email);
+    const [tasks] = useCollectionData(tasksQuery, { idField: "id"});
 
     const listDd = () => {
         setListDropDown(!listDropDown);
