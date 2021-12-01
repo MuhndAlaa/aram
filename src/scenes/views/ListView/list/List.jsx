@@ -15,14 +15,14 @@ const List = ({list , currentBoard}, { isOver }) => {
     const [listDropDown, setListDropDown] = useState(true);
     
     //Code of backend intergration
-    const ref = firebase.firestore();
-    const user = useSelector((state) => state.user); //State of user
-    const tasksQuery =  user?.uid && ref.collectionGroup("tasks").where("board_id" , "==" ,currentBoard?.id).where("taskAssignees", "array-contains", user?.email);
-    const [tasks] = useCollectionData(tasksQuery, { idField: "id"});
+    // const ref = firebase.firestore();
+    // const user = useSelector((state) => state.user); //State of user
+    // const tasksQuery =  user?.uid && ref.collectionGroup("tasks").where("board_id" , "==" ,currentBoard?.id).where("taskAssignees", "array-contains", user?.email);
+    // const [tasks] = useCollectionData(tasksQuery, { idField: "id"});
 
-    useEffect(()=>{
-        if(tasks) console.log(tasks)
-    },[tasks , currentBoard])
+    // useEffect(()=>{
+    //     if(tasks) console.log(tasks)
+    // },[tasks , currentBoard])
 
     const listDd = () => {
         setListDropDown(!listDropDown);
