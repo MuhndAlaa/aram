@@ -20,7 +20,7 @@ const CardWindow = ({ show, onClose, item }) => {
                 <h2>Description</h2>
                 <p>{item.description}</p>
                 <h2>Status</h2>
-                <p>{item.icon} {`${item.status.charAt(0).toUpperCase()}${item.status.slice(1)}`}</p>
+                {/* <p>{item.icon} {`${item.status.charAt(0).toUpperCase()}${item.status.slice(1)}`}</p> */}
             </div>
         </Modal>
     );
