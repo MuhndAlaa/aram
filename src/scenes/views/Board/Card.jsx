@@ -62,13 +62,13 @@ const Card = ({ item, index, moveItem, status }) => {
                 onClick={onOpen}
             >
                 <div className="d-flex justify-content-between align-items-center">
-                    <div className={"color-bar"} style={{ backgroundColor: status.color }}/>
-                    <p style={{ color: status.color }}>{item.dueDate}</p>
+                    <div className={"color-bar"} style={{ backgroundColor: 'red' }}/>
+                    <p style={{ color: 'red' }}>{item.dueDate}</p>
                     
                 </div>
                     
                 <p className={"item-title"}>{item.title}</p>
-                <p className={"item-status"}>{status.icon}</p>
+                <p className={"item-status"}>{item.dueTime}</p>
             </div>
             <CardWindow
                 item={item}

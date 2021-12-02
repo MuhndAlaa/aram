@@ -24,7 +24,8 @@ function SpaceCreate(props) {
     ManagementMethod: ""
   };
   const boardInitialValues ={
-    board: ""
+    board: "",
+    boardColumns:['notOpened', 'inProgress', 'inReview', 'completed']
   }
   const projValidationSchema = yup.object({
     project: yup

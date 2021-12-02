@@ -48,7 +48,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome/></DndProvider>: null}
+      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome currentBoard={currentBoard}/></DndProvider>: null}
       {currentView === "list" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><ListView currentBoard={currentBoard}/></DndProvider>: null}
       {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
             <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>

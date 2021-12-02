@@ -37,8 +37,8 @@ const Task = () => {
       })
   }
   function getBoard(id) {
-    ref.collection("projects").doc(p_id).collection('boards')
-      .where("board", "==", "Aram Development check the bug ")
+    ref.collection("projects").doc('8WYfYowtjUqX6XmFK7Fo').collection('boards')
+      .where("board", "==", "test the board with array of columns")
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             setBoard(doc.id);
@@ -50,7 +50,7 @@ const Task = () => {
   useEffect(()=>{p_id&&getBoard()},[p_id])
 
   function addTask(values){
-    ref.collection("projects").doc(p_id).collection('boards').doc(board).collection('tasks').add({...values,board_id:board})
+    ref.collection("projects").doc('8WYfYowtjUqX6XmFK7Fo').collection('boards').doc('kArO3CHNAY2h0acyh5a8').collection('tasks').add({...values,board_id:board})
     .then(()=>{values = initialValues})
   }
   const onSubmit = (values) => {addTask(values)};

@@ -1,4 +1,3 @@
-
 import SpaceCreate from "./SpaceCreate"
 function GetStarted(){
     return (<div>

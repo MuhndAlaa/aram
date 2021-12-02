@@ -1,22 +1,3 @@
-import React, { useState } from "react";
-import firebase from "../../../firebase/firebase";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { useSelector } from "react-redux";
-
-
-const project_id ='ODmhjrhsHZLpcAw3M79x';
-//Declare firebase
-const ref = firebase.firestore();
-// const user = useSelector((state) => state.user); //State of user
-
-
-
-
-
-
-
-
-
 const data_default = [{
     id: 1,
     icon: "⭕️",
