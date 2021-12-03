@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
+import { Task } from "../../Task/Task";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import firebase from "../../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
-import BoardCard from './BoardCard'
-import "../ListDrop/ListDragDrop.scss";
+import BoardCard from './BoardCard';
+import "./DnDView.scss";
 
 function DnDView({currentView, currentProject , currentBoard}) {
+// the add task functionallity
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     const ref = firebase.firestore();
     const user = useSelector((state) => state.user); //State of user
@@ -109,6 +116,34 @@ function DnDView({currentView, currentProject , currentBoard}) {
                 <input type="text" id="createColumn" className="form-control w-25" placeholder="Enter Column name"/>
                 <button onClick={createColumn} className="btn btn-dark">ADD Task</button>
             </DragDropContext>
+            <div>
+          <Button
+            className="addTask text-white"
+            variant="primary"
+            onClick={handleShow}
+          >
+            +Task
+          </Button>
+
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+            className="modalTask"
+          >
+            <Modal.Body>
+              {" "}
+              <Task></Task>{" "}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button className="closeBtn" onClick={handleClose}>
+                {" "}
+                Close{" "}
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
         </>
     )
 }

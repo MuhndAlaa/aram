@@ -1,8 +1,5 @@
-import Button from "@restart/ui/esm/Button";
 import { useState } from "react";
-import { Modal } from "react-bootstrap";
 import TasksDisplay from "../DBTasksDisplay/TasksDisplay";
-import { Task } from "../Task/Task";
 import "./dashboard.scss";
 import firebase from "../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -11,9 +8,6 @@ import { useEffect } from "react";
 import MiniDrawer from "../Sidenavbar/Sidenavbar";
 
 const Dashboard = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   //Declare current project and current board
   const [currentProject, setCurrentProject] = useState();
@@ -57,34 +51,6 @@ const Dashboard = () => {
           currentBoard={currentBoard}
         />
 
-        <div>
-          <Button
-            className="addTask text-white"
-            variant="primary"
-            onClick={handleShow}
-          >
-            +Task
-          </Button>
-
-          <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-            className="modalTask"
-          >
-            <Modal.Body>
-              {" "}
-              <Task></Task>{" "}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button className="closeBtn" onClick={handleClose}>
-                {" "}
-                Close{" "}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
       </div>
     </div>
   );
