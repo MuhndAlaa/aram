@@ -8,6 +8,7 @@ import MindMapComponent from './MindMap/MindMapComponent';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import BoardHome from '../Board/BoardHome';
+import { ListDragDrop } from './ListDrop/ListDragDrop';
 // import {BoardView} from '../BoardView/board-view/BoardView'
 import { useEffect ,useState } from "react";
 import {ListView} from '../ListView/ListView'
@@ -41,6 +42,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
           <LinkTab label="drag and drop" onClick={()=>{setCurrentView("dragndrop")}} />
           <LinkTab label="list" onClick={()=>{setCurrentView("list")}} />
+          <LinkTab label="Drag n Drop" onClick={()=>{setCurrentView("listdnd")}} />
           <Stack spacing={2} direction="row">
             <Button variant="contained">userS</Button>
 
@@ -48,6 +50,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
+      {currentView === "listdnd" ? <ListDragDrop currentProject={currentProject} currentBoard={currentBoard} /> : null}
       {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome currentBoard={currentBoard}/></DndProvider>: null}
       {currentView === "list" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><ListView currentBoard={currentBoard}/></DndProvider>: null}
       {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
