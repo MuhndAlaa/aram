@@ -12,3 +12,70 @@
     box-shadow: 5px 5px 1px #777;
     background-color: grey;
 }
+// Seperate styling
+.list-container{
+    display:flex;
+    flex-direction: column;
+    max-width:100%;
+    // width:fit-content;
+    .list-column{
+        min-height: 200px;
+        max-width:100%;
+        margin: 1rem 1rem;
+        border: 1px solid #000;
+        border-radius:25px 0 25px 25px;
+        box-shadow: 5px 5px 1px #777;
+        overflow:hidden;
+        h2 {
+            padding:.4rem;
+        }
+        
+    }
+}
+.list-card{
+    margin: 1rem 1rem;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 1px #777;
+    border-radius:20px;
+    // background-color: grey;
+}
+// 5at el nar 
+
+
+.board-container{
+    display:flex;
+    // width:fit-content;
+    .board-column{
+        min-height: 600px;
+        width:400px;
+        margin: 1rem 1rem;
+        border: 1px solid #000;
+        border-radius:25px 0 25px 25px;
+        box-shadow: 5px 5px 1px #777;
+        overflow:hidden;
+        h2 {
+            padding:.4rem;
+        }
+        
+    }
+}
+.board-card{
+    min-height: 150px;
+    margin: 1rem 1rem;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 1px #777;
+    border-radius:20px;
+    // background-color: grey;
+}
+.notopened-task{
+    background-color: yellow;
+}
+.inprogress-task{
+    background-color: blue;
+}
+.inreview-task{
+    background-color: black;
+}
+.completed-task{
+    background-color: green;
+}

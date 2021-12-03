@@ -5,13 +5,8 @@ import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import BoardHome from '../Board/BoardHome';
-import { ListDragDrop } from './ListDrop/ListDragDrop';
-// import {BoardView} from '../BoardView/board-view/BoardView'
+import DnDView from './DnDView/DnDView'
 import { useEffect ,useState } from "react";
-import {ListView} from '../ListView/ListView'
 
 function LinkTab(props) {
   return (
@@ -40,9 +35,8 @@ function TasksDisplay({ currentProject, currentBoard }) {
       <Box sx={{ margin: '1rem auto', marginTop: '0', borderBottom: '1px solid black', padding: '1rem' }}>
         <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
-          <LinkTab label="drag and drop" onClick={()=>{setCurrentView("dragndrop")}} />
-          <LinkTab label="list" onClick={()=>{setCurrentView("list")}} />
-          <LinkTab label="Drag n Drop" onClick={()=>{setCurrentView("listdnd")}} />
+          <LinkTab label="your board" onClick={()=>{setCurrentView("board")}} />
+          <LinkTab label="Your List" onClick={()=>{setCurrentView("list")}} />
           <Stack spacing={2} direction="row">
             <Button variant="contained">userS</Button>
 
@@ -50,12 +44,9 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "listdnd" ? <ListDragDrop currentProject={currentProject} currentBoard={currentBoard} /> : null}
-      {currentView === "dragndrop" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><BoardHome currentBoard={currentBoard}/></DndProvider>: null}
-      {currentView === "list" ? <DndProvider currentProject={currentProject} backend={HTML5Backend}><ListView currentBoard={currentBoard}/></DndProvider>: null}
-      {/* <h4 className='tasks-display text-black' >for the views components to be diplayed</h4>
-            <h4 className='tasks-display text-black' >Current Project is: {currentProject}</h4>
-            <h4 className='tasks-display text-black' >Current Board is: {currentBoard}</h4> */}
+      {currentView === "board" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      {currentView === "list" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      
     </div>
   )
 }
