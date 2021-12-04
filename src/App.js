@@ -15,16 +15,6 @@ import Homepage from './scenes/landing-page/homepage/Homepage';
 import BoardTab from './scenes/views/get-started/BoardTab';
 import GetStarted from './scenes/views/get-started/GetStarted';
 import Features from './scenes/landing-page/Features/Features';
-import { BoardView } from './scenes/views/BoardView/board-view/BoardView';
-import { ListView } from './scenes/views/ListView/ListView';
-// import {BoardView} from './scenes/views/BoardView/board-view/BoardView'
-
-
-import { DndProvider } from "react-dnd";
-
-import BoardHeader from './scenes/views/Board/BoardHeader';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import BoardHome from './scenes/views/Board/BoardHome';
 function App() {
 
   //Check user is logged or not to pass as props in protected routes
@@ -51,7 +41,6 @@ function App() {
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
           <Route component={Dashboard} path="/dashboard"></Route>
-          <Route component={BoardHome} path="/boardview"></Route>
           <Route component={TaskView} path="/taskview"></Route>
           <Route component={Features} path="/feature"></Route>
           <Route component={Task} path="/task"></Route>

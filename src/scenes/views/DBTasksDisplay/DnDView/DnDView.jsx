@@ -185,7 +185,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         >
           <Modal.Body>
             {" "}
-            <Task></Task>{" "}
+            <Task currentProject={currentProject} currentBoard = {currentBoard}></Task>{" "}
           </Modal.Body>
           <Modal.Footer>
             <Button className="closeBtn" onClick={handleClose}>

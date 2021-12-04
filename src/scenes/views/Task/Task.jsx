@@ -1,5 +1,4 @@
 import './Task.scss';
-// import '../../../App.css'
 import Button from "@restart/ui/esm/Button";
 import { MdDateRange } from "react-icons/md";
 import { ImAttachment } from "react-icons/im";
@@ -8,12 +7,9 @@ import { useState } from "react";
 import { Form, Formik } from "formik";
 import FieldArrayInput from "./FieldArray";
 import firebase from "../../../firebase/firebase";
-import { useEffect } from "react";
 
-const Task = () => {
+const Task = ({currentBoard, currentProject}) => {
   const ref = firebase.firestore();
-  const [p_id, setP_id] = useState("");
-  const [board, setBoard] = useState()
 
   const initialValues = {
     title: "",
@@ -26,31 +22,9 @@ const Task = () => {
     created_at:firebase.firestore.Timestamp.now(), 
     taskAssignees: [],
   };
-  function getProject() {
-    ref
-      .collection("projects")
-      .where("project", "==", "Test full page and DB")
-      .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          setP_id(doc.id);
-        });
-      })
-  }
-  function getBoard(id) {
-    ref.collection("projects").doc('8WYfYowtjUqX6XmFK7Fo').collection('boards')
-      .where("board", "==", "test the board with array of columns")
-      .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            setBoard(doc.id);
-        });
-
-      });
-  }
-  useEffect(()=>{getProject()},[p_id])
-  useEffect(()=>{p_id&&getBoard()},[p_id])
-
   function addTask(values){
-    ref.collection("projects").doc('8WYfYowtjUqX6XmFK7Fo').collection('boards').doc('kArO3CHNAY2h0acyh5a8').collection('tasks').add({...values,board_id:board})
+    console.log("project ==> ",currentProject.id ,"board ==>", currentBoard.id)
+    ref.collection("projects").doc(currentProject.id).collection('boards').doc(currentBoard.id).collection('tasks').add({...values,board_id:currentBoard.id})
     .then(()=>{values = initialValues})
   }
   const onSubmit = (values) => {addTask(values)};
