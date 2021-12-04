@@ -2,24 +2,56 @@
 @import '../../../../style/mixins';
 
 // add task button
-.addTask{
+.add-btns {
+    @include input_animation();
+    // @extend %getstartedButton;
+
+    &:hover,
+    &:focus,
+    &:active {
+        -webkit-box-shadow: $main-color;
+        box-shadow: $main-color;
+        @include scale_animation();
+    }
+    color: #110330;
+    padding: .8rem;
+    @include rounded(50%);
+    background-color: black;
     position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: $main-color;
-    padding:5px 20px;
-    @include rounded(5px);
-    }
-    
-    .modalTask{
-    
-        .closeBtn{
-            background-color: $formfootercolr;
-            padding:5px 20px;
-            @include rounded(5px);
-            color:$white;
-        }
-    }
+    bottom: 20px;
+    right: 20px;
+}
+
+
+.add-btns .tooltiptext {
+    visibility: hidden;
+    font-size: 12px;;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px 6px 0 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom:70px;
+    right:40px;
+  }
+  
+  .add-btns:hover .tooltiptext {
+    visibility: visible;
+  }
+.addCol{
+    right: 90px;
+}
+.close-btn{
+    background-color: white;
+    font-size: xx-large;
+    border:0px;
+    color:black;
+}
 
 // Seperate views styling
 // List view

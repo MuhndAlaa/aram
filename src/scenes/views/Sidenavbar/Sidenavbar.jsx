@@ -21,6 +21,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import AddIcon from '@mui/icons-material/Add';
 import {useState, useEffect } from "react";
 import firebase from "../../../firebase/firebase";
 
@@ -162,7 +163,8 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
         <DrawerHeader className="px-0">
           <ListItem>
             <ListItemIcon><WorkspacesIcon /></ListItemIcon>
-            <ListItemText><Typography> Work Space</Typography></ListItemText>
+            <ListItemText className ="d-flex justify-content-between"><Typography> Work Space </Typography></ListItemText>
+            <Link to="/get-started"><button className="add-project"><span class="tooltiptext">Start Creating a New Project </span><AddIcon/></button></Link>
           </ListItem>
         </DrawerHeader>
         <List>
@@ -182,6 +184,10 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
                     </Typography> :
                     null
                   ))}
+                  <Typography>add a new board ...    
+                  <Link to={`/project/${project.id}`}><button className="add-project"><span class="tooltiptext">Add a New Board To Your Project </span><AddIcon/></button></Link>
+
+                  </Typography>
                   
                 </AccordionDetails>
               </Accordion></ListItemText>

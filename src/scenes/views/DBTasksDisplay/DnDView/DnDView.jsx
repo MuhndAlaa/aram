@@ -7,6 +7,9 @@ import firebase from "../../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
 import BoardCard from "./BoardCard";
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+import CancelIcon from '@mui/icons-material/Cancel';
 import "./DnDView.scss";
 
 function DnDView({ currentView, currentProject, currentBoard }) {
@@ -14,6 +17,9 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [colShow, setColShow] = useState(false);
+  const handleColClose = () => setColShow(false);
+  const handleColShow = () => setColShow(true);
 
   const ref = firebase.firestore();
   const user = useSelector((state) => state.user); //State of user
@@ -156,24 +162,56 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           ))}
         </div>
         {/* The Input and button to add new columns outside loop to always be last columns */}
-        <h2>add Board</h2>
-        <input
-          type="text"
-          id="createColumn"
-          className="form-control w-25"
-          placeholder="Enter Column name"
-        />
-        <button onClick={createColumn} className="btn btn-dark">
-          ADD Board
-        </button>
+        <div>
+          <Button
+            className="add-btns addCol text-white"
+            variant="primary"
+            onClick={handleColShow}
+          >
+            <span class="tooltiptext">Add a new State to handle the work flow </span><DashboardCustomizeIcon />
+          </Button>
+
+          <Modal
+            show={colShow}
+            onHide={handleColClose}
+            backdrop="static"
+            keyboard={false}
+            className="modalCol"
+          >
+            <Modal.Header>
+                <h2>Add a new Progress State</h2>
+                <Button className="close-btn">
+                  <CancelIcon onClick={handleColClose}/>
+                </Button>
+                
+            </Modal.Header>
+          <Modal.Body>
+            {" "}
+              <input
+                type="text"
+                id="createColumn"
+                className="form-control"
+                placeholder="Enter a new Progress State"
+              />
+            
+            {" "}
+          </Modal.Body>
+          <Modal.Footer>
+          <button onClick={createColumn} className="btn btn-dark">
+              <AddTaskIcon /> New State
+              </button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+        
       </DragDropContext>
       <div>
         <Button
-          className="addTask text-white"
+          className="add-btns addTask text-white"
           variant="primary"
           onClick={handleShow}
         >
-          +Task
+          <span class="tooltiptext">Add a new Task to your board </span><AddTaskIcon />
         </Button>
 
         <Modal
@@ -183,15 +221,18 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           keyboard={false}
           className="modalTask"
         >
+          <Modal.Header>
+                <h2>Add a new Task</h2>
+                <Button className="close-btn">
+                  <CancelIcon onClick={handleClose}/>
+                </Button>
+                
+            </Modal.Header>
           <Modal.Body>
             {" "}
             <Task currentProject={currentProject} currentBoard = {currentBoard}></Task>{" "}
           </Modal.Body>
           <Modal.Footer>
-            <Button className="closeBtn" onClick={handleClose}>
-              {" "}
-              Close{" "}
-            </Button>
           </Modal.Footer>
         </Modal>
       </div>
