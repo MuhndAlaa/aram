@@ -1,11 +1,17 @@
+import {useState} from 'react';
 import "../ListDrop/ListDragDrop.scss";
 
 
 const BoardCard =({task})=>{
+
     return (
     <>
-        <h3>{task.title}</h3>
-        <p>{task.status}</p>
+        <h4>{task.title}</h4>
+        <div className="task-content">
+        <p>{task.dueDate}</p>
+        
+        </div>
+        
     </>)
 }
 export default BoardCard;

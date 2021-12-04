@@ -4,7 +4,7 @@
   height: 200px !important;
 }
 .view-container{
-  // overflow-y:hidden;
+  width:fit-content;
 }
 .db-sideBar{
   width:100%;
@@ -115,21 +115,3 @@
   }
 }
 
-.addTask{
-position: fixed;
-bottom: 0;
-right: 0;
-background-color: $main-color;
-padding:5px 20px;
-@include rounded(5px);
-}
-
-.modalTask{
-
-    .closeBtn{
-        background-color: $formfootercolr;
-        padding:5px 20px;
-        @include rounded(5px);
-        color:$white;
-    }
-}
