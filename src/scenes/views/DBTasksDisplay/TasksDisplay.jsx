@@ -6,8 +6,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
 import DnDView from './DnDView/DnDView';
-import {ListDragDrop} from './ListDrop/ListDragDrop';
-import {ColumnsDragDrop} from './ColumnDrop/ColumnsDragDrop';
 import { useEffect ,useState } from "react";
 
 function LinkTab(props) {
@@ -37,7 +35,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
       <Box sx={{ margin: '1rem auto', marginTop: '0', borderBottom: '1px solid black', padding: '1rem' }}>
         <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
-          <LinkTab label="your board" onClick={()=>{setCurrentView("board")}} />
+          <LinkTab label="your board" onClick={()=>{setCurrentView("col")}} />
           <LinkTab label="Your List" onClick={()=>{setCurrentView("list")}} />
           <Stack spacing={2} direction="row">
             <Button variant="contained">userS</Button>
@@ -46,8 +44,8 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "board" ? <ColumnsDragDrop currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
-      {currentView === "list" ? <ListDragDrop currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      {currentView === "col" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      {currentView === "list" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
       
     </div>
   )

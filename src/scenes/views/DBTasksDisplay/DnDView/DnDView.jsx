@@ -7,6 +7,7 @@ import firebase from "../../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
 import BoardCard from "./BoardCard";
+import ListCard from "./ListCard";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -94,6 +95,29 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       });
   }
 
+  function toggleAccordion(e) {
+    if (e.target.classList.contains('list-container__title')) {
+        e.target.classList.toggle("active");
+        let panel = e.target.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }else if(e.target.tagName === "H4" || e.target.tagName === "SPAN"){
+        e.target.parentElement.classList.toggle("active");
+        let panel = e.target.parentElement.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }else{
+        return
+    }
+
+}
+
   useEffect(() => {
     //DnD library need object with columns name as properties and column object as their's value
     //Every column object have a property of tasks with same status .. and it's rendered in lines below
@@ -111,22 +135,18 @@ function DnDView({ currentView, currentProject, currentBoard }) {
     }
   }, [tasks, currentBoard, currentProject]);
   return (
-    <>
+    <div className={`${currentView}s-container`}>
       {/* DragDropContent is wrapper for Droppable => (where columsn render) & Draggable => (where tasks render) and handleDragEnd is the main function of drag and drop */}
-      <DragDropContext
-        onDragEnd={(result) => {
-          handleDragEnd(result, colsState, setColsState);
-        }}
+      <DragDropContext onDragEnd={(result) => { handleDragEnd(result, colsState, setColsState); }}
       >
         {/* Loop through the object of columns*/}
-        <div className={`${currentView}-container`}>
           {Object.entries(colsState).map(([colId, col], colIndex) => (
-            <div className={`${currentView}-column`} key={colIndex}>
-              <h2 className={`col-title ${col.title}-title`}>{col.title}</h2>
-              <Droppable droppableId={colId}>
+            <div className={`${currentView}-container`} key={colIndex}>
+               <div className={`${currentView}-container__title`} onClick={(e) => { toggleAccordion(e) }}><h4>{col.title}</h4> <span>{col.items.length}</span></div>
+                <Droppable droppableId={colId}>
                 {(provided, snapshot) => (
                   // Div below is the div of columns (task container)
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div className={`${currentView}-task`} ref={provided.innerRef} {...provided.droppableProps}>
                     {col.items?.map((task, taskIndex) => (
                       <Draggable
                         draggableId={task.id}
@@ -137,16 +157,16 @@ function DnDView({ currentView, currentProject, currentBoard }) {
                           // Div below is the div of tasks (Can replace it with a task component)
                           (provided, snapshot) => (
                             <div
-                              className={`${currentView}-card ${task.status}-task`}
+                              className={`task`}
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                             >
-                              {currentView === "board" && (
+                              {currentView === "col" && (
                                 <BoardCard task={task} />
                               )}
                               {currentView === "list" && (
-                                <div>add a different component </div>
+                                <ListCard task={task} />
                               )}
                             </div>
                           )
@@ -160,7 +180,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
               </Droppable>
             </div>
           ))}
-        </div>
+        {/* </div> */}
         {/* The Input and button to add new columns outside loop to always be last columns */}
         <div>
           <Button
@@ -236,7 +256,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           </Modal.Footer>
         </Modal>
       </div>
-    </>
+    </div>
   );
 }
 export default DnDView;
