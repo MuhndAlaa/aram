@@ -32,7 +32,7 @@ export default function Features() {
         scrub: 1,
         snap: 1 / (totalPanels - 1),
         // base vertical scrolling on how wide the container is so it feels more natural.
-        end: () => "+=" + panelsContainer.current.offsetWidth,
+        end: () => "+=" + panelsContainer?.current?.offsetWidth,
       },
     });
   }, []);
