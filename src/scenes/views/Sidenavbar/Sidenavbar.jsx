@@ -43,6 +43,7 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
+  overflowY: 'hidden',
 });
 
 const closedMixin = (theme) => ({
@@ -51,6 +52,7 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
+  overflowY: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.spacing(9)} + 1px)`,
@@ -168,7 +170,7 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
             <Link to="/get-started"><button className="add-project"><span class="tooltiptext">Start Creating a New Project </span><AddIcon/></button></Link>
           </ListItem>
         </DrawerHeader>
-        <List>
+        <List className={open ? 'projects-list' : null}>
           {assigneeProjects?.map((project,projectIndex)=>(
           <ListItem key={projectIndex}>
             <ListItemIcon><AiOutlineFundProjectionScreen/></ListItemIcon>

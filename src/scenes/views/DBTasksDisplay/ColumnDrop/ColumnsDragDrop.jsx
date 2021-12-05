@@ -3,9 +3,9 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import firebase from "../../../../firebase/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useSelector } from "react-redux";
-import "./ListDragDrop.scss";
+import "./ColumnsDragDrop.scss";
 
-export function ListDragDrop({ currentProject, currentBoard }) {
+export function ColumnsDragDrop({ currentProject, currentBoard }) {
 
     const ref = firebase.firestore();
     const user = useSelector((state) => state.user); //State of user
@@ -53,29 +53,6 @@ export function ListDragDrop({ currentProject, currentBoard }) {
         ref.collection('projects').doc(currentProject?.id).collection('boards').doc(currentBoard?.id).update({ boardColumns: [...currentBoard?.boardColumns, createColumnValue] })
     }
 
-    function toggleAccordion(e) {
-        if (e.target.classList.contains('list-conatiner__title')) {
-            e.target.classList.toggle("active");
-            let panel = e.target.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }else if(e.target.tagName === "H4" || e.target.tagName === "SPAN"){
-            e.target.parentElement.classList.toggle("active");
-            let panel = e.target.parentElement.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }else{
-            return
-        }
-
-    }
-
     useEffect(() => {
         //DnD library need object with columns name as properties and column object as their's value
         //Every column object have a property of tasks with same status .. and it's rendered in lines below
@@ -90,35 +67,35 @@ export function ListDragDrop({ currentProject, currentBoard }) {
         }
     }, [tasks, currentBoard, currentProject])
     return (
-        <div className="lists-container">
+        <div className="cols-container">
             {/* DragDropContent is wrapper for Droppable => (where columsn render) & Draggable => (where tasks render) and handleDragEnd is the main function of drag and drop */}
             <DragDropContext onDragEnd={(result) => { handleDragEnd(result, colsState, setColsState) }}>
 
                 {/* Loop through the object of columns*/}
                 {Object.entries(colsState).map(([colId, col], colIndex) => (
-                    <div className="list-container" key={colIndex}>
-                        <div className="list-conatiner__title" onClick={(e) => { toggleAccordion(e) }}><h4>{col.title}</h4> <span>{col.items.length}</span></div>
+                    <div className="col-container" key={colIndex}>
+                        <div className="col-conatiner__title"><h4>{col.title}</h4> <span>{col.items.length}</span></div>
                         <Droppable droppableId={colId}>
                             {
                                 (provided, snapshot) => (
                                     // Div below is the div of columns (task container)
-                                    <div className="list-task" ref={provided.innerRef}  {...provided.droppableProps}>
+                                    <div className="col-task" ref={provided.innerRef}  {...provided.droppableProps}>
                                         {col.items?.map((task, taskIndex) => (
                                             <Draggable draggableId={task.id} key={task.id} index={taskIndex}>
                                                 {
                                                     // Div below is the div of tasks (Can replace it with a task component)
                                                     (provided, snapshot) => (
                                                         <div className="task" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                            <div className="task_title">
-                                                                <span>{task.created_by[0].toUpperCase()}</span>
-                                                                <h5>{task.title}</h5>
-                                                            </div>
+                                                            <h5 className="task_title"> {task.title}</h5>
+                                                            <p className="task_description"> {task.description.slice(0, 30)}...</p>
                                                             <div className="task_footer">
                                                                 <div className="task_date">
                                                                     {task.dueDate}
                                                                 </div>
-                                                                <div className="task_badge">
-                                                                    {task.status}
+                                                                <div className="task_assignees">
+                                                                {task.taskAssignees.map(assignee => (
+                                                                    <span data-toggle="tooltip" data-placement="top" title={assignee}>{assignee[0].toUpperCase()}</span>
+                                                                ))}
                                                                 </div>
                                                             </div>
                                                         </div>

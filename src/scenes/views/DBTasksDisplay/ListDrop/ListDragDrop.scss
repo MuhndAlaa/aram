@@ -1,103 +1,106 @@
-// @import '../../../style/variables';
-// @import '../../../style/mixins';
+@import '../../../../style/variables';
+@import '../../../../style/mixins';
 
-// .col-task{
-//     min-height: 100px;
-//     margin: 1rem 1rem;
-//     border: 1px solid #000;
-//     box-shadow: 5px 5px 1px #777;
-// }
 
-// .task{
-//     min-height: 40px;
-//     margin: 1rem 1rem;
-//     border: 1px solid #000;
-//     box-shadow: 5px 5px 1px #777;
-//     background-color: grey;
-// }
 // // add task button
-// .addTask{
-//     position: fixed;
-//     bottom: 0;
-//     right: 0;
-//     background-color: $main-color;
-//     padding:5px 20px;
-//     @include rounded(5px);
-//     }
-    
-//     .modalTask{
-    
-//         .closeBtn{
-//             background-color: $formfootercolr;
-//             padding:5px 20px;
-//             @include rounded(5px);
-//             color:$white;
-//         }
-//     }
-// // Seperate styling
-// .list-container{
-//     display:flex;
-//     flex-direction: column;
-//     max-width:100%;
-//     // width:fit-content;
-//     .list-column{
-//         min-height: 200px;
-//         max-width:100%;
-//         margin: 1rem 1rem;
-//         border: 1px solid #000;
-//         border-radius:25px 0 25px 25px;
-//         box-shadow: 5px 5px 1px #777;
-//         overflow:hidden;
-//         h2 {
-//             padding:.4rem;
-//         }
-        
-//     }
-// }
-// .list-card{
-//     margin: 1rem 1rem;
-//     border: 1px solid #000;
-//     box-shadow: 5px 5px 1px #777;
-//     border-radius:20px;
-//     // background-color: grey;
-// }
-// // 5at el nar 
+.addTask {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: $main-color;
+    padding: 5px 20px;
+    @include rounded(5px);
+}
 
+.modalTask {
+    .closeBtn {
+        background-color: $formfootercolr;
+        padding: 5px 20px;
+        @include rounded(5px);
+        color: $white;
+    }
+}
 
-// .board-container{
-//     display:flex;
-//     // width:fit-content;
-//     .board-column{
-//         min-height: 600px;
-//         width:400px;
-//         margin: 1rem 1rem;
-//         border: 1px solid #000;
-//         border-radius:25px 0 25px 25px;
-//         box-shadow: 5px 5px 1px #777;
-//         overflow:hidden;
-//         h2 {
-//             padding:.4rem;
-//         }
-        
-//     }
-// }
-// .board-card{
-//     min-height: 150px;
-//     margin: 1rem 1rem;
-//     border: 1px solid #000;
-//     box-shadow: 5px 5px 1px #777;
-//     border-radius:20px;
-//     // background-color: grey;
-// }
-// .notopened-task{
-//     background-color: yellow;
-// }
-// .inprogress-task{
-//     background-color: blue;
-// }
-// .inreview-task{
-//     background-color: black;
-// }
-// .completed-task{
-//     background-color: green;
-// }
+.lists-container {
+    width: 90%;
+    margin: 1rem auto;
+    .list-conatiner__title {
+        background-color: $main-color;
+        color: $white;
+        cursor: pointer;
+        transition: 0.4s;
+        margin-top: 20px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px 5px 0 0;
+        &:hover{
+            background-color: #ccc;
+        }
+        h4{
+            font-size: 16px;
+            margin: 0;
+        }
+        span{
+            background-color: $text-color-3;
+            border-radius:50%;
+            height: 20px;
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .list-task {
+        display: none;
+        overflow: hidden;
+        .task{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.25rem 1rem;
+            width: 100%;
+            border: 1px solid #eee;
+            background-color: #eee;
+            border-bottom: 1px solid $black;
+            border-right: 1px solid $black;
+            border-left: 1px solid $black;
+            &:last-child{
+                border-radius: 0 0 5px 5px;
+            }
+            .task_title{
+                display: flex;
+                align-items: center;
+                h5{
+                    font-size: 16px;
+                    margin: 0;
+                }
+                span{
+                    background-color: $main-color;
+                    border-radius:50%;
+                    height: 20px;
+                    width: 20px;
+                    display: flex;
+                    padding: 15px;
+                    color: $white;
+                    justify-content: center;
+                    align-items: center;
+                    border: 0.25px solid $text-color-3;
+                    margin-right: 10px;
+                };
+            }
+            .task_footer{
+                display: flex;
+                align-items: center;
+                .task_badge{
+                    background-color: $text-color-3;
+                    border-radius: 50px;
+                    color: $white;
+                    margin-left: 10px;
+                    padding: 2px 10px;
+                }
+            }
+        }
+    }
+}
