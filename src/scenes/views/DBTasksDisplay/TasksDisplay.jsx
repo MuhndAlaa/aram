@@ -5,7 +5,9 @@ import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
-import DnDView from './DnDView/DnDView'
+import DnDView from './DnDView/DnDView';
+import {ListDragDrop} from './ListDrop/ListDragDrop';
+import {ColumnsDragDrop} from './ColumnDrop/ColumnsDragDrop';
 import { useEffect ,useState } from "react";
 
 function LinkTab(props) {
@@ -44,8 +46,8 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {currentView === "board" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
-      {currentView === "list" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      {currentView === "board" ? <ColumnsDragDrop currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
+      {currentView === "list" ? <ListDragDrop currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
       
     </div>
   )

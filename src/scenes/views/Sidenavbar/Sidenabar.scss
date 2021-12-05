@@ -32,3 +32,7 @@ a.home-nav {
   .add-project:hover .tooltiptext {
     visibility: visible;
   }
+
+  .projects-list{
+      overflow-y: scroll;
+  }
