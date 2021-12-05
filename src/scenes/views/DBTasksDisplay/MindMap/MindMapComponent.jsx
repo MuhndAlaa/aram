@@ -47,7 +47,7 @@ function MindMapComponent({currentProject}) {
     {true ?
       <ReactFlow
         elements={(currentProject)?[...boardsNodes, ...links]:nodes}
-        style={{ width: '100%', height: '72vh', boarder: '2px' }}
+        style={{ width: '100%', height: '84vh', boarder: '2px' }}
         onLoad={onLoad}
         onConnect={onConnect}
         connectionLineStyle={{ stroke: 'red', strokeWidth: 2 }}

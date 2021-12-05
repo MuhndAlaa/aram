@@ -14,7 +14,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import "./DnDView.scss";
 
 function DnDView({ currentView, currentProject, currentBoard }) {
-  // the add task functionallity
+  // the add task and board buttons states
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -142,7 +142,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         {/* Loop through the object of columns*/}
           {Object.entries(colsState).map(([colId, col], colIndex) => (
             <div className={`${currentView}-container`} key={colIndex}>
-               <div className={`${currentView}-container__title`} onClick={(e) => { toggleAccordion(e) }}><h4>{col.title}</h4> <span>{col.items.length}</span></div>
+               <div className={`${currentView}-container__title ${col.title}-title`} onClick={(e) => { toggleAccordion(e) }}><h4>{col.title}</h4> <span>{col.items.length}</span></div>
                 <Droppable droppableId={colId}>
                 {(provided, snapshot) => (
                   // Div below is the div of columns (task container)
@@ -163,10 +163,10 @@ function DnDView({ currentView, currentProject, currentBoard }) {
                               {...provided.dragHandleProps}
                             >
                               {currentView === "col" && (
-                                <BoardCard task={task} />
+                                <BoardCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
                               )}
                               {currentView === "list" && (
-                                <ListCard task={task} />
+                                <ListCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
                               )}
                             </div>
                           )
@@ -188,7 +188,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
             variant="primary"
             onClick={handleColShow}
           >
-            <span class="tooltiptext">Add a new State to handle the work flow </span><DashboardCustomizeIcon />
+            <span class="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
           </Button>
 
           <Modal
@@ -199,7 +199,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
             className="modalCol"
           >
             <Modal.Header>
-                <h2>Add a new Progress State</h2>
+                <h2>Add a new Progress Status</h2>
                 <Button className="close-btn">
                   <CancelIcon onClick={handleColClose}/>
                 </Button>
