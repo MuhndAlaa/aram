@@ -19,6 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AddIcon from '@mui/icons-material/Add';
@@ -172,22 +173,22 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           <ListItem key={projectIndex}>
             <ListItemIcon><AiOutlineFundProjectionScreen/></ListItemIcon>
             <ListItemText>
-              <Accordion style={{ width: "250px" }}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+              <Accordion className="accordion-container">
+                <AccordionSummary  className="accordion-title" expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
                   <Typography onClick={()=>{setCurrentProject(project)}}>{project.project}</Typography>
                 </AccordionSummary>
-                <AccordionDetails style={{ width: "250px" }}>
+                <AccordionDetails className="accordion-content" style={{ width: "250px" }}>
                   {boards?.map((board,boardIndex)=>(
                     project.id === board.project_id ?
-                    <Typography onClick={()=>{setCurrentBoard(board)}} key={boardIndex}>
-                      {board.board}
+                    <Typography className="accordion-content-item" onClick={()=>{setCurrentBoard(board)}} key={boardIndex}>
+                      <SubdirectoryArrowRightIcon style={{height:".9rem"}}/> <span>{board.board}</span>
                     </Typography> :
                     null
                   ))}
-                  <Typography>add a new board ...    
-                  <Link to={`/project/${project.id}`}><button className="add-project"><span class="tooltiptext">Add a New Board To Your Project </span><AddIcon/></button></Link>
-
-                  </Typography>
+                  {(true) &&<Typography className="newBoard">   
+                  <Link to={`/project/${project.id}`}><button className="add-project"><AddIcon/></button></Link>
+                  <span>add a new board ...</span> 
+                  </Typography>}
                   
                 </AccordionDetails>
               </Accordion></ListItemText>
