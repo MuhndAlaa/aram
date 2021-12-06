@@ -24,6 +24,7 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
   const deleteTask =()=>{
     ref.collection('projects').doc(currentProject.id).collection('boards').doc(currentBoard.id)
     .collection('tasks').doc(task.id).delete();
+    alert(`task "${task.title}" has been deleted.`)
   }
   
   return (

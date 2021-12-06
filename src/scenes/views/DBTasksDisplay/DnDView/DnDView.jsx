@@ -110,6 +110,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .update({
         boardColumns: currentBoard?.boardColumns.filter((item)=>{return item !== col})
       });
+      alert(`${col} has been deleted.`)
   }
 
   function toggleAccordion(e) {

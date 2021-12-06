@@ -25,6 +25,7 @@ import { useSelector } from "react-redux";
 import firebase from "../../../firebase/firebase";
 import { GrProjects } from 'react-icons/gr';
 import ClearIcon from '@mui/icons-material/Clear';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 import "./Sidenabar.scss";
 
@@ -188,8 +189,8 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           <Link className="todo-nav" to="/todo">
           <ListItem>
             
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText><Typography> your ToDo</Typography></ListItemText>
+            <ListItemIcon><PlaylistAddCheckIcon classNAme="ms-1"/></ListItemIcon>
+            <ListItemText><Typography> Todo List</Typography></ListItemText>
             
           </ListItem>
           </Link>
