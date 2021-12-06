@@ -25,6 +25,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import AddIcon from '@mui/icons-material/Add';
 import {useState, useEffect } from "react";
 import firebase from "../../../firebase/firebase";
+import { GrProjects } from 'react-icons/gr';
 
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import Accordion from '@mui/material/Accordion';
@@ -115,6 +116,30 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
     setOpen(false);
   };
 
+
+  function toggleAccordion(e) {
+    
+    if (e.target.classList.contains('sidebar-accordion')) {
+      e.target.classList.toggle("active");
+      let panel = e.target.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    } else if (e.target.tagName === "H4") {
+      e.target.parentElement.classList.toggle("active");
+      let panel = e.target.parentElement.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    } else {
+      return
+    }
+  }
+  
   useEffect(() => {
   }, [boards])
 
@@ -173,27 +198,35 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
         <List className={open ? 'projects-list' : null}>
           {assigneeProjects?.map((project,projectIndex)=>(
           <ListItem key={projectIndex}>
-            <ListItemIcon><AiOutlineFundProjectionScreen/></ListItemIcon>
+            {open?
+            <>
+            <ListItemIcon><GrProjects/></ListItemIcon>
             <ListItemText>
-              <Accordion className="accordion-container">
-                <AccordionSummary  className="accordion-title" expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
-                  <Typography onClick={()=>{setCurrentProject(project)}}>{project.project}</Typography>
-                </AccordionSummary>
-                <AccordionDetails className="accordion-content" style={{ width: "250px" }}>
-                  {boards?.map((board,boardIndex)=>(
-                    project.id === board.project_id ?
-                    <Typography className="accordion-content-item" onClick={()=>{setCurrentBoard(board)}} key={boardIndex}>
-                      <SubdirectoryArrowRightIcon style={{height:".9rem"}}/> <span>{board.board}</span>
-                    </Typography> :
-                    null
-                  ))}
-                  {(true) &&<Typography className="newBoard">   
-                  <Link to={`/project/${project.id}`}><button className="add-project"><AddIcon/></button></Link>
-                  <span>add a new board ...</span> 
-                  </Typography>}
-                  
-                </AccordionDetails>
-              </Accordion></ListItemText>
+            <div className="sidebar-projects" onClick={(e) => { toggleAccordion(e) }} data-toggle="tooltip" data-placement="top" title={project.project}>
+                  <div className="sidebar-accordion">
+                    <h4 onClick={() => { setCurrentProject(project) }}>{project.project.slice(0,25)}{project.project.length > 25 ? "...":null}</h4>
+                  </div>
+
+                  <div className="panel">
+                    {boards?.map((board, boardIndex) => (
+                      project.id === board.project_id ?
+                        <p onClick={() => { setCurrentBoard(board) }} key={boardIndex} data-toggle="tooltip" data-placement="right" title={board.board}>
+                          <SubdirectoryArrowRightIcon style={{ height: ".9rem" }} /> <span>{board.board.slice(0,25)}{board.board.length > 25 ? "...":null}</span>
+                        </p> :
+                        null
+                    ))}
+                    {(true) && <p className="newBoard">
+                      <Link to={`/project/${project.id}`}><button className="add-project"><AddIcon /></button></Link>
+                      <span>add a new board ...</span>
+                    </p>}
+
+                  </div>
+                </div>
+                </ListItemText>
+            </>:
+            <>
+            <GrProjects className="my-3 mx-1" data-toggle="tooltip" data-placement="right" title={project.project}/>
+            </> }
           </ListItem>
           ))}
         </List>
