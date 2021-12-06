@@ -186,6 +186,15 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           <ListItemIcon><NotificationsIcon /></ListItemIcon>
           <ListItemText><Typography > Notifications</Typography></ListItemText>
           </ListItem>
+
+          <Link className="todo-nav" to="/todo">
+          <ListItem>
+            
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText><Typography> your ToDo</Typography></ListItemText>
+            
+          </ListItem>
+          </Link>
         </List>
         <Divider />
         <DrawerHeader className="px-0">
