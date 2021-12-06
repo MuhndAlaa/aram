@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import TaskDetailedCard from './TaskDetailedCard';
 import { Modal } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import { Task } from "../../Task/Task";
@@ -11,6 +12,9 @@ import ListCard from "./ListCard";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import CancelIcon from '@mui/icons-material/Cancel';
+import FilterNoneIcon from '@mui/icons-material/FilterNone';
+import Badge from '@mui/material/Badge';
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import "./DnDView.scss";
 
 function DnDView({ currentView, currentProject, currentBoard }) {
@@ -21,6 +25,9 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   const [colShow, setColShow] = useState(false);
   const handleColClose = () => setColShow(false);
   const handleColShow = () => setColShow(true);
+  const [taskShow, setTaskShow] = useState(false);
+  const handleTaskClose = () => setTaskShow(false);
+  const handleTaskShow = () => console.log("clicked");
 
   const ref = firebase.firestore();
   const user = useSelector((state) => state.user); //State of user
@@ -94,6 +101,16 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         boardColumns: [...currentBoard?.boardColumns, createColumnValue],
       });
   }
+  function deleteCol(col){
+    ref
+      .collection("projects")
+      .doc(currentProject?.id)
+      .collection("boards")
+      .doc(currentBoard?.id)
+      .update({
+        boardColumns: currentBoard?.boardColumns.filter((item)=>{return item !== col})
+      });
+  }
 
   function toggleAccordion(e) {
     if (e.target.classList.contains('list-container__title')) {
@@ -142,7 +159,14 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         {/* Loop through the object of columns*/}
           {Object.entries(colsState).map(([colId, col], colIndex) => (
             <div className={`${currentView}-container`} key={colIndex}>
-               <div className={`${currentView}-container__title ${col.title}-title`} onClick={(e) => { toggleAccordion(e) }}><h4>{col.title}</h4> <span>{col.items.length}</span></div>
+               <div className={`${currentView}-container__title ${col.title}-title`} onClick={(e) => { toggleAccordion(e) }}>
+                 <h4>{col.title}</h4>
+                 
+                  <span>
+                  {!col.items.length &&  <DeleteSweepIcon className="mx-2 delete-col" onClick={()=>{deleteCol(col.title)}}/>}
+                   <Badge className="badge-inner" badgeContent={col.items.length}>
+                  <FilterNoneIcon/>
+                  </Badge></span></div>
                 <Droppable droppableId={colId}>
                 {(provided, snapshot) => (
                   // Div below is the div of columns (task container)
@@ -163,7 +187,8 @@ function DnDView({ currentView, currentProject, currentBoard }) {
                               {...provided.dragHandleProps}
                             >
                               {currentView === "col" && (
-                                <BoardCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
+                                <BoardCard task={task} currentProject={currentProject}
+                                 currentBoard={currentBoard} onDoubleClick={handleTaskShow}/>
                               )}
                               {currentView === "list" && (
                                 <ListCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
@@ -180,16 +205,17 @@ function DnDView({ currentView, currentProject, currentBoard }) {
               </Droppable>
             </div>
           ))}
+          </DragDropContext>
         {/* </div> */}
         {/* The Input and button to add new columns outside loop to always be last columns */}
         <div>
-          <Button
+          {currentBoard && <Button
             className="add-btns addCol text-white"
             variant="primary"
             onClick={handleColShow}
           >
             <span class="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
-          </Button>
+          </Button>}
 
           <Modal
             show={colShow}
@@ -224,15 +250,15 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         </Modal>
       </div>
         
-      </DragDropContext>
+      
       <div>
-        <Button
+        {currentBoard && <Button
           className="add-btns addTask text-white"
           variant="primary"
           onClick={handleShow}
         >
           <span class="tooltiptext">Add a new Task to your board </span><AddTaskIcon />
-        </Button>
+        </Button>}
 
         <Modal
           show={show}
@@ -254,6 +280,27 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           </Modal.Body>
           <Modal.Footer>
           </Modal.Footer>
+        </Modal>
+      </div>
+       <div>
+
+          <Modal
+            show={taskShow}
+            onHide={handleTaskClose}
+            backdrop="static"
+            keyboard={false}
+            className="modalCol"
+          >
+            <Modal.Header>
+                <h2>project :</h2>
+                <Button className="close-btn">
+                  <CancelIcon onClick={handleTaskClose}/>
+                </Button>
+                
+            </Modal.Header>
+          <Modal.Body>
+          <TaskDetailedCard />
+          </Modal.Body>
         </Modal>
       </div>
     </div>

@@ -5,7 +5,7 @@
 .add-btns {
     @include input_animation();
     // @extend %getstartedButton;
-
+    
     &:hover,
     &:focus,
     &:active {
@@ -21,7 +21,17 @@
     bottom: 20px;
     right: 20px;
 }
-
+.delete-col{
+    @include input_animation();
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &:active {
+        -webkit-box-shadow: $main-color;
+        box-shadow: $main-color;
+        @include scale_animation();
+    }
+}
 // adding task and col btns
 .add-btns .tooltiptext {
     visibility: hidden;
@@ -80,6 +90,8 @@
     margin-bottom: 5px;
     svg{
         color: white;
+        width: 0.6em;
+        height: 0.6em;
         background-color: black;
         border-radius: 50%;
     }
@@ -111,10 +123,11 @@
             margin: 0;
         }
         span{
-            background-color: $text-color-3;
+            background-color: inherit;
+            color:black;
             border-radius:50%;
             height: 20px;
-            width: 20px;
+            // width: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -199,7 +212,6 @@
         .col-container__title{
             background-color: $text-color-3;
             border-radius: 5px;
-            color: $white;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -209,12 +221,13 @@
                 padding: 0.5rem;
                 font-size: 16px;
                 margin: 0;
+                color: $white;
             }
             span{
-                background-color: $main-color;
+                background-color: inherit;
+                color:black;
                 border-radius:50%;
                 height: 20px;
-                width: 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -222,13 +235,13 @@
             
         }
         .col-container__title.notopened-title{
-            background-color: rgb(64, 64, 65);
+            background-color: #9a9aef;
         }
         .col-container__title.inprogress-title{
-            background-color:rgb(46, 187, 243);
+            background-color:#7cd0f1;
         }
         .col-container__title.inreview-title{
-            background-color:rgb(33, 115, 170);
+            background-color:#ebcb6c;
         }
         .col-container__title.completed-title{
             background-color:rgb(11, 117, 59);
