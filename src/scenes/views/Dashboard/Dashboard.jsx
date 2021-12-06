@@ -44,11 +44,13 @@ const Dashboard = () => {
         boards={boards}
         setCurrentProject={setCurrentProject}
         setCurrentBoard={setCurrentBoard}
+        user={user}
       />
       <div className="db-view">
         <TasksDisplay
           currentProject={currentProject}
           currentBoard={currentBoard}
+          user={user}
         />
 
       </div>
