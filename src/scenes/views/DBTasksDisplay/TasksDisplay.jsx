@@ -37,6 +37,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
           <LinkTab label="mind map" onClick={()=>{setCurrentView("mindmap")}}/>
           <LinkTab label="your board" onClick={()=>{setCurrentView("col")}} />
           <LinkTab label="Your List" onClick={()=>{setCurrentView("list")}} />
+
           <Stack spacing={2} direction="row">
             <Button variant="contained">userS</Button>
 
