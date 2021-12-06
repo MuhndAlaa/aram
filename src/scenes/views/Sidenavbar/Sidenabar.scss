@@ -35,7 +35,6 @@ a.home-nav {
     font-size: .9rem !important;
   }
   .accordion-title{
-    //   border-bottom:1px solid rgb(156, 156, 156) !important;
       padding:.5rem;
       margin: .5rem 0;
   }
@@ -55,6 +54,7 @@ a.home-nav {
 
   .projects-list{
       overflow-y: scroll;
+      overflow-x: hidden;
   }
 
   .sidebar-accordion{
@@ -65,9 +65,19 @@ a.home-nav {
     padding: 5px 15px;
     transition: 0.4s;
     border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
     h4{
-      font-size: 20px;
+      font-size: 16px;
       margin: 0;
+    }
+    svg{
+      width: 0.7em;
+      height: 0.7em;
+      &:hover{
+        background-color: #ccc;
+        color:red;
+      }
     }
   }
   
@@ -76,7 +86,6 @@ a.home-nav {
   }
   
   .panel {
-    padding: 0 18px;
     display: none;
     background-color: white;    
     p{

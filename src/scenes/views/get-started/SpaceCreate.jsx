@@ -31,7 +31,7 @@ function SpaceCreate(props) {
     project: yup
       .string()
       .min(3,"you can choose the name you like but min 3 chars")
-      .max(100,"you can choose the name you like but min 100 chars")
+      .max(30,"you can choose the name you like but max 30 chars")
       .required("this field is required"),
       ManagementMethod: yup
       .string()
@@ -42,7 +42,7 @@ function SpaceCreate(props) {
     board: yup
       .string()
       .min(3,"you can choose the name you like but min 3 chars")
-      .max(100,"you can choose the name you like but min 100 chars")
+      .max(30,"you can choose the name you like but max 30 chars")
       .required("this field is required")
   });
   

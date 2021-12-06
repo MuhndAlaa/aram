@@ -12,7 +12,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -20,18 +19,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import AddIcon from '@mui/icons-material/Add';
 import {useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import firebase from "../../../firebase/firebase";
 import { GrProjects } from 'react-icons/gr';
-
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import "./Sidenabar.scss";
 
@@ -139,6 +132,12 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
       return
     }
   }
+  const ref = firebase.firestore();
+  const user = useSelector((state) => state.user); //State of user
+  const deleteProject =(project)=>{
+    ref.collection('projects').doc(project.id).delete();
+    alert("you have deleted this project Successfully")
+  }
   
   useEffect(() => {
   }, [boards])
@@ -170,7 +169,6 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           </Typography>
           <IconButton onClick={handleDrawerClose}>
             {!open ? null : <ChevronLeftIcon />}
-
           </IconButton>
     </Toolbar>
         <List>
@@ -204,18 +202,20 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
             <ListItemText>
             <div className="sidebar-projects" onClick={(e) => { toggleAccordion(e) }} data-toggle="tooltip" data-placement="top" title={project.project}>
                   <div className="sidebar-accordion">
-                    <h4 onClick={() => { setCurrentProject(project) }}>{project.project.slice(0,25)}{project.project.length > 25 ? "...":null}</h4>
+                    <h4 onClick={() => { setCurrentProject(project) }}>{project.project.slice(0,20)}{project.project.length > 20 ? "...":null}</h4>
+                   
+                    {(project.created_by=== user.email)&& <ClearIcon onClick={() => { deleteProject(project) }}/>}
                   </div>
 
                   <div className="panel">
                     {boards?.map((board, boardIndex) => (
                       project.id === board.project_id ?
                         <p onClick={() => { setCurrentBoard(board) }} key={boardIndex} data-toggle="tooltip" data-placement="right" title={board.board}>
-                          <SubdirectoryArrowRightIcon style={{ height: ".9rem" }} /> <span>{board.board.slice(0,25)}{board.board.length > 25 ? "...":null}</span>
+                          <SubdirectoryArrowRightIcon style={{ height: ".9rem" }} /> <span>{board.board.slice(0,20)}{board.board.length > 20 ? "...":null}</span>
                         </p> :
                         null
                     ))}
-                    {(true) && <p className="newBoard">
+                    {(project.created_by=== user.email) && <p className="newBoard">
                       <Link to={`/project/${project.id}`}><button className="add-project"><AddIcon /></button></Link>
                       <span>add a new board ...</span>
                     </p>}
