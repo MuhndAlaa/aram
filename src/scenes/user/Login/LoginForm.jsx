@@ -9,10 +9,13 @@ import { auth } from "../../../firebase/firebase";
 import { setAuth } from "../../../redux/userReducer";
 import { Link , useHistory} from 'react-router-dom';
 import {Navigation} from '../../landing-page/navbar/Navigation';
+import { useEffect, useState } from "react";
+import ReactPlayer from 'react-player';
+import loader from '../../../video/loader3.mp4';
 
 
 const LoginForm = () => {
-
+  const [loading , setLoading] = useState('loader')
   //Check wether is user is logged in or not from state mangment
   const user = useSelector(state => state.user)
   const dispatch = useDispatch();
@@ -53,10 +56,25 @@ const LoginForm = () => {
       console.log(error.message)
     }
   };
-
+  useEffect(() => {
+    setLoading('loader_display')
+  }, []);
   return (
     <>
+       <div className={loading}>
+          <ReactPlayer
+            playing={true}
+            muted
+            loop
+            className='react-player mard'
+            url={loader}
+            width='80%'
+            height='80%'
+          />
+        </div>
     <Navigation/>
+ 
+ 
     <section className="login">
 
       <div className="row align-items-center">
@@ -113,18 +131,6 @@ const LoginForm = () => {
         <div className="col-5 ms-5 mt-4">
           <img className="w-100" src={login} alt="Second slide" />
         </div>
-        {/* <div className='player-wrapper col-6'>
-      
-                    <ReactPlayer
-                        playing={true}
-                        muted
-                        loop
-                        className='react-player'
-                        url={video}
-                        width='80%'
-                        height='80%'
-                    />
-                </div> */}
       </div>
     </section>
     </>

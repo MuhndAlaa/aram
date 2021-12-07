@@ -28,6 +28,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 import "./Sidenabar.scss";
+import ReactPlayer from 'react-player';
+import loader from '../../../video/loader3.mp4';
 
 const drawerWidth = 350;
 
@@ -101,7 +103,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject, setCurrentBoard }) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-
+  const [loading , setLoading] = useState('loader')
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -204,7 +206,7 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           </ListItem>
         </DrawerHeader>
         <List className={open ? 'projects-list' : null}>
-          {assigneeProjects?.map((project,projectIndex)=>(
+          {assigneeProjects ? assigneeProjects.map((project,projectIndex)=>(
           <ListItem key={projectIndex}>
             {open?
             <>
@@ -238,7 +240,18 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
             <GrProjects className="my-3 mx-1" data-toggle="tooltip" data-placement="right" title={project.project}/>
             </> }
           </ListItem>
-          ))}
+          )) : 
+          <div className={loading}>
+            <ReactPlayer
+              playing={true}
+              muted
+              loop
+              className='react-player mard'
+              url={loader}
+              width='80%'
+              height='80%'
+            />
+          </div>}
         </List>
       </Drawer>
 

@@ -1,6 +1,8 @@
 @import '../../../style/variables';
 @import '../../../style/_mixins';
-
+.loader_display{
+    display: none;
+}
 .login {
     @extend %section-padding;
 
