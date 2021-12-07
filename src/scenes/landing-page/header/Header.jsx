@@ -12,7 +12,7 @@ const Header = () => {
             <header id="header">
                 <div className="container">
                     <header className="header row align-items-center">
-                        <div className="header__content col-6">
+                        <div className="header__content col-lg-6 col-md-12">
                             <h1 className="cu-main-section-header__title">
                                 One app to <br /> replace them all.
                             </h1>
@@ -28,15 +28,13 @@ const Header = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className='player-wrapper col-6'>
+                        <div className='player-wrapper col-lg-6 col-md-12 d-flex align-items-center'>
                             <ReactPlayer
                                 playing={true}
                                 muted
                                 loop
                                 className='react-player'
                                 url={video}
-                                width='80%'
-                                height='100%'
                             />
                         </div>
                     </header>

@@ -25,7 +25,7 @@ const Navigation = () => {
     }
     return (
 
-        <Navbar collapseOnSelect expand="lg" className="navbar">
+        <Navbar collapseOnSelect expand="lg" className="navbar py-1">
             <Container>
                 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

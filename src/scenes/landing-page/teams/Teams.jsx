@@ -14,7 +14,7 @@ const Teams = () => {
             <h3 className="title">Team</h3>
             <h5 className="sub-title">Who We Are</h5>
             <Carousel className="slideTeam" variant="dark">
-                <Carousel.Item className="teamContent" interval={1000}>
+                <Carousel.Item className="teamContent" interval={100000}>
                     <div className="teamImg">
                         <img className="w-100" src={t2} alt="First slide"/>
                     </div>
@@ -26,7 +26,7 @@ const Teams = () => {
                     </div>
                 </Carousel.Item>
 
-                <Carousel.Item className="teamContent" interval={1000}> 
+                <Carousel.Item className="teamContent" interval={100000}> 
                     <div className="teamImg">
                         <img className="w-100" src={t3} alt="Second slide"/>
                     </div>
@@ -38,7 +38,7 @@ const Teams = () => {
                     </div>
                 </Carousel.Item>
 
-                <Carousel.Item className="teamContent" interval={1000}> 
+                <Carousel.Item className="teamContent" interval={100000}> 
                     <div className="teamImg">
                         <img className="w-100" src={t4} alt="Third slide"/>
                     </div>
@@ -50,7 +50,7 @@ const Teams = () => {
                     </div>
                 </Carousel.Item>
 
-                <Carousel.Item className="teamContent" interval={1000}> 
+                <Carousel.Item className="teamContent" interval={100000}> 
                     <div className="teamImg">
                         <img className="w-100" src={t1} alt="Fourth slide"/>
                     </div>

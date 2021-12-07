@@ -28,5 +28,36 @@
             color: $main-color;
         }
     }
+    .footer-form input , textarea{
+        margin: 10px auto;
+    }
 
+}
+
+@media (max-width:992px){
+    .footer{
+        text-align: center;
+        .footer-offer , .footer-template , .footer-form{
+            padding: 2rem 0;
+        } 
+        .footer-form{
+            margin: auto;
+            input , textarea{
+                margin: 10px auto;
+            }
+        }
+    }
+}
+
+@media (max-width:768px){
+    .footer{
+        text-align: center;
+        .footer-offer , .footer-template , .footer-form{
+            border-bottom: 1px solid $white;
+            padding: 2rem 0;
+        } 
+        .footer-form input , textarea{
+            margin: 10px auto;
+        }
+    }
 }

@@ -10,3 +10,9 @@
         @extend %section-subtitle;
     }
 }
+
+@media (max-width:768px){
+    .Devises__title{
+        text-align: center;
+    }
+}

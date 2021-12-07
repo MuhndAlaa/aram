@@ -11,7 +11,7 @@ const Devises = () => {
                     <h3 className="title">Devices</h3>
                     <h5 className="sub-title">What we Support</h5>
                     <div className="row justify-content-between align-items-center" >
-                        <div className="Devises__title col-5">
+                        <div className="Devises__title col-lg-6 col-md-12">
                             <h1 className="cu-main-section-header__title">
                                 Manage your Project from anywhere.
                             </h1>
@@ -20,7 +20,7 @@ const Devises = () => {
                             </p>
 
                         </div>
-                        <div className='player-wrapper col-6 float-end' data-aos="fade-left">
+                        <div className='player-wrapper col-lg-6 col-md-12 float-end' data-aos="fade-left">
                             <ReactPlayer
                                 playing={true}
                                 muted

@@ -14,7 +14,7 @@ export function Footer() {
 	>
 			<div className="container">
 				<div className="row">
-					<div className="col-4">
+					<div className="footer-offer col-lg-4 col-md-6 col-sm-12">
 						<h4>We Offer</h4>
 						<ul>
 							<li>Project Management Software</li>
@@ -24,7 +24,7 @@ export function Footer() {
 							<li>Complete Access Through Roles</li>
 						</ul>
 					</div>
-					<div className="col-4">
+					<div className="footer-template col-lg-4 col-md-6 col-sm-12">
 						<h4>Templates</h4>
 						<ul>
 							<li>Project Plan Template</li>
@@ -34,10 +34,10 @@ export function Footer() {
 							<li>Multi Methodlogy</li>
 						</ul>
 					</div>
-					<div className="col-4">
+					<div className="footer-form col-lg-4 col-md-6 col-sm-12">
 						<h4>Contact US</h4>
-						<input type="text" className="form-control w-75 mb-3" placeholder="Email Address..."/>
-						<textarea placeholder="Your Message..." rows="3" className="w-75 form-control mb-3"></textarea>
+						<input type="text" className="form-control w-75" placeholder="Email Address..."/>
+						<textarea placeholder="Your Message..." rows="3" className="w-75 form-control"></textarea>
 						<button className="btn btn-primary btn-footer-form">Send</button>
 					</div>
 				</div>

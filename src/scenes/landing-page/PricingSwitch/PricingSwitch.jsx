@@ -63,9 +63,11 @@ const PricingSwitch = ({
             ))}
           </div>
         </div>
+        <div className="container">
         <div className="d-flex plansItems row justify-content-around">
           {plans.map((plan, index) => (
-            <Card key={index} className="col-3 plansItems_content pt-4 pb-2">
+            <div  key={index} className="col-lg-3 col-md-6 col-sm-12 ">
+              <Card className="plansItems_content pt-4 pb-2 my-2">
               <Card.Body className="d-flex flex-column justify-content-between align-items-center">
                 <div className="mb-3">
                   <Card.Subtitle className="cardPrice mb-2">{plan.durationPrices[activeDurationIndex]}</Card.Subtitle>
@@ -84,7 +86,9 @@ const PricingSwitch = ({
                 <Button className="plan-btn w-50 mt-2 ">Buy Now</Button>
               </Card.Body>
             </Card>
+            </div>
           ))}
+        </div>
         </div>
       </div>
     </section>

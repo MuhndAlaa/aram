@@ -1,8 +1,9 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
 
-header{
+header {
   min-height: 100vh;
+
   .wrapper {
     max-width: 1160px;
     width: 100%;
@@ -12,11 +13,13 @@ header{
     color: inherit;
     overflow: auto;
     transition: .2s;
-}
+  }
+
   .cu-main-section-header__wrapper-inner:first-child {
     min-width: 440px;
-    
+
   }
+
   .cu-main-section-header__title {
     margin: 0;
     color: #292d34;
@@ -25,66 +28,105 @@ header{
     font-size: 60px;
     font-weight: 600;
   }
-  .cu-main-section-header__subtitle 
-  {
+
+  .cu-main-section-header__subtitle {
     color: $text-color-3;
     margin-top: 15px;
     margin-bottom: 30px;
   }
 
-.cu-main-section-header__rating-text {
-  color: #7c828d;
-  margin-top: 30px;
-  .rating {
-    display: inline-block;
-    .rating-star {
+  .cu-main-section-header__rating-text {
+    color: #7c828d;
+    margin-top: 30px;
+
+    .rating {
       display: inline-block;
-      color: yellow;
+
+      .rating-star {
+        display: inline-block;
+        color: yellow;
+      }
     }
   }
+
+  .btn {
+    border: 1px solid $main-color;
+    border-radius: 25px;
+    padding: 5px 25px;
+    margin-top: 30px;
+    background: $main-color;
+    color: white;
+  }
+
+  .btn a {
+    color: $white;
+  }
+
+  .btn a:hover {
+    color: $text-color-3;
+  }
+
+  input {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    font-size: 16px;
+    margin: 5px 0 0;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    @extend %input;
+    @include input_animation();
+  }
+
+
+  .player-wrapper {
+    position: relative;
+    padding-top: 56.25%
+      /* Player ratio: 100 / (1280 / 720) */
+  }
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80% !important;
+    height: 100% !important;
+    margin: auto;
+  }
+  
 }
 
-.btn {
-  border: 1px solid $main-color;
-  border-radius: 25px;
-  padding:5px 25px;
-  margin-top:30px;
-  background: $main-color;
-  color:white;
-}  
-.btn a{
-  color:$white;
-} 
-.btn a:hover{
-  color:$text-color-3;
-} 
-
-input {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  font-size: 16px;
-  margin: 5px 0 0;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  @extend %input;
-  @include input_animation();
-}
-
-
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
-}
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left:0;
-}
-
-@media (max-width: 1440px)
-{ 
+@media (max-width:992px){
+  .header{
+    padding-top: 5rem;
+    
+  }
 
 }
+
+@media (max-width:768px) {
+  .header{
+    padding-top: 5rem;
+    .header__content{
+      margin-bottom: 5rem;
+      .btn_v2{
+        margin: 25px auto;
+        display: block;
+      }
+      input{
+        width: 100%;
+        margin: 10px auto;
+      }
+    }
+    .cu-main-section-header__title , .cu-main-section-header__subtitle{
+      text-align: center;
+    }
+    .player-wrapper{
+      .player-wrapper{
+        .react-player{
+          width: 100%!important;
+        }
+      }
+    }
+  }
 }

@@ -101,6 +101,11 @@
     margin: 0;
   }
 }
+@media (max-width:768px){
+  .features__container{
+    display: none;
+  }
+}
 
   
   

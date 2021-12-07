@@ -47,7 +47,7 @@ export function Services() {
                 <div className="row">
                     {
                         services.map((service, index) =>(
-                            <div className="col-4" key={index}>
+                            <div className="col-lg-4 col-md-6 col-sm-12" key={index}>
                                 <div className="service">
                                     <div className="service__icon">{service.icon}</div>
                                     <h4 className="service__title">{service.title}</h4>
