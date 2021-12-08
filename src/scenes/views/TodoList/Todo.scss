@@ -57,6 +57,8 @@ width: 80%;
 }
 .Todo__container{
     display: flex;
+    justify-content: space-evenly;
+
 }
 
 
@@ -68,3 +70,7 @@ width: 80%;
   .btn:active{
     color:$text-color-3;
   } 
+
+  .marg_top{
+      margin-top: 5.5rem;
+  }

@@ -5,6 +5,7 @@ import _ from "lodash";
 import {v4} from "uuid";
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navigation } from '../../landing-page/navbar/Navigation';
 
 const item = {
   id: v4(),
@@ -92,7 +93,10 @@ function Todo() {
   }
 
   return (
-    <section>
+    <>
+      <Navigation/>
+    <section className='marg_top'>
+       
       <div className="d-flex justify-content-evenly">
       <button className="forms_btn m-3"  onClick={handleShow}>
         ADD your todo !!
@@ -165,6 +169,8 @@ function Todo() {
       </div>
  
     </section>
+    </>
+  
   );
 }
 
