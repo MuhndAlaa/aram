@@ -5,9 +5,12 @@ import "./features.scss";
 import one from "../../../images/one.jpg";
 import two from "../../../images/two.jpg";
 import three from "../../../images/three.jpg";
+import four from "../../../images/four.jpg";
+import five from "../../../images/five.jpg";
+
 import ReactPlayer from "react-player";
 import video1 from "../../../video/dashbarod1.mp4";
-import video2 from "../../../video/dashbarod2.mp4";
+// import video2 from "../../../video/dashbarod2.mp4";
 
 
 export default function Features() {
@@ -82,24 +85,23 @@ export default function Features() {
         >
           TWO
         </section>
-        <section
-          className="panel three"
-          ref={(e) => createPanelsRefs(e, 3)}
+        <section className="panel" ref={(e) => createPanelsRefs(e, 3)}  style={{
+            background: `url(${five})`,
+
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}>
          
-        >
-          <div className="player-wrapper col-lg-8 col-md-7">
-            <ReactPlayer
-              playing={true}
-              muted
-              loop
-              className="react-player"
-              url={video2}
-              width="100%"
-              height="100%"
-            />
-          </div>
         </section>
         <section className="panel" ref={(e) => createPanelsRefs(e, 4)}  style={{
+            background: `url(${four})`,
+
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}>
+         
+        </section>
+        <section className="panel" ref={(e) => createPanelsRefs(e, 5)}  style={{
             background: `url(${three})`,
 
             backgroundSize: "cover",
