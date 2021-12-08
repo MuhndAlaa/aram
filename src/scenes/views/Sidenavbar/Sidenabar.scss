@@ -15,12 +15,11 @@ a.home-nav, a.todo-nav {
 .add-project .tooltiptext {
     visibility: hidden;
     font-size: 12px;
-    background-color: black;
+    background-color: $black;
     color: $white;
     text-align: center;
     border-radius: 6px 6px 0 6px;
     padding: 10px 5px;
-    /* Position the tooltip */
     position: absolute;
     z-index: 1;
     bottom:50px;
@@ -76,7 +75,7 @@ a.home-nav, a.todo-nav {
       height: 0.7em;
       &:hover{
         background-color: #ccc;
-        color:red;
+        color:$red;
       }
     }
   }
@@ -87,7 +86,7 @@ a.home-nav, a.todo-nav {
   
   .panel {
     display: none;
-    background-color: white;    
+    background-color: $white;    
     p{
       margin: 10px 0;
       padding: 0;

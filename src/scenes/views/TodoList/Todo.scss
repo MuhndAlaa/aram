@@ -1,34 +1,32 @@
-
-@import '../../../style/variables';
-@import '../../../style/_mixins';
+@import "../../../style/variables";
+@import "../../../style/_mixins";
 .column-title {
     width: 30%;
 }
-.column-title h3{
-    background-color: #745fab;
+.column-title h3 {
+    background-color: $main-color;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 0 0.5rem;
-    margin: .5rem 1rem;
+    margin: 0.5rem 1rem;
     padding: 0.5rem;
     font-size: 16px;
-    color: white;
+    color: $white;
 }
 
-.toDoModal input{
-display: block;
-margin: 1rem auto;
-width: 80%;
+.toDoModal input {
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
 }
-.details{
-
+.details {
     height: 80px;
 }
 .droppable-col {
-    background-color: white;
+    background-color: $white;
     min-height: 20px;
     margin: 1rem 1rem;
     border: 1px solid #d1d1d1;
@@ -36,41 +34,36 @@ width: 80%;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    
-    // box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 10%);
 }
 
 .item {
     margin-bottom: 10px;
     background-color: #fe899138;
 
-    color: #745fab;
-    border: 1px solid white;
+    color: $main-color;
+    border: 1px solid $white;
     padding: 5px;
     border-radius: 7px;
 }
 
 .item.dragging {
     background-color: $formsbtncolr;
-    color: white;
-    /* transform: rotate(-20deg); */
+    color: $white;
 }
-.Todo__container{
+.Todo__container {
     display: flex;
     justify-content: space-evenly;
-
 }
-
 
 .btn {
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
-  } 
-  .btn:active{
-    color:$text-color-3;
-  } 
+}
+.btn:active {
+    color: $text-color-3;
+}
 
-  .marg_top{
-      margin-top: 5.5rem;
-  }
+.marg_top {
+    margin-top: 5.5rem;
+}

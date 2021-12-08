@@ -9,7 +9,7 @@
 .board-node {
     @include node-size;
     color:burlywood;
-    background-color: black;
+    background-color: $black;
 }
 
 /*Tasks Colors is to be variables based on the task progress */
@@ -39,15 +39,15 @@
 }
 .inProgress-link path {
     stroke-width: 2px;
-    stroke: red;
+    stroke: $red;
   }
 .completed-link path {
     stroke-width: 2px;
-    stroke: green;
+    stroke: $green;
 }
 .notOpened-link path, .undefined-link path{
     stroke-width: 2px;
-    stroke: black;
+    stroke: $black;
 }
 
   

@@ -14,23 +14,7 @@ li{
         text-align: start;
     }
 }
-// .settingIcon{
-//     @include rounded(5px);
-//     padding: 1px 5px;
-//     justify-content: space-evenly;
-//     // border: 1px solid $text-color-1;
-//     display: flex;
-//     justify-content: space-between;
-//     cursor: pointer;
-//     .settingName{
-//         color: $text-color-1;
-//         font-size: 18px;
-//     }
-//     .setting-icon-item{
-//         color:$text-color-1;
-//         font-size: 35px;
-//     }
-// }
+
 .file-attachment{
     border: 3px dotted lightgray;
     padding: 10px;

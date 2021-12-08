@@ -1,5 +1,5 @@
-@import '../../../style/variables';
-@import '../../../style/_mixins';
+@import "../../../style/variables";
+@import "../../../style/_mixins";
 
 .forms_btn {
     @include input_animation();
@@ -29,13 +29,10 @@
         margin: 40px 8px 10px 8px;
         color: $headercolor;
         border-bottom: 2px solid #45e3ff;
-
     }
 }
 
-
 .wrapper {
-
     width: 100%;
     min-height: 80%;
     padding: 20px;
@@ -66,10 +63,9 @@ h2 {
     margin-top: 2rem;
     color: #0d0d0d;
     font-weight: bolder;
-    border: none !important
-        /* border-bottom: 2px solid #5fbae9; */
+    border: none !important;
+    /* border-bottom: 2px solid #5fbae9; */
 }
-
 
 .getstarted_btn {
     @include input_animation();
@@ -94,7 +90,6 @@ input {
     border: 2px solid #f6f6f6;
     @extend %input;
     @include input_animation();
-
 }
 
 // input:focus {
@@ -201,13 +196,11 @@ input:placeholder {
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
 }
-
 .fadeIn.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
 }
-
 .fadeIn.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
@@ -219,7 +212,6 @@ input:placeholder {
     -moz-animation-delay: 1s;
     animation-delay: 1s;
 }
-
 .underlineHover:after {
     display: block;
     left: 0;
@@ -240,32 +232,25 @@ input:placeholder {
 }
 
 .alert-danger {
-
     padding: 7px;
     border-radius: 6px;
     width: 85%;
     margin: 10px auto;
 }
 
-/* button:hover {
-    background-color: #39ace7;
-} */
-
 .getStarted {
     align-items: center;
 }
-
 // ---------------------------------------
 // add asss
 .add {
     // color: #110330;
     border-radius: 20px;
     background-color: #feb3b2;
-    color: white;
+    color: $white;
     align-items: center;
-
 }
-.btns-wrapper{
+.btns-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,7 +258,6 @@ input:placeholder {
 
 .navigation-btns {
     @include input_animation();
-    // @extend %getstartedButton;
 
     &:hover,
     &:focus,
@@ -282,52 +266,46 @@ input:placeholder {
         box-shadow: $main-color;
         @include scale_animation();
     }
-    // color: white;
     color: #110330;
-    padding: .8rem;
+    padding: 0.8rem;
     border-radius: 20px;
     background-color: #feb3b2;
     position: relative;
 }
 
-
 .navigation-btns .tooltiptext {
     visibility: hidden;
-    font-size: 12px;;
+    font-size: 12px;
     width: 200px;
-    background-color: black;
+    background-color: $black;
     color: $white;
     text-align: center;
     border-radius: 6px 6px 6px 0;
     padding: 5px 0;
-  
+
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
-    bottom:60px
-  }
-  
-  .navigation-btns:hover .tooltiptext {
+    bottom: 60px;
+}
+
+.navigation-btns:hover .tooltiptext {
     visibility: visible;
-  }
+}
 .dropdown {
     position: relative;
-    color: white;
+    color: $white;
     /* padding: 2rem; */
     text-align: center;
     border-radius: 27px;
-    background-color: black;
+    background-color: $black;
     height: 3rem;
 
     .options {
         border-radius: 27px !important;
         text-align: center;
         height: 3rem;
-
-        // font-size: 3rem;
-
     }
-
 }
 
 .add_delete {
@@ -341,18 +319,16 @@ input:placeholder {
 
 .assignee_email {
     height: 3rem;
-
 }
 
 .save {
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
 .modal-dialog {
     max-width: 700px !important;
 }
 
-    .assignee_body{
-        justify-content: space-evenly;
-
-    }
+.assignee_body {
+    justify-content: space-evenly;
+}
