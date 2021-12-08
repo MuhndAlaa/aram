@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
 import DnDView from './DnDView/DnDView';
 import { useEffect ,useState } from "react";
+import ReactPlayer from 'react-player';
+import loader from '../../../video/loader3.mp4';
 
 function LinkTab(props) {
   return (
@@ -45,6 +47,30 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
+      {(!currentProject) && <div className={'ms-2 loader'} style={{height:'fit-content', width:'fit-content'}}>
+      <p className="tutorial-text alert alert-info">Select one of your Projects and specify your Board, and let's get some work done</p>
+            <ReactPlayer
+              playing={true}
+              muted
+              loop
+              className='react-player mard'
+              url={loader}
+              width='80%'
+              height='60vh'
+            /></div>}
+            {(currentProject && !currentBoard) && <div className={'ms-2 loader'} style={{height:'fit-content', width:'fit-content'}}><p className="tutorial-text alert alert-primary">{currentProject?.project}</p>
+            <p className="tutorial-text alert alert-info">Specify your Board to render the Tasks</p>
+            <ReactPlayer
+              playing={true}
+              muted
+              loop
+              className='react-player mard'
+              url={loader}
+              width='80%'
+              height='55vh'
+            />
+            </div>}
+          
       {currentView === "col" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
       {currentView === "list" ? <DnDView currentView={currentView} currentProject={currentProject} currentBoard={currentBoard}  />: null}
       

@@ -27,6 +27,12 @@
         font-size: 50px;
         @extend %fontMontserrat;
         color: $black;
+        .logo-r{
+            @extend %fontMontserrat;
+            transform: rotatey(180deg);
+            display: inline-block;
+            margin: 0;
+        }
     }
 
     .btns {

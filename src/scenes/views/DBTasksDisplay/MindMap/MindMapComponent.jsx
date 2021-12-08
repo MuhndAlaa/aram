@@ -43,7 +43,7 @@ function MindMapComponent({currentProject}) {
   const onConnect = (params) => { setNodes(els => addEdge(params, els)) }
   const onLoad = (reactFlowInstance) => { reactFlowInstance.fitView() }
   return <>
-  {!currentProject && <p className="tutorial-text alert alert-danger">welcome to our demo mind map, Choose one of your projects from the side bar to start tracking the team work progress</p>}
+  {!currentProject && <p className="tutorial-text alert alert-info">welcome to our demo mind map, Choose one of your projects from the side bar to start tracking the team work progress</p>}
     {true ?
       <ReactFlow
         elements={(currentProject)?[...boardsNodes, ...links]:nodes}
