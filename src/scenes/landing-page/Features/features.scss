@@ -1,4 +1,5 @@
-
+@import '../../../style/variables';
+@import '../../../style/_mixins';
   
   .features__container {
     .scroll-down {
@@ -6,7 +7,7 @@
       bottom: 30px;
       left: 50%;
       transform: translate(-50%, 0);
-      color: black;
+      color: $black;
       font-weight: 400;
       text-transform: uppercase;
       font-size: 16px;
@@ -36,7 +37,7 @@
   }
   h1 {
     font-size: 1.8em;
-    color: white;
+    color: $white;
     font-weight: 300;
     margin: 0 auto;
   }
@@ -49,7 +50,7 @@
     font-weight: 600;
     font-size: 1.5em;
     text-align: center;
-    color: white;
+    color: $white;
     position: relative;
     box-sizing: border-box;
     padding: 10px;
@@ -79,7 +80,7 @@
   }
   .panel p,
   .panel li {
-    color: black;
+    color: $black;
     font-weight: 400;
     text-align: left;
     font-size: 0.8em;
@@ -88,7 +89,7 @@
   }
   .panel p strong,
   .panel li strong {
-    color: white;
+    color: $white;
     font-weight: 400;
   }
   .panel p code,

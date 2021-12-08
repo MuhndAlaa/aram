@@ -6,12 +6,12 @@ $vendors: "-moz-",
 "";
 
 
-$main-color: #745fab;
-$main-color-opacity: #745fab20;
-$text-color-1: #0E2431;
+$main-color: #654b9b;
+$main-color-opacity: #654b9b20;
+$text-color-1: #221934;
 $text-color-2: #666;
 $text-color-3:#fe8991;
-$bg-color-1: #fff;
+
 $bg-color-2: #eee;
 $bg-color-3: #ccc;
 $bg-color-4: gray;
@@ -20,13 +20,13 @@ $box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
 // colors definitaions
 $navBackground:#fff;
 $formsbtncolr:#fe8991;
-$formfootercolr:#8164ff;
-$headercolor:#110330;
+$formfootercolr:#654b9b;
+$headercolor:#221934;
 
 $subMenuBg:#1d1b31;
 $sideBarBg:#11101d;
 
-$counterBackground:linear-gradient(to right top, #6034c8, #7b4ad3, #9460de, #ab77e9, #c18ef4);
+$counterBackground:linear-gradient(to right top, #6034c8, #654b9b, #9460de, #ab77e9, #c18ef4);
 $footerbackground:radial-gradient(circle at 47% 14%,
     rgba(205, 205, 205, 0.04) 0%,
     rgba(205, 205, 205, 0.04) 43%,
@@ -75,7 +75,7 @@ $black:#000;
 
 //sizes 
 $FormsBorder :10px 10px 10px 10px;
-$FormsBtnshadow :0 4px 30px 0 #fe8991;
+$FormsBtnshadow :0 4px 30px 0 $text-color-3;
 $FormsBorder :10px 10px 10px 10px;
 // $getstartedButtonBackground: #7540f2;
 $getstartedBorder:0px 40px;
@@ -86,15 +86,7 @@ $openSansFont: 'Open Sans',
 sans-serif;
 
 // images paths
-$brandLogoEn: '../img/brandLogo_en.svg';
-$brandLogoAr: '../img/brandLogo_ar.svg';
-$favicon: '../img/favicon.svg';
-$heroBg: '../img/heroBg__.png';
-$phoneMockup: '../img/phone_mockup.png';
-$frontArrow: '../img/icon_availableOnArrowFront.svg';
-$opacityArrow: '../img/icon_availableOnArrowBack.svg';
-$featuresDVD: '../img/icon_featuresDVD.svg';
-$availableOnArrowFront: '../img/icon_availableOnArrowFront.svg';
-$availableOnArrowBack: '../img/icon_availableOnArrowBack.svg';
-$servicesIcons: 'governmentalPapers''printinAndCopy''storesAndMore''writtingAndTranslations';
+$features_one: "../../../images/one.jpg";
+$features_two: "../../../images/two.jpg";
+
 

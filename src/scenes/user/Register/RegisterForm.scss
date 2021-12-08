@@ -1,25 +1,21 @@
-@import '../../../style/variables';
-@import '../../../style/_mixins';
+@import "../../../style/variables";
+@import "../../../style/_mixins";
 
 .register {
     @extend %section-padding;
 
-    a{
+    a {
         color: $white;
         display: inline-block;
         text-decoration: none !important;
         font-weight: 400;
-        &:hover{
+        &:hover {
             color: $text-color-3;
             text-decoration: none;
         }
     }
 
-    
-
-
     .wrapper {
-
         width: 100%;
         min-height: 80%;
         padding: 20px;
@@ -46,27 +42,22 @@
     }
 
     #formFooter {
-
         padding: 25px;
         text-align: center;
         -webkit-border-radius: 0 0 10px 10px;
         border-radius: 0 0 10px 10px;
         background-color: $main-color;
-        a{
+        a {
             color: $white;
             display: inline-block;
             text-decoration: none !important;
             font-weight: 400;
-            &:hover{
+            &:hover {
                 color: $text-color-3;
                 text-decoration: none;
             }
         }
     }
-
-    
-
-
     .forms_btn {
         @include input_animation();
         @extend %formsButton;
@@ -91,12 +82,11 @@
         border: 2px solid #f6f6f6;
         @extend %input;
         @include input_animation();
-
     }
 
     input:focus {
-        background-color: #fff;
-        border-bottom: 2px solid #fe8991;
+        background-color: $white;
+        border-bottom: 2px solid $text-color-3;
     }
 
     input:placeholder {
@@ -237,11 +227,8 @@
     }
 
     .alert-danger {
-
         padding: 7px;
         margin: 1rem;
         border-radius: 9px;
     }
 }
-
-

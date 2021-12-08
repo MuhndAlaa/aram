@@ -16,7 +16,7 @@
     color: #110330;
     padding: .8rem;
     @include rounded(50%);
-    background-color: black;
+    background-color: $black;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -37,8 +37,8 @@
     visibility: hidden;
     font-size: 12px;;
     width: 200px;
-    background-color: black;
-    color: #fff;
+    background-color: $black;
+    color: $white;
     text-align: center;
     border-radius: 6px 6px 0 6px;
     padding: 5px 0;
@@ -57,18 +57,18 @@
     right: 90px;
 }
 .close-btn{
-    background-color: white;
+    background-color: $white;
     font-size: xx-large;
     border:0px;
-    color:black;
+    color:$black;
 }
 // periority Labels
 .label .tooltiptext {
     visibility: hidden;
     font-size: 12px;;
     width: 100px;
-    background-color: black;
-    color: #fff;
+    background-color: $black;
+    color: $white;
     text-align: center;
     border-radius: 6px 6px 0 6px;
     padding: 5px 0;
@@ -89,10 +89,10 @@
     border: 0;
     margin-bottom: 5px;
     svg{
-        color: white;
+        color: $white;
         width: 0.6em;
         height: 0.6em;
-        background-color: black;
+        background-color: $black;
         border-radius: 50%;
     }
 }
@@ -192,7 +192,7 @@
                     background-color: green;
                 }
                 .No-Due-Date-label{
-                    background-color:black;
+                    background-color:$black;
                 }
             }
         }
@@ -292,7 +292,7 @@
                     background-color: cyan;
                 }
                 .No-Due-Date-label{
-                    background-color:black;
+                    background-color:$black;
                 }
                 .Completed-label{
                     background-color: green;

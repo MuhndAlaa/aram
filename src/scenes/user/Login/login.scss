@@ -106,8 +106,8 @@
     }
 
     input:focus {
-        background-color: #fff;
-        border-bottom: 2px solid #fe8991;
+        background-color: $white;
+        border-bottom: 2px solid $formsbtncolr;
     }
 
     input:placeholder {
