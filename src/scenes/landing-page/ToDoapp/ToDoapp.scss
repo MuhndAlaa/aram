@@ -18,20 +18,18 @@
     }
 }
 
-
-
 .todo_bar{
-    height: 50px !important;
+    // height: 50px !important;
     margin: 0 auto !important;
 
     
     header {
-        color: #861c99;
-        background-color: #ffffff;
+        color: $main-color;
+        background-color: $white;
         padding: .8rem .2rem;
         min-height: 20%;
         margin: 0 auto;
-      
+      box-shadow: none;
 
     }
     .tab_title{

@@ -15,8 +15,9 @@ import Homepage from './scenes/landing-page/homepage/Homepage';
 import BoardTab from './scenes/views/get-started/BoardTab';
 import GetStarted from './scenes/views/get-started/GetStarted';
 import Features from './scenes/landing-page/Features/Features';
-import ToDo from './scenes/landing-page/ToDo/ToDo';
+import ToDoapp from './scenes/landing-page/ToDoapp/ToDoapp';
 import Todo from './scenes/views/TodoList/Todo';
+import FeaturesMobile from './scenes/landing-page/FeaturesMobile/FeaturesMobile';
 function App() {
 
   //Check user is logged or not to pass as props in protected routes
@@ -40,13 +41,16 @@ function App() {
      </DndProvider> */}
       <Switch>
           <Route component={Homepage} path="/" exact></Route>
-          <Route component={ToDo} path="/ToDoo"></Route>
+          <Route component={ToDoapp} path="/ToDoapp"></Route>
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
           <Route component={Dashboard} path="/dashboard"></Route>
           <Route component={Todo} path="/todo"></Route>
           <Route component={TaskView} path="/taskview"></Route>
           <Route component={Features} path="/feature"></Route>
+          <Route component={Features} path="/feature"></Route>
+          <Route component={FeaturesMobile} path="/featuremobile"></Route>
+
           <Route component={Task} path="/task"></Route>
           <Route component= {GetStarted} path ="/get-started"></Route>
           <Route component={BoardTab} path ="/project/:id"></Route>

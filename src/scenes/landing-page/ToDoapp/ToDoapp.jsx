@@ -11,7 +11,7 @@ import ReactPlayer from 'react-player';
 import todo from '../../../video/list.mp4';
 import todoapp from '../../../video/todo.mp4';
 
-import './Todo.scss';
+import './ToDoapp.scss';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -71,8 +71,8 @@ export default function ToDo() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab className="tab_title"  label="Item One" {...a11yProps(0)} />
-          <Tab className="tab_title" label="Item Two" {...a11yProps(1)} />
+          <Tab className="tab_title"  label="about" {...a11yProps(0)} />
+          <Tab className="tab_title" label="Demo" {...a11yProps(1)} />
           <Tab className="tab_title" label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -81,7 +81,7 @@ export default function ToDo() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel className="tab_body" value={value} index={0} dir={theme.direction}>
+        {/* <TabPanel className="tab_body" value={value} index={0} dir={theme.direction}> */}
 
 
         <section className="ToDo-lists" id="ToDo-lists">
@@ -113,8 +113,8 @@ export default function ToDo() {
 
 
  
-        </TabPanel>
-        <TabPanel className="tab_body" value={value} index={1} dir={theme.direction}>
+        {/* </TabPanel> */}
+        {/* <TabPanel className="tab_body" value={value} index={1} dir={theme.direction}> */}
         <div className='player-wrapper col-lg-12 col-md-12 float-end' data-aos="fade-left">
                             <ReactPlayer
                                 playing={true}
@@ -126,7 +126,7 @@ export default function ToDo() {
                                 height='100%'
                             />
                         </div>
-        </TabPanel>
+        {/* </TabPanel> */}
         <TabPanel className="tab_body" value={value} index={2} dir={theme.direction}>
           Item Three
         </TabPanel>

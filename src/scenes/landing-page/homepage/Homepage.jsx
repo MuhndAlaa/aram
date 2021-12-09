@@ -10,6 +10,8 @@ import Features from '../Features/Features';
 import {Services} from '../services/Services';
 import { FaArrowUp } from 'react-icons/fa';
 import "./Homepage.scss";
+import ToDToDoappo from '../ToDoapp/ToDoapp';
+import FeaturesMobile from '../FeaturesMobile/FeaturesMobile';
 
 export default function Homepage() {
     return (
@@ -18,8 +20,12 @@ export default function Homepage() {
             <Header/>
             <CountUpComp/>
             <Services/>
+            
             <Devises/>
+            <ToDToDoappo/>
+
             <Features/>
+            <FeaturesMobile/>
             <DateNow/>
             <Teams/>
             <PricingSwitch/>
