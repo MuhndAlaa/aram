@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import TaskDetailedCard from './TaskDetailedCard';
 import { Modal } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import { Task } from "../../Task/Task";
@@ -25,9 +24,6 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   const [colShow, setColShow] = useState(false);
   const handleColClose = () => setColShow(false);
   const handleColShow = () => setColShow(true);
-  const [taskShow, setTaskShow] = useState(false);
-  const handleTaskClose = () => setTaskShow(false);
-  const handleTaskShow = () => console.log("clicked");
 
   const ref = firebase.firestore();
   const user = useSelector((state) => state.user); //State of user
@@ -100,6 +96,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .update({
         boardColumns: [...currentBoard?.boardColumns, createColumnValue],
       });
+      handleColClose()
   }
   function deleteCol(col){
     ref
@@ -190,7 +187,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
                             >
                               {currentView === "col" && (
                                 <BoardCard task={task} currentProject={currentProject}
-                                 currentBoard={currentBoard} onDoubleClick={handleTaskShow}/>
+                                 currentBoard={currentBoard}/>
                               )}
                               {currentView === "list" && (
                                 <ListCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
@@ -277,32 +274,10 @@ function DnDView({ currentView, currentProject, currentBoard }) {
                 
             </Modal.Header>
           <Modal.Body>
-            {" "}
-            <Task currentProject={currentProject} currentBoard = {currentBoard}></Task>{" "}
+            <Task currentProject={currentProject} currentBoard = {currentBoard} handleClose={handleClose}/>
           </Modal.Body>
           <Modal.Footer>
           </Modal.Footer>
-        </Modal>
-      </div>
-       <div>
-
-          <Modal
-            show={taskShow}
-            onHide={handleTaskClose}
-            backdrop="static"
-            keyboard={false}
-            className="modalCol"
-          >
-            <Modal.Header>
-                <h2>project :</h2>
-                <Button className="close-btn">
-                  <CancelIcon onClick={handleTaskClose}/>
-                </Button>
-                
-            </Modal.Header>
-          <Modal.Body>
-          <TaskDetailedCard />
-          </Modal.Body>
         </Modal>
       </div>
     </div>

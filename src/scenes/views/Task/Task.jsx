@@ -8,7 +8,7 @@ import { Form, Formik } from "formik";
 import FieldArrayInput from "./FieldArray";
 import firebase from "../../../firebase/firebase";
 
-const Task = ({currentBoard, currentProject}) => {
+const Task = ({currentBoard, currentProject, handleClose}) => {
   const ref = firebase.firestore();
 
   const initialValues = {
@@ -26,6 +26,7 @@ const Task = ({currentBoard, currentProject}) => {
     console.log("project ==> ",currentProject.id ,"board ==>", currentBoard.id)
     ref.collection("projects").doc(currentProject.id).collection('boards').doc(currentBoard.id).collection('tasks').add({...values,board_id:currentBoard.id})
     .then(()=>{values = initialValues})
+    handleClose()
   }
   const onSubmit = (values) => {addTask(values)};
   const [cardForm, setCardForm] = useState(false);

@@ -1,9 +1,16 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import firebase from "../../../../firebase/firebase";
+import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import {useState} from 'react';
+import Button from "@restart/ui/esm/Button";
+import TaskDetailedCard from './TaskDetailedCard';
 
 const BoardCard = ({currentProject, currentBoard, task }) => {
+  const [show, setShowTask] = useState(false);
+  const handleCloseTask = () => setShowTask(false);
+  const handleShowTask = () => setShowTask(true);
   const ref = firebase.firestore();
   const user = useSelector((state) => state.user); //State of user
   const priority =()=>{
@@ -32,8 +39,25 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
     <>
       <div className="task-header">
         <h5 className="task_title"> {task.title}</h5>
-        <div><button className="task-info"><ReadMoreIcon /></button>
+        <div>
+        <button className="task-info" onClick={handleShowTask}><ReadMoreIcon /></button>
+        <Modal
+          show={show}
+          onHide={handleCloseTask}
+          backdrop="static"
+          keyboard={false}
+          className="modalTask"
+        ><Modal.Header>
+        <h2>{currentProject.project}</h2>
+        <Button className="close-btn">
+          <CancelIcon onClick={handleCloseTask}/>
+        </Button>
         
+    </Modal.Header>
+          <Modal.Body>
+            <TaskDetailedCard currentProject={currentProject} currentBoard={currentBoard} task={task}/>
+          </Modal.Body>
+        </Modal>
         <button className="delete-task"><CancelIcon onClick={deleteTask}/> </button></div>
         
       </div>
