@@ -15,6 +15,7 @@ import Homepage from './scenes/landing-page/homepage/Homepage';
 import BoardTab from './scenes/views/get-started/BoardTab';
 import GetStarted from './scenes/views/get-started/GetStarted';
 import Features from './scenes/landing-page/Features/Features';
+import ToDo from './scenes/landing-page/ToDo/ToDo';
 import Todo from './scenes/views/TodoList/Todo';
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
      </DndProvider> */}
       <Switch>
           <Route component={Homepage} path="/" exact></Route>
+          <Route component={ToDo} path="/ToDoo"></Route>
           <Route component={LoginForm} path="/login"></Route>
           <Route component={RegisterForm} path="/register"></Route>
           <Route component={Dashboard} path="/dashboard"></Route>

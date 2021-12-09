@@ -1,104 +1,119 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
-.Drawer_container{
-    color: $white !important;
-    background-color: $main-color !important;
+
+.Drawer_container {
+  color: $white !important;
+  background-color: $main-color !important;
 }
-a.home-nav, a.todo-nav {
-    color: inherit !important;
+
+a.home-nav,
+a.todo-nav {
+  color: inherit !important;
 }
-.add-project{
-    border:0;
-    background-color:$white;
+
+.add-project {
+  border: 0;
+  background-color: $white;
 }
 
 .add-project .tooltiptext {
-    visibility: hidden;
-    font-size: 12px;
-    background-color: $black;
-    color: $white;
-    text-align: center;
-    border-radius: 6px 6px 0 6px;
-    padding: 10px 5px;
-    position: absolute;
-    z-index: 1;
-    bottom:50px;
-    right:40px;
-  }
-  
-  .add-project:hover .tooltiptext {
-    visibility: visible;
-  }
-  .accordion-container{
-    width: 250px;
-    font-size: .9rem !important;
-  }
-  .accordion-title{
-      padding:.5rem;
-      margin: .5rem 0;
-  }
-  .accordion-content{
-    padding: .5rem !important;
-  }
-  .accordion-content-item{
-    padding-bottom: 0.5rem;
-    display: flex!important;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  .newBoard{
-      opacity:0.6;
-      padding:.5rem;
+  visibility: hidden;
+  font-size: 12px;
+  background-color: $black;
+  color: $white;
+  text-align: center;
+  border-radius: 6px 6px 0 6px;
+  padding: 10px 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 50px;
+  right: 40px;
+}
+
+.add-project:hover .tooltiptext {
+  visibility: visible;
+}
+
+.accordion-container {
+  width: 250px;
+  font-size: .9rem !important;
+}
+
+.accordion-title {
+  padding: .5rem;
+  margin: .5rem 0;
+}
+
+.accordion-content {
+  padding: .5rem !important;
+}
+
+.accordion-content-item {
+  padding-bottom: 0.5rem;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.newBoard {
+  opacity: 0.6;
+  padding: .5rem;
+}
+
+.projects-list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.sidebar-accordion {
+
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 5px 15px;
+  transition: 0.4s;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    font-size: 16px;
+    margin: 0;
   }
 
-  .projects-list{
-      overflow-y: scroll;
-      overflow-x: hidden;
-  }
+  svg {
+    width: 0.7em;
+    height: 0.7em;
 
-  .sidebar-accordion{
-
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 5px 15px;
-    transition: 0.4s;
-    border-radius: 50px;
-    display: flex;
-    justify-content: space-between;
-    h4{
-      font-size: 16px;
-      margin: 0;
+    &:hover {
+      background-color: $bg-color-3;
+      color: $red;
     }
-    svg{
-      width: 0.7em;
-      height: 0.7em;
-      &:hover{
-        background-color: #ccc;
-        color:$red;
+  }
+}
+
+.sidebar-projects .active,
+.sidebar-accordion:hover {
+  background-color: $bg-color-3;
+}
+
+.panel {
+  display: none;
+  background-color: $white;
+
+  p {
+    margin: 10px 0;
+    padding: 0;
+
+    span {
+      background-color: #fefefe;
+      border-radius: 50px;
+      padding: 1px 10px;
+
+      &:hover {
+        background-color: #efefef;
+        cursor: pointer;
       }
     }
   }
-  
-  .sidebar-projects .active, .sidebar-accordion:hover {
-    background-color: #ccc; 
-  }
-  
-  .panel {
-    display: none;
-    background-color: $white;    
-    p{
-      margin: 10px 0;
-      padding: 0;
-      
-      span{
-        background-color: #fefefe;
-        border-radius: 50px;
-        padding: 1px 10px;
-        &:hover{
-          background-color: #efefef;
-          cursor: pointer;
-        }
-      }
-    }
-  }
+}

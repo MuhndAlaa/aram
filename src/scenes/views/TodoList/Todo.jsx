@@ -95,9 +95,9 @@ function Todo() {
   return (
     <>
       <Navigation/>
-    <section className='marg_top'>
+    <section className='todo_container'>
        
-      <div className="d-flex justify-content-evenly">
+      <div className="d-flex justify-content-evenly marg_top">
       <button className="forms_btn m-3"  onClick={handleShow}>
         ADD your todo !!
       </button>
@@ -120,7 +120,7 @@ function Todo() {
         
       {/* <button onClick={addItem}>Add</button>   */}
       </div>
-      <div className="Todo__container">
+      <div className="Todo__column d-flex justify-content-evenly">
       <DragDropContext  onDragEnd={handleDragEnd}>
         {_.map(state, (data, key) => {
           return(
