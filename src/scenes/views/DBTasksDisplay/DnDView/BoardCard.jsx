@@ -1,4 +1,5 @@
 import CancelIcon from '@mui/icons-material/Cancel';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import firebase from "../../../../firebase/firebase";
 import { useSelector } from "react-redux";
 
@@ -31,7 +32,10 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
     <>
       <div className="task-header">
         <h5 className="task_title"> {task.title}</h5>
-        <button className="delete-task"><CancelIcon onClick={deleteTask}/> </button>
+        <div><button className="task-info"><ReadMoreIcon /></button>
+        
+        <button className="delete-task"><CancelIcon onClick={deleteTask}/> </button></div>
+        
       </div>
       <div className="task-content">
         <p className="task_description"> {task.description.slice(0, 30)}...</p>

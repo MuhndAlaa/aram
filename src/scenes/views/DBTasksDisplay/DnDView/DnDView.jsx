@@ -154,6 +154,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   }, [tasks, currentBoard, currentProject]);
   return (
     <div className={`${currentView}s-container`}>
+      
       {/* DragDropContent is wrapper for Droppable => (where columsn render) & Draggable => (where tasks render) and handleDragEnd is the main function of drag and drop */}
       <DragDropContext onDragEnd={(result) => { handleDragEnd(result, colsState, setColsState); }}
       >

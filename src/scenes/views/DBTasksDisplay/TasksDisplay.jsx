@@ -47,7 +47,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
         </Tabs>
       </Box>
       {currentView === "mindmap" ? <MindMapComponent currentProject={currentProject} /> : null}
-      {(!currentProject && currentView !== "mindmap") && <div className={'ms-2 loader'} style={{height:'fit-content', width:'fit-content'}}>
+      {(!currentProject && currentView !== "mindmap") && <div className={'ms-2 loader'}>
       <p className="tutorial-text alert alert-info">Select one of your Projects and specify your Board, and let's get some work done</p>
             <ReactPlayer
               playing={true}
@@ -55,10 +55,11 @@ function TasksDisplay({ currentProject, currentBoard }) {
               loop
               className='react-player mard'
               url={loader}
-              width='80%'
+              width='30%'
               height='60vh'
             /></div>}
-            {(currentProject && !currentBoard) && <div className={'ms-2 loader'} style={{height:'fit-content', width:'fit-content'}}><p className="tutorial-text alert alert-primary">{currentProject?.project}</p>
+            {(currentProject && !currentBoard) && <div className={'ms-2 loader'}>
+              <p className="tutorial-text alert alert-primary">{currentProject?.project}</p>
             <p className="tutorial-text alert alert-info">Specify your Board to render the Tasks</p>
             <ReactPlayer
               playing={true}
@@ -66,7 +67,7 @@ function TasksDisplay({ currentProject, currentBoard }) {
               loop
               className='react-player mard'
               url={loader}
-              width='80%'
+              width='30%'
               height='55vh'
             />
             </div>}

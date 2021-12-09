@@ -83,19 +83,6 @@
   .label:hover .tooltiptext {
     visibility: visible;
   }
-// Delete Task btn
-.delete-task{
-    background-color:inherit;
-    border: 0;
-    margin-bottom: 5px;
-    svg{
-        color: $white;
-        width: 0.6em;
-        height: 0.6em;
-        background-color: $black;
-        border-radius: 50%;
-    }
-}
 
 // Seperate views styling
 // List view
@@ -265,9 +252,32 @@
             .task-header{
                 display:flex;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-start;
                 .task_title{
                     font-size: 18px;
+                    max-width:75%;
+                }
+                div {
+                    width:25%;
+                    display: flex;
+                    justify-content: space-between;
+                    button{
+                        background-color:inherit;
+                        border: 0;
+                        margin-bottom: 5px;
+                        svg{
+                            color: $white;
+                            width: 0.8em;
+                            height: 0.8em;
+                            background-color: #008dc5;
+                        } 
+                    }
+                    .delete-task{
+                        svg{
+                            border-radius: 50%;
+                            background-color:$black ;
+                        }
+                    }
                 }
             }
             .task-content{
@@ -325,10 +335,5 @@
                 };
             }
         }
-        // .task:active{
-        //     -ms-transform: rotate(20deg); /* IE 9 */
-        //     transform: rotate(20deg);
-        //     height: fit-content;
-        // }
     }  
 }
