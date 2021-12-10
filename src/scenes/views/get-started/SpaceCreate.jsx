@@ -82,7 +82,6 @@ function SpaceCreate(props) {
         <div className="col-lg-6 mt-4 ms-4">
           <Formik
             initialValues={(props.title ==='project')?projInitialValues:boardInitialValues}
-            onSubmit={onSubmit}
             validationSchema={(props.title ==='project')?projValidationSchema:boardValidationSchema}
           >
             {(formik) => {
@@ -111,7 +110,7 @@ function SpaceCreate(props) {
                        <Link to="/"><button className="btns navigation-btns"><span class="tooltiptext">go back to the home page</span><ArrowBackIosIcon/> Back</button></Link>
                       {dataSent ? <AssigneesFieldArray project_id={project} board_id={board} name={`${props.title}Assignees`}/>
                       :
-                      <button className="btns m-4 navigation-btns" type="submit"><span class="tooltiptext">Click to create your {props.title}</span><CreateIcon className="pe-2"/> 
+                      <button className="btns m-4 navigation-btns" type="button" onClick={()=>{onSubmit(formik.values)}}><span class="tooltiptext">Click to create your {props.title}</span><CreateIcon className="pe-2"/> 
                       Intialize your {props.title}</button>
                       }
                       {(dataSent && props.title ==='project') &&

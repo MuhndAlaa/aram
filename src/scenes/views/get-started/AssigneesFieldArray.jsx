@@ -53,7 +53,6 @@ const AssigneesFieldArray = (props) => {
             <Modal show={show} onHide={handleClose}>
             <Formik
               initialValues={initialValues}
-              onSubmit={onSubmit}
             >
               {(formik) => {
                 return (
@@ -129,7 +128,7 @@ const AssigneesFieldArray = (props) => {
                       </Modal.Body>
                       <Modal.Footer>
                         
-                        <Button type="submit" className="save btns getstarted_btn" >
+                        <Button type="button" onClick={()=>{onSubmit(formik.values)}}  className="save btns getstarted_btn" >
                                Save Changes
                         </Button>
 
