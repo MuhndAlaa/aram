@@ -7,9 +7,11 @@ import { useState } from "react";
 import { Form, Formik } from "formik";
 import FieldArrayInput from "./FieldArray";
 import firebase from "../../../firebase/firebase";
+import { useSelector } from "react-redux";
 
 const Task = ({currentBoard, currentProject, handleClose}) => {
   const ref = firebase.firestore();
+  const user = useSelector(state=>state.user)
 
   const initialValues = {
     title: "",
@@ -18,7 +20,7 @@ const Task = ({currentBoard, currentProject, handleClose}) => {
     fileAttach: "",
     dueDate: "",
     dueTime: '',
-    created_by: 'auth.uid isa',
+    created_by: user.id,
     created_at:firebase.firestore.Timestamp.now(), 
     taskAssignees: [],
   };

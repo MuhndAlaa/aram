@@ -86,7 +86,6 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       items: [],
       title: createColumnValue,
     };
-    setColsState(renderCols);
     //Update the array of columns with the new column
     ref
       .collection("projects")
@@ -96,42 +95,46 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .update({
         boardColumns: [...currentBoard?.boardColumns, createColumnValue],
       });
-      handleColClose()
+    handleColClose()
+    setColsState(renderCols);
+    
   }
-  function deleteCol(col){
+  function deleteCol(col, colId) {
+    let state = { ...colsState };
+    delete state[colId];
+    setColsState(state);
     ref
       .collection("projects")
       .doc(currentProject?.id)
       .collection("boards")
       .doc(currentBoard?.id)
       .update({
-        boardColumns: currentBoard?.boardColumns.filter((item)=>{return item !== col})
+        boardColumns: currentBoard?.boardColumns.filter((item) => { return item !== col })
       });
-      alert(`${col} has been deleted.`)
   }
 
   function toggleAccordion(e) {
     if (e.target.classList.contains('list-container__title')) {
-        e.target.classList.toggle("active");
-        let panel = e.target.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    }else if(e.target.tagName === "H4" || e.target.tagName === "SPAN"){
-        e.target.parentElement.classList.toggle("active");
-        let panel = e.target.parentElement.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    }else{
-        return
+      e.target.classList.toggle("active");
+      let panel = e.target.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    } else if (e.target.tagName === "H4" || e.target.tagName === "SPAN") {
+      e.target.parentElement.classList.toggle("active");
+      let panel = e.target.parentElement.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    } else {
+      return
     }
 
-}
+  }
 
   useEffect(() => {
     //DnD library need object with columns name as properties and column object as their's value
@@ -151,105 +154,105 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   }, [tasks, currentBoard, currentProject]);
   return (
     <div className={`${currentView}s-container`}>
-      
+
       {/* DragDropContent is wrapper for Droppable => (where columsn render) & Draggable => (where tasks render) and handleDragEnd is the main function of drag and drop */}
       <DragDropContext onDragEnd={(result) => { handleDragEnd(result, colsState, setColsState); }}
       >
         {/* Loop through the object of columns*/}
-          {Object.entries(colsState).map(([colId, col], colIndex) => (
-            <div className={`${currentView}-container`} key={colIndex}>
-               <div className={`${currentView}-container__title ${col.title}-title`} onClick={(e) => { toggleAccordion(e) }}>
-                 <h4>{col.title}</h4>
-                 
-                  <span>
-                  {!col.items.length &&  <DeleteSweepIcon className="mx-2 delete-col" onClick={()=>{deleteCol(col.title)}}/>}
-                   <Badge className="badge-inner" badgeContent={col.items.length}>
-                  <FilterNoneIcon/>
-                  </Badge></span></div>
-                <Droppable droppableId={colId}>
-                {(provided, snapshot) => (
-                  // Div below is the div of columns (task container)
-                  <div className={`${currentView}-task`} ref={provided.innerRef} {...provided.droppableProps}>
-                    {col.items?.map((task, taskIndex) => (
-                      <Draggable
-                        draggableId={task.id}
-                        key={task.id}
-                        index={taskIndex}
-                      >
-                        {
-                          // Div below is the div of tasks (Can replace it with a task component)
-                          (provided, snapshot) => (
-                            <div
-                              className={`task`}
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              {currentView === "col" && (
-                                <BoardCard task={task} currentProject={currentProject}
-                                 currentBoard={currentBoard}/>
-                              )}
-                              {currentView === "list" && (
-                                <ListCard task={task} currentProject={currentProject} currentBoard={currentBoard}/>
-                              )}
-                            </div>
-                          )
-                        }
-                      </Draggable>
-                    ))}
-                    {/* The line Below to give space to add task when you hover a task above it */}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-          ))}
-          </DragDropContext>
-        {/* </div> */}
-        {/* The Input and button to add new columns outside loop to always be last columns */}
-        <div>
-          {currentBoard && <Button
-            className="add-btns addCol text-white"
-            variant="primary"
-            onClick={handleColShow}
-          >
-            <span class="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
-          </Button>}
+        {Object.entries(colsState).map(([colId, col], colIndex) => (
+          <div className={`${currentView}-container`} key={colIndex}>
+            <div className={`${currentView}-container__title ${col.title}-title`} onClick={(e) => { toggleAccordion(e) }}>
+              <h4>{col.title}</h4>
 
-          <Modal
-            show={colShow}
-            onHide={handleColClose}
-            backdrop="static"
-            keyboard={false}
-            className="modalCol"
-          >
-            <Modal.Header>
-                <h2>Add a new Progress Status</h2>
-                <Button className="close-btn">
-                  <CancelIcon onClick={handleColClose}/>
-                </Button>
-                
-            </Modal.Header>
+              <span>
+                {!col.items.length && <DeleteSweepIcon className="mx-2 delete-col" onClick={() => { deleteCol(col.title, colId) }} />}
+                <Badge className="badge-inner" badgeContent={col.items.length}>
+                  <FilterNoneIcon />
+                </Badge></span></div>
+            <Droppable droppableId={colId}>
+              {(provided, snapshot) => (
+                // Div below is the div of columns (task container)
+                <div className={`${currentView}-task`} ref={provided.innerRef} {...provided.droppableProps}>
+                  {col.items?.map((task, taskIndex) => (
+                    <Draggable
+                      draggableId={task.id}
+                      key={task.id}
+                      index={taskIndex}
+                    >
+                      {
+                        // Div below is the div of tasks (Can replace it with a task component)
+                        (provided, snapshot) => (
+                          <div
+                            className={`task`}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            {currentView === "col" && (
+                              <BoardCard task={task} currentProject={currentProject}
+                                currentBoard={currentBoard} />
+                            )}
+                            {currentView === "list" && (
+                              <ListCard task={task} currentProject={currentProject} currentBoard={currentBoard} />
+                            )}
+                          </div>
+                        )
+                      }
+                    </Draggable>
+                  ))}
+                  {/* The line Below to give space to add task when you hover a task above it */}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+        ))}
+      </DragDropContext>
+      {/* </div> */}
+      {/* The Input and button to add new columns outside loop to always be last columns */}
+      <div>
+        {currentBoard && <Button
+          className="add-btns addCol text-white"
+          variant="primary"
+          onClick={handleColShow}
+        >
+          <span class="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
+        </Button>}
+
+        <Modal
+          show={colShow}
+          onHide={handleColClose}
+          backdrop="static"
+          keyboard={false}
+          className="modalCol"
+        >
+          <Modal.Header>
+            <h2>Add a new Progress Status</h2>
+            <Button className="close-btn">
+              <CancelIcon onClick={handleColClose} />
+            </Button>
+
+          </Modal.Header>
           <Modal.Body>
             {" "}
-              <input
-                type="text"
-                id="createColumn"
-                className="form-control"
-                placeholder="Enter a new Progress State"
-              />
-            
+            <input
+              type="text"
+              id="createColumn"
+              className="form-control"
+              placeholder="Enter a new Progress State"
+            />
+
             {" "}
           </Modal.Body>
           <Modal.Footer>
-          <button onClick={createColumn} className="btn btn-dark">
+            <button onClick={createColumn} className="btn btn-dark">
               <AddTaskIcon /> New State
-              </button>
+            </button>
           </Modal.Footer>
         </Modal>
       </div>
-        
-      
+
+
       <div>
         {currentBoard && <Button
           className="add-btns addTask text-white"
@@ -267,14 +270,14 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           className="modalTask"
         >
           <Modal.Header>
-                <h2>Add a new Task</h2>
-                <Button className="close-btn">
-                  <CancelIcon onClick={handleClose}/>
-                </Button>
-                
-            </Modal.Header>
+            <h2>Add a new Task</h2>
+            <Button className="close-btn">
+              <CancelIcon onClick={handleClose} />
+            </Button>
+
+          </Modal.Header>
           <Modal.Body>
-            <Task currentProject={currentProject} currentBoard = {currentBoard} handleClose={handleClose}/>
+            <Task currentProject={currentProject} currentBoard={currentBoard} handleClose={handleClose} />
           </Modal.Body>
           <Modal.Footer>
           </Modal.Footer>
