@@ -80,12 +80,12 @@ function DnDView({ currentView, currentProject, currentBoard }) {
     let createColumnValue = document.getElementById("createColumn");
     createColumnValue = createColumnValue.value;
     //Create Deep copy of colsState to add new column
-    let renderCols = JSON.parse(JSON.stringify(colsState));
-    renderCols[createColumnValue] = {
-      id: createColumnValue,
-      items: [],
-      title: createColumnValue,
-    };
+    // let renderCols = JSON.parse(JSON.stringify(colsState));
+    // renderCols[createColumnValue] = {
+    //   id: createColumnValue,
+    //   items: [],
+    //   title: createColumnValue,
+    // };
     //Update the array of columns with the new column
     ref
       .collection("projects")
@@ -95,10 +95,14 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .update({
         boardColumns: [...currentBoard?.boardColumns, createColumnValue],
       });
-    handleColClose()
-    setColsState(renderCols);
-    
+    handleColClose();
+    setColsState(state =>({...state ,[createColumnValue]: {
+      id: createColumnValue,
+      items: [],
+      title: createColumnValue,
+    }})); 
   }
+
   function deleteCol(col, colId) {
     let state = { ...colsState };
     delete state[colId];
@@ -149,7 +153,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
         }); //Loop and get all tasks with same status
         renderCol[col] = { id: col, items: matchTasks, title: col }; //Add column object contain it's tasks
       });
-      setColsState(renderCol); //Set the special object in dnd to state to update component on every change
+      setColsState(state=>(Object.keys(colsState).length === 0 ? renderCol:state)); //Set the special object in dnd to state to update component on every change
     }
   }, [tasks, currentBoard, currentProject]);
   return (
