@@ -15,8 +15,10 @@ import FilterNoneIcon from '@mui/icons-material/FilterNone';
 import Badge from '@mui/material/Badge';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import "./DnDView.scss";
+import { QuerySnapshot } from "firebase/firestore";
 
 function DnDView({ currentView, currentProject, currentBoard }) {
+  const [fixBoardCols , setFixBoardcols] = useState([]);
   // the add task and board buttons states
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -24,13 +26,9 @@ function DnDView({ currentView, currentProject, currentBoard }) {
   const [colShow, setColShow] = useState(false);
   const handleColClose = () => setColShow(false);
   const handleColShow = () => setColShow(true);
-
   const ref = firebase.firestore();
   const user = useSelector((state) => state.user); //State of user
-  const tasksQuery =
-    user?.uid &&
-    currentBoard &&
-    ref.collectionGroup("tasks").where("board_id", "==", currentBoard?.id);
+  const tasksQuery = user?.uid &&  currentBoard && ref.collectionGroup("tasks").where("board_id", "==", currentBoard?.id);
   const [tasks] = useCollectionData(tasksQuery, { idField: "id" }); //Get tasks from DB
   const [colsState, setColsState] = useState({}); // Object state to hold value of object of Drag N Drop (Explanied below in useEffect)
 
@@ -79,13 +77,6 @@ function DnDView({ currentView, currentProject, currentBoard }) {
     //Get value from input for new column name
     let createColumnValue = document.getElementById("createColumn");
     createColumnValue = createColumnValue.value;
-    //Create Deep copy of colsState to add new column
-    // let renderCols = JSON.parse(JSON.stringify(colsState));
-    // renderCols[createColumnValue] = {
-    //   id: createColumnValue,
-    //   items: [],
-    //   title: createColumnValue,
-    // };
     //Update the array of columns with the new column
     ref
       .collection("projects")
@@ -93,14 +84,16 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .collection("boards")
       .doc(currentBoard?.id)
       .update({
-        boardColumns: [...currentBoard?.boardColumns, createColumnValue],
-      });
+        boardColumns: firebase.firestore.FieldValue.arrayUnion(createColumnValue)
+    })
     handleColClose();
     setColsState(state =>({...state ,[createColumnValue]: {
       id: createColumnValue,
       items: [],
       title: createColumnValue,
-    }})); 
+    }}));
+    setFixBoardcols(currentBoard.boardColumns)
+    console.log(currentBoard.boardColumns)
   }
 
   function deleteCol(col, colId) {
@@ -112,9 +105,8 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       .doc(currentProject?.id)
       .collection("boards")
       .doc(currentBoard?.id)
-      .update({
-        boardColumns: currentBoard?.boardColumns.filter((item) => { return item !== col })
-      });
+      .update({"boardColumns": firebase.firestore.FieldValue.arrayRemove(col)}
+      );
   }
 
   function toggleAccordion(e) {
@@ -145,17 +137,23 @@ function DnDView({ currentView, currentProject, currentBoard }) {
     //Every column object have a property of tasks with same status .. and it's rendered in lines below
     if (tasks && currentBoard && currentProject && currentBoard?.boardColumns) {
       const renderCol = {};
-      currentBoard?.boardColumns.map((col, index) => {
-        const matchTasks = []; //Empty Array to collect all tasks from DB have same status
-        tasks.map((task) => {
-          if (col.toLowerCase() === task.status.toLowerCase())
-            matchTasks.push(task);
-        }); //Loop and get all tasks with same status
-        renderCol[col] = { id: col, items: matchTasks, title: col }; //Add column object contain it's tasks
-      });
-      setColsState(state=>(Object.keys(colsState).length === 0 ? renderCol:state)); //Set the special object in dnd to state to update component on every change
+
+      ref.collection("projects").doc(currentProject?.id).collection('boards').doc(currentBoard.id).get()
+      .then((doc)=>{
+          doc.data().boardColumns?.map((col, index) => {
+            const matchTasks = []; //Empty Array to collect all tasks from DB have same status
+            tasks.map((task) => {
+              if (col.toLowerCase() === task.status.toLowerCase())
+                matchTasks.push(task);
+            }); //Loop and get all tasks with same status
+            renderCol[col] = { id: col, items: matchTasks, title: col }; //Add column object contain it's tasks
+          });
+          setColsState(renderCol);
+        }
+      )
+      //Set the special object in dnd to state to update component on every change
     }
-  }, [tasks, currentBoard, currentProject]);
+  }, [tasks, currentBoard?.boardColumns, currentBoard, currentProject]);
   return (
     <div className={`${currentView}s-container`}>
 
