@@ -28,7 +28,6 @@ const AssigneesFieldArray = (props) => {
   };
 
   const handleBoardAssignees =(event, values)=>{
-    event.stopPropagation();
     values[`${props.name}`].forEach((assignee, i)=>{
       ref.collection("projects").doc(props.project_id).collection('boards').doc(props.board_id).update({
         boardAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(assignee.email)
