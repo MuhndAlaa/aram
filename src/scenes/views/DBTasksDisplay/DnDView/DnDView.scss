@@ -161,6 +161,9 @@
             .task_footer{
                 display: flex;
                 align-items: center;
+                .delete-task{
+                    border: 0;
+                }
                 .label{
                     background-color: green;
                     border-radius: 50px;
