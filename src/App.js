@@ -34,11 +34,6 @@ function App() {
   return (
     <>
     <Br>
-    {/* <DndProvider backend={HTML5Backend}>
-    <BoardHeader/>
-    <BoardHome/>
-    <ListView/>
-     </DndProvider> */}
       <Switch>
           <Route component={Homepage} path="/" exact></Route>
           <Route component={ToDoapp} path="/ToDoapp"></Route>
