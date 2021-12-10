@@ -50,8 +50,8 @@ function SpaceCreate(props) {
     ref.collection("projects").add({...values, created_by:user.email})
     .then(docRef => {
       setProject(docRef.id)
-      ref.collection("projects").doc(docRef.id).collection(`${props.title}Assignees`).add({email : user.email ,project_id:docRef.id, role:'creator'})
-      ref.collection("projects").doc(docRef.id).update({
+      ref.collection("projects").doc(docRef?.id).collection(`${props.title}Assignees`).add({email : user.email ,project_id:docRef.id, role:'creator'})
+      ref.collection("projects").doc(docRef?.id).update({
         projectAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(user.email )
         })
     })
@@ -116,11 +116,11 @@ function SpaceCreate(props) {
                       }
                       {(dataSent && props.title ==='project') &&
                       <Link to={`/project/${project}`}>
-                      <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
+                      <button className="btns navigation-btns" type="button"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
                         </Link>}
                         
                         {props.title ==='board' &&<Link to={`/dashboard`}>
-                      <button className="btns navigation-btns"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
+                      <button className="btns navigation-btns" type="button"><span class="tooltiptext">{nextTooltip()}</span>Next <ArrowForwardIosIcon/></button>
                         </Link>
                         } 
                       </div>

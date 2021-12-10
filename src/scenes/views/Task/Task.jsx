@@ -20,12 +20,11 @@ const Task = ({currentBoard, currentProject, handleClose}) => {
     fileAttach: "",
     dueDate: "",
     dueTime: '',
-    created_by: user.id,
+    created_by: user.email,
     created_at:firebase.firestore.Timestamp.now(), 
     taskAssignees: [],
   };
   function addTask(values){
-    console.log("project ==> ",currentProject.id ,"board ==>", currentBoard.id)
     ref.collection("projects").doc(currentProject.id).collection('boards').doc(currentBoard.id).collection('tasks').add({...values,board_id:currentBoard.id})
     handleClose()
   }
