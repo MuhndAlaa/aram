@@ -18,9 +18,6 @@ const ListCard =({currentProject, currentBoard, task })=>{
               return 'No-Due-Date'
         }
       }
-    const updateDueDate=()=>{
-
-    }
     const deleteTask =()=>{
         ref.collection('projects').doc(currentProject.id).collection('boards').doc(currentBoard.id)
         .collection('tasks').doc(task.id).delete();
@@ -34,7 +31,7 @@ const ListCard =({currentProject, currentBoard, task })=>{
             <div className="task_date">
                 {task.dueDate}
             </div>
-            <div className={`label ${priority()}-label ps-2`} onclick={updateDueDate}>
+            <div className={`label ${priority()}-label ps-2`}>
                 {priority()}
             </div>
             <button className="delete-task"><CancelIcon onClick={deleteTask}/> </button>
