@@ -83,11 +83,14 @@ const Task = ({currentBoard, currentProject, handleClose}) => {
                   value={formik.values.status}
                   onChange={formik.handleChange}
                 >
-                  <option value="TODO" label="Pick Task Status" />
+                  {currentBoard.boardColumns.map(col=>{
+                    return <option value={col} label={col} />
+                  })}
+                  {/* <option value="TODO" label="Pick Task Status" />
                   <option value="TODO" label="Not Opened" />
                   <option value="inReview" label="In Review" />
                   <option value="PROGRESS" label="In Progress" />
-                  <option value="COMPLETED" label="Completed" />
+                  <option value="COMPLETED" label="Completed" /> */}
                 </select>
               </div>
 

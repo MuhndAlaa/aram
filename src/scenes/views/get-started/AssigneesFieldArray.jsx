@@ -16,8 +16,7 @@ const AssigneesFieldArray = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleAddAssignees = (event, values) => {
-    event.stopPropagation();
+  const handleAddAssignees = (values) => {
     values[`${props.name}`].forEach((assignee, i)=>{
       ref.collection("projects").doc(props.project_id).collection(props.name).add({...assignee,project_id:props.project_id})
       ref.collection("projects").doc(props.project_id).update({
@@ -27,7 +26,7 @@ const AssigneesFieldArray = (props) => {
     handleClose();
   };
 
-  const handleBoardAssignees =(event, values)=>{
+  const handleBoardAssignees =(values)=>{
     values[`${props.name}`].forEach((assignee, i)=>{
       ref.collection("projects").doc(props.project_id).collection('boards').doc(props.board_id).update({
         boardAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(assignee.email)
