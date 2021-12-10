@@ -16,7 +16,7 @@ const Task = ({currentBoard, currentProject, handleClose}) => {
   const initialValues = {
     title: "",
     description: "",
-    status: "notOpened",
+    status: "TODO",
     fileAttach: "",
     dueDate: "",
     dueTime: '',
@@ -83,10 +83,11 @@ const Task = ({currentBoard, currentProject, handleClose}) => {
                   value={formik.values.status}
                   onChange={formik.handleChange}
                 >
-                  <option value="notOpened" label="Pick Task Status" />
-                  <option value="notOpened" label="Not Opened" />
-                  <option value="inProgress" label="In Progress" />
-                  <option value="completed" label="Completed" />
+                  <option value="TODO" label="Pick Task Status" />
+                  <option value="TODO" label="Not Opened" />
+                  <option value="inReview" label="In Review" />
+                  <option value="PROGRESS" label="In Progress" />
+                  <option value="COMPLETED" label="Completed" />
                 </select>
               </div>
 

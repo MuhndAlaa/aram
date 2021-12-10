@@ -25,7 +25,7 @@ function SpaceCreate(props) {
   };
   const boardInitialValues ={
     board: "",
-    boardColumns:['notOpened', 'inProgress', 'inReview', 'completed']
+    boardColumns:['TODO', 'PROGRESS', 'inReview', 'COMPLETED']
   }
   const projValidationSchema = yup.object({
     project: yup

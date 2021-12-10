@@ -92,7 +92,7 @@
     margin: 1rem auto;
     .list-container{
     .list-container__title{
-        background-color: $main-color;
+        background-color: #fe8991;
         color: $white;
         cursor: pointer;
         transition: 0.4s;
@@ -120,6 +120,19 @@
             align-items: center;
         }
     }
+    .list-container__title.TODO-title{
+        background-color: #9a9aef;
+    }
+    .list-container__title.PROGRESS-title{
+        background-color:#7cd0f1;
+    }
+    .list-container__title.inreview-title{
+        background-color:#ebcb6c;
+    }
+    .list-container__title.COMPLETED-title{
+        background-color:rgb(11, 117, 59);
+    }
+
     .list-task {
         display: none;
         overflow: hidden;
@@ -222,16 +235,16 @@
             }
             
         }
-        .col-container__title.notopened-title{
+        .col-container__title.TODO-title{
             background-color: #9a9aef;
         }
-        .col-container__title.inprogress-title{
+        .col-container__title.PROGRESS-title{
             background-color:#7cd0f1;
         }
         .col-container__title.inreview-title{
             background-color:#ebcb6c;
         }
-        .col-container__title.completed-title{
+        .col-container__title.COMPLETED-title{
             background-color:rgb(11, 117, 59);
         }
     }
