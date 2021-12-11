@@ -61,7 +61,7 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
       </div>
       <div className="task-content">
         <p className="task_description"> {task.description.slice(0, 30)}...</p>
-        <div className={`label ${priority()}-label`}> <span class="tooltiptext">{priority()}</span></div>
+        <div className={`label ${priority()}-label`}> <span className="tooltiptext">{priority()}</span></div>
       </div>
       
       <div className="task_footer">

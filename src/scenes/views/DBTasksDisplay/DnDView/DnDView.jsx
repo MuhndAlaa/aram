@@ -217,7 +217,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           variant="primary"
           onClick={handleColShow}
         >
-          <span class="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
+          <span className="tooltiptext">Add a new Status to handle the work flow </span><DashboardCustomizeIcon />
         </Button>}
 
         <Modal
@@ -260,7 +260,7 @@ function DnDView({ currentView, currentProject, currentBoard }) {
           variant="primary"
           onClick={handleShow}
         >
-          <span class="tooltiptext">Add a new Task to your board </span><AddTaskIcon />
+          <span className="tooltiptext">Add a new Task to your board </span><AddTaskIcon />
         </Button>}
 
         <Modal

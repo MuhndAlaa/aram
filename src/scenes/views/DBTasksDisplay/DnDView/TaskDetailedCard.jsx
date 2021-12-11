@@ -16,14 +16,14 @@ const TaskDetailedCard = ({currentProject, currentBoard, task }) => {
   }
   return (
     <>
-      <div class="task-container">
-        <div class="task-header">
-          <div class="task-header_sources">
+      <div className="task-container">
+        <div className="task-header">
+          <div className="task-header_sources">
             <h6>Board</h6>
             <h4>{currentBoard.board}</h4>
           </div>
         </div>
-        <div class="task-info">
+        <div className="task-info">
             <div className="task-info_flex">
                 <h4>{task.title}</h4>
             </div>
@@ -58,14 +58,14 @@ const TaskDetailedCard = ({currentProject, currentBoard, task }) => {
             </div>
             <div className="task-info_flex">
                 <div className="task-info_status">{task.status}</div>
-                <button class="btn" onClick={handleDone}>Mark as Done</button>
+                <button className="btn" onClick={handleDone}>Mark as Done</button>
             </div>
             
         </div>
         
       </div>
 
-      <div class="floating-text">
+      <div className="floating-text">
         Made by #ARAM Team
       </div>
     </>
