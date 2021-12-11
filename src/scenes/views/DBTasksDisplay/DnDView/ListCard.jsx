@@ -1,8 +1,17 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import firebase from "../../../../firebase/firebase";
+import { Modal } from "react-bootstrap";
+import {useState} from 'react';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import Button from "@restart/ui/esm/Button";
+import TaskDetailedCard from './TaskDetailedCard';
 
 const ListCard =({currentProject, currentBoard, task })=>{
     const ref = firebase.firestore();
+    const [show, setShowTask] = useState(false);
+    const handleCloseTask = () => setShowTask(false);
+    const handleShowTask = () => setShowTask(true);
+
     const priority =()=>{
         const yourDate = new Date().toISOString().split('T')[0];
     
@@ -22,8 +31,28 @@ const ListCard =({currentProject, currentBoard, task })=>{
       }
     return <>
         <div className="task_title">
-            <span>{task.created_by[0].toUpperCase()}</span>
             <h5>{task.title}</h5>
+            <div>
+              <button className="task-info" onClick={handleShowTask}><ReadMoreIcon /></button>
+              <Modal
+                show={show}
+                onHide={handleCloseTask}
+                backdrop="static"
+                keyboard={false}
+                className="modalTask"
+              ><Modal.Header>
+                <h2>{currentProject.project}</h2>
+                  <Button className="close-btn">
+                  <CancelIcon onClick={handleCloseTask}/>
+                </Button>
+          
+              </Modal.Header>
+                <Modal.Body>
+                  <TaskDetailedCard currentProject={currentProject} currentBoard={currentBoard} task={task}/>
+                </Modal.Body>
+              </Modal>
+              </div>
+            
         </div>
         <div className="task_footer">
             <div className="task_date">

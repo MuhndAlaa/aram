@@ -53,7 +53,7 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
         
     </Modal.Header>
           <Modal.Body>
-            <TaskDetailedCard currentProject={currentProject} currentBoard={currentBoard} task={task}/>
+            <TaskDetailedCard currentProject={currentProject} currentBoard={currentBoard} task={task} handleCloseTask ={handleCloseTask}/>
           </Modal.Body>
         </Modal>
         <button className="delete-task"><CancelIcon onClick={deleteTask}/> </button></div>

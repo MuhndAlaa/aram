@@ -1,7 +1,7 @@
 import firebase from "../../../../firebase/firebase";
 import "./TaskDetailedCard.scss";
 
-const TaskDetailedCard = ({currentProject, currentBoard, task }) => {
+const TaskDetailedCard = ({currentProject, currentBoard, task, handleCloseTask }) => {
   const ref = firebase.firestore();
   
   const handleDone =()=>{
@@ -13,6 +13,7 @@ const TaskDetailedCard = ({currentProject, currentBoard, task }) => {
         .collection("tasks")
         .doc(task?.id)
         .update({ status: "completed"});
+        handleCloseTask();
   }
   return (
     <>
