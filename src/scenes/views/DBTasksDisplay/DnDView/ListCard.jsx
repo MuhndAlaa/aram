@@ -13,8 +13,10 @@ const ListCard =({currentProject, currentBoard, task })=>{
     const handleShowTask = () => setShowTask(true);
 
     const priority =()=>{
-        const yourDate = new Date().toISOString().split('T')[0];
-    
+      const yourDate = new Date().toISOString().split('T')[0];
+      if(task.status === 'completed'){
+        return 'Completed'
+      }else{
         if(task.dueDate && task.dueDate === yourDate){
           return 'Urgent'
         }else if(task.dueDate && task.dueDate < yourDate){
@@ -25,6 +27,7 @@ const ListCard =({currentProject, currentBoard, task })=>{
               return 'No-Due-Date'
         }
       }
+    }
     const deleteTask =()=>{
         ref.collection('projects').doc(currentProject.id).collection('boards').doc(currentBoard.id)
         .collection('tasks').doc(task.id).delete();
