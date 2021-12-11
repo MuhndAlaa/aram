@@ -1,25 +1,10 @@
-import { Formik, Form } from "formik";
-import * as yup from "yup";
 import React from "react";
 import { Field, FieldArray } from "formik";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
-import { useState } from "react";
 // import {firebase} from "../../../firebase/firebase";
-import { Button, Modal } from "react-bootstrap";
 
 const FieldArrayInput = (props) => {
   // const ref = firebase.firestore();
-
-  const handleTaskAssignees =(props)=>{
-    // console.log('project: ',props.project_id,'board: ',props.board_id,values[`${props.name}`]);
-    // values[`${props.name}`].forEach((assignee, i)=>{
-    //   console.log(assignee);
-    //   ref.collection("projects").doc(props.project_id).collection('boards').doc(props.board_id).update({
-    //     boardAssigneesEmails: firebase.firestore.FieldValue.arrayUnion(assignee.email)
-    //     })
-    //   ref.collection("projects").doc(props.project_id).collection('boards').doc(props.board_id).collection(props.name).add({...assignee,board_id:props.board_id})
-    // })
-  }
  
   return (
     <div>

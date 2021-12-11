@@ -1,7 +1,6 @@
 import React from "react";
 import { Field } from "formik";
 import FormikErrorMessage from "./FormikErrMsg";
-import { Link } from "react-router-dom";
 import './forms.scss';
 
 const FormikField = ({ name, type, label }) => {

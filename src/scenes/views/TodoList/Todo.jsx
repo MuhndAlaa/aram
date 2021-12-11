@@ -3,7 +3,7 @@ import './Todo.scss';
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
 import _ from "lodash";
 import {v4} from "uuid";
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navigation } from '../../landing-page/navbar/Navigation';
 

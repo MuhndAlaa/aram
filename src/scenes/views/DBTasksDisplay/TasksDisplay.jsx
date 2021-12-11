@@ -2,8 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import MindMapComponent from './MindMap/MindMapComponent';
 import DnDView from './DnDView/DnDView';
 import { useEffect ,useState } from "react";

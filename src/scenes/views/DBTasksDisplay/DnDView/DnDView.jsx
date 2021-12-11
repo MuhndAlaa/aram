@@ -15,10 +15,8 @@ import FilterNoneIcon from '@mui/icons-material/FilterNone';
 import Badge from '@mui/material/Badge';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import "./DnDView.scss";
-import { QuerySnapshot } from "firebase/firestore";
 
 function DnDView({ currentView, currentProject, currentBoard }) {
-  const [fixBoardCols , setFixBoardcols] = useState([]);
   // the add task and board buttons states
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -92,8 +90,6 @@ function DnDView({ currentView, currentProject, currentBoard }) {
       items: [],
       title: createColumnValue,
     }}));
-    setFixBoardcols(currentBoard.boardColumns)
-    console.log(currentBoard.boardColumns)
   }
 
   function deleteCol(col, colId) {
@@ -140,19 +136,22 @@ function DnDView({ currentView, currentProject, currentBoard }) {
 
       ref.collection("projects").doc(currentProject?.id).collection('boards').doc(currentBoard.id).get()
       .then((doc)=>{
-          doc.data().boardColumns?.map((col, index) => {
+          doc.data()?.boardColumns?.map(function(col, index){
             const matchTasks = []; //Empty Array to collect all tasks from DB have same status
-            tasks.map((task) => {
+            tasks.map(function(task){
               if (col.toLowerCase() === task.status.toLowerCase())
                 matchTasks.push(task);
+                return 0;
             }); //Loop and get all tasks with same status
             renderCol[col] = { id: col, items: matchTasks, title: col }; //Add column object contain it's tasks
+            return 0;
           });
           setColsState(renderCol);
         }
       )
       //Set the special object in dnd to state to update component on every change
     }
+    // eslint-disable-next-line
   }, [tasks, currentBoard?.boardColumns, currentBoard, currentProject]);
   return (
     <div className={`${currentView}s-container`}>

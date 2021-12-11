@@ -2,7 +2,6 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import firebase from "../../../../firebase/firebase";
 import { Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import {useState} from 'react';
 import Button from "@restart/ui/esm/Button";
 import TaskDetailedCard from './TaskDetailedCard';
@@ -12,7 +11,6 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
   const handleCloseTask = () => setShowTask(false);
   const handleShowTask = () => setShowTask(true);
   const ref = firebase.firestore();
-  const user = useSelector((state) => state.user); //State of user
   const priority =()=>{
     const yourDate = new Date().toISOString().split('T')[0];
     if(task.status === 'completed'){
@@ -69,8 +67,8 @@ const BoardCard = ({currentProject, currentBoard, task }) => {
       <div className="task_footer">
         <div className="task_date">{task.dueDate}</div>
         <div className="task_assignees">
-          {task.taskAssignees.map((assignee) => (
-            <span data-toggle="tooltip" data-placement="top" title={assignee}>
+          {task.taskAssignees.map((assignee , index) => (
+            <span key={index} data-toggle="tooltip" data-placement="top" title={assignee}>
               {assignee[0].toUpperCase()}
             </span>
           ))}

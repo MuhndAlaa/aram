@@ -38,6 +38,7 @@ function MindMapComponent({currentProject}) {
     setBoardsNodes([]);
     setLinks([]);
     renderNodes();
+    // eslint-disable-next-line
   }, [currentProject])
 
   const onConnect = (params) => { setNodes(els => addEdge(params, els)) }

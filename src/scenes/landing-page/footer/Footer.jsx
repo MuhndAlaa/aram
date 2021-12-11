@@ -1,5 +1,4 @@
 import './Footer.scss';
-import AOS from 'aos';
 
 export function Footer() {
 	return (

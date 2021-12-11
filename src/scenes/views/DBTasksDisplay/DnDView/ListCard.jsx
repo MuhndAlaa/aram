@@ -1,10 +1,8 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import firebase from "../../../../firebase/firebase";
-import { useSelector } from "react-redux";
 
 const ListCard =({currentProject, currentBoard, task })=>{
     const ref = firebase.firestore();
-     const user = useSelector((state) => state.user); //State of user
     const priority =()=>{
         const yourDate = new Date().toISOString().split('T')[0];
     

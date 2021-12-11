@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled} from '@mui/material/styles';
+// import { useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
+// import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -65,23 +66,23 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })(({ theme, open }) => ({
+//   zIndex: theme.zIndex.drawer + 1,
+//   transition: theme.transitions.create(['width', 'margin'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   ...(open && {
+//     marginLeft: drawerWidth,
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     transition: theme.transitions.create(['width', 'margin'], {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   }),
+// }));
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -101,7 +102,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject, setCurrentBoard }) {
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = useState(false);
   // const [loading , setLoading] = useState('loader')
   const handleDrawerOpen = () => {
@@ -191,7 +192,7 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           <Link className="todo-nav" to="/todo">
           <ListItem>
             
-            <ListItemIcon><PlaylistAddCheckIcon classNAme="ms-1"/></ListItemIcon>
+            <ListItemIcon><PlaylistAddCheckIcon className="ms-1"/></ListItemIcon>
             <ListItemText><Typography> Todo List</Typography></ListItemText>
             
           </ListItem>
@@ -202,7 +203,7 @@ export default function MiniDrawer({ assigneeProjects, boards, setCurrentProject
           <ListItem>
             <ListItemIcon><WorkspacesIcon /></ListItemIcon>
             <ListItemText className ="d-flex justify-content-between"><Typography> Work Space </Typography></ListItemText>
-            <Link to="/get-started"><button className="add-project"><span class="tooltiptext">Start Creating a New Project </span><AddIcon/></button></Link>
+            <Link to="/get-started"><button className="add-project"><span className="tooltiptext">Start Creating a New Project </span><AddIcon/></button></Link>
           </ListItem>
         </DrawerHeader>
         <List className={open ? 'projects-list' : null}>
