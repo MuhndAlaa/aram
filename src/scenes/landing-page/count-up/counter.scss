@@ -1,0 +1,13 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+
+.counter {
+    background-image: $footerbackground;
+    .number {
+        font-size: 2rem;
+    }
+}
+
+.section-counter-wrapper{
+    padding: 70px 0;
+}

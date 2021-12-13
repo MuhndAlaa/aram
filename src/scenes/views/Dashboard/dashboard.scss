@@ -1,0 +1,126 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+.AppBar{
+  height: 200px !important;
+}
+.view-container{
+  width:fit-content;
+}
+.db-sideBar{
+  width:100%;
+}
+.db-view{
+  flex-grow: 1;
+}
+.view-container{
+  min-width:100%;
+}
+.tasks-display{
+  left:260px;
+  padding-left: 50px;
+}
+.sidebar{ 
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100%;
+  width:260px;
+  margin-top: 75.5px;
+  background: $main-color;
+  .nav-links{
+    height: 100%;
+    padding-top: 30px;
+    .nav-links-item{
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      background: inherit;
+      border:0;
+    }
+    .link-name{
+      font-size: 18px;
+      font-weight: 400;
+      color: $white;
+    }
+    li{
+      list-style: none;
+      position: relative;
+      transition: all 0.4s ease;
+      margin: 2px 0 ;
+      padding: 10px 5px;
+      .sub-menu{
+        padding: 6px 6px 14px 80px;
+        background: $formfootercolr;
+        width:100%;
+        // display: none;
+        .sub-menu-link{
+          color: $white;
+          text-decoration: none;
+          font-size: 15px;
+          padding: 5px 0;
+          white-space: nowrap;
+          opacity: 0.6;
+          transition: all 0.3 ease;
+        }
+        .sub-menu-link:hover{
+          opacity: 1;
+        }
+      }
+      
+      .link-icon{
+        height: 25px;
+        font-size: 20px;
+        @include iconStyle;
+      }
+    }
+    li:hover{
+      background: $formfootercolr;
+    }
+    .iconLink{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+.sidebar.close{
+  .sub-menu{
+    position: absolute;
+    left: 100%;
+    top:0;
+    border-radius: 0 6px 6px 0;
+    transition: all 0.4 ease;
+    opacity: 0;
+    pointer-events: none;
+    .link-name{
+      font-size: 18px;
+      opacity: 1;
+      display: block;
+      text-decoration: none;
+    }
+  }
+  li:hover .sub-menu{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.sidebar{
+  .sub-menu{
+    .link-name{
+      display: none;
+    }
+  }
+}
+.loader{
+  height:55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p{
+    width:50%;
+    text-align: center;
+  }
+}
+

@@ -1,0 +1,43 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+
+.team{
+    @extend %section-padding;
+    .title{
+        @extend %section-title;
+    }
+
+    .sub-title{
+        @extend %section-subtitle;
+    }
+    .slideTeam{
+        h3{
+            color: $black !important;
+        }
+        .teamContent{
+            margin-top: 10px;
+        }
+        .teamImg{
+            width: 20%;
+            margin: 0 auto;
+            img{
+                border-radius: 50%; 
+                box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+                -webkit-box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+                -moz-box-shadow: 3px 3px 17px -2px rgba(0,0,0,0.89);
+            }
+        }
+        .teamData{
+            margin-top:150px;
+            .team-job-title{
+                color: $text-color-3;
+            }
+        }
+    }
+    .container{
+        width: 90%;
+    }
+    .carousel-dark .carousel-indicators [data-bs-target] {
+        background-color: $formsbtncolr !important;
+    }
+}

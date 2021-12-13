@@ -1,0 +1,57 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+
+.navbar {
+    padding: 0rem !important;
+    background-color: $navBackground;
+    color: $white;
+    box-shadow: $box-shadow;
+    position: fixed !important;
+    top: 0; right: 0; left: 0;
+    z-index: 1000;
+
+    .nav-link {
+        &:hover, &:focus,&:active,&:active {
+            color: $main-color !important;
+            border-bottom: 2px solid $main-color;
+        }
+        
+    }
+
+    a.nav-link {
+        $color:$black !important;
+    }
+
+    .Logo {
+        font-size: 50px;
+        @extend %fontMontserrat;
+        color: $black;
+        .logo-r{
+            @extend %fontMontserrat;
+            transform: rotatey(180deg);
+            display: inline-block;
+            margin: 0;
+        }
+    }
+
+    .btns {
+        .navBtns {
+            text-decoration: none;
+            background-color: $navBackground;
+            color: $white;
+            padding: 5px 22px;
+            border: 1.5px solid $black;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 2px 2px 16px -6px rgba(185, 211, 235, 0.53);
+            -webkit-box-shadow: 2px 2px 16px -6px rgba(185, 211, 235, 0.53);
+            -moz-box-shadow: 2px 2px 16px -6px rgba(185, 211, 235, 0.53);
+            color: $black;
+            &:hover{
+                color: $main-color;
+                border: 1.5px solid $main-color;
+            }
+        }
+    }
+}

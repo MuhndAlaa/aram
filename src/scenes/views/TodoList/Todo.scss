@@ -1,0 +1,69 @@
+@import "../../../style/variables";
+@import "../../../style/_mixins";
+
+.todo_container {
+    .column-title {
+        width: 30%;
+
+        h3 {
+            background-color: $main-color;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0.5rem 1rem;
+            padding: 0.5rem;
+            font-size: 17px;
+            color: $white;
+        }
+    }
+    .droppable-col {
+        background-color: $white;
+        min-height: 20px;
+        margin: 1rem 1rem;
+        border: 1px solid #d1d1d1;
+        padding: 0.5rem;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    .item {
+        margin-bottom: 10px;
+        background-color: $opacity-pink;
+        color: $main-color;
+        border: 1px solid $white;
+        padding: 5px;
+        border-radius: 7px;
+    }
+    .item.dragging {
+        background-color: $formsbtncolr;
+        color: $white;
+    }
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        &:hover,
+        &:focus,
+        &:active {
+            .btn:active {
+                color: $text-color-3;
+                        }
+                }
+}
+
+}
+
+.toDoModal {
+    input {
+        display: block;
+        margin: 1rem auto;
+        width: 80%;
+    }
+    .details {
+        height: 80px;
+    }
+}
+
+.marg_top {
+    margin-top: 5.5rem;
+}

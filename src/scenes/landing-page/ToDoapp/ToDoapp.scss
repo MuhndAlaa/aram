@@ -1,0 +1,44 @@
+@import '../../../style/variables';
+@import '../../../style/_mixins';
+
+.ToDo-lists{
+    padding: 0 !important;
+    @extend %section-padding;
+    .title{
+        @extend %section-title;
+    }
+    .sub-title{
+        @extend %section-subtitle;
+    }
+}
+
+@media (max-width:768px){
+    .ToDo__title{
+        text-align: center;
+    }
+}
+
+.todo_bar{
+    // height: 50px !important;
+    margin: 0 auto !important;
+
+    
+    header {
+        color: $main-color;
+        background-color: $white;
+        padding: .8rem .2rem;
+        min-height: 20%;
+        margin: 0 auto;
+      box-shadow: none;
+
+    }
+    .tab_title{
+        font-size: 17px;
+
+    }
+}
+.player-wrapper{
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+}

@@ -1,0 +1,345 @@
+@import '../../../../style/variables';
+@import '../../../../style/mixins';
+
+// add task button
+.add-btns {
+    @include input_animation();
+    // @extend %getstartedButton;
+    
+    &:hover,
+    &:focus,
+    &:active {
+        -webkit-box-shadow: $main-color;
+        box-shadow: $main-color;
+        @include scale_animation();
+    }
+    color: #110330;
+    padding: .8rem;
+    @include rounded(50%);
+    background-color: $black;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.delete-col{
+    @include input_animation();
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &:active {
+        -webkit-box-shadow: $main-color;
+        box-shadow: $main-color;
+        @include scale_animation();
+    }
+}
+// adding task and col btns
+.add-btns .tooltiptext {
+    visibility: hidden;
+    font-size: 12px;;
+    width: 200px;
+    background-color: $black;
+    color: $white;
+    text-align: center;
+    border-radius: 6px 6px 0 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom:70px;
+    right:40px;
+  }
+  
+  .add-btns:hover .tooltiptext {
+    visibility: visible;
+  }
+.addCol{
+    right: 90px;
+}
+.close-btn{
+    background-color: $white;
+    font-size: xx-large;
+    border:0px;
+    color:$black;
+}
+// periority Labels
+.label .tooltiptext {
+    visibility: hidden;
+    font-size: 12px;;
+    width: 100px;
+    background-color: $black;
+    color: $white;
+    text-align: center;
+    border-radius: 6px 6px 0 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom:20px;
+    right:15px;
+  }
+  
+  .label:hover .tooltiptext {
+    visibility: visible;
+  }
+
+// Seperate views styling
+// List view
+
+.lists-container {
+    width: 90%;
+    margin: 1rem auto;
+    .list-container{
+    .list-container__title{
+        background-color: #fe8991;
+        color: $white;
+        cursor: pointer;
+        transition: 0.4s;
+        margin-top: 20px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px 5px 0 0;
+        &:hover{
+            background-color: $bg-color-3;
+        }
+        h4{
+            font-size: 16px;
+            margin: 0;
+        }
+        span{
+            background-color: inherit;
+            color:black;
+            border-radius:50%;
+            height: 20px;
+            // width: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .list-container__title.TODO-title{
+        background-color: #9a9aef;
+    }
+    .list-container__title.PROGRESS-title{
+        background-color:#7cd0f1;
+    }
+    .list-container__title.inreview-title{
+        background-color:#ebcb6c;
+    }
+    .list-container__title.COMPLETED-title{
+        background-color:rgb(11, 117, 59);
+    }
+
+    .list-task {
+        display: none;
+        overflow: hidden;
+        .task{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.25rem 1rem;
+            width: 100%;
+            border: 1px solid #eee;
+            background-color: #eee;
+            border-bottom: 1px solid $black;
+            border-right: 1px solid $black;
+            border-left: 1px solid $black;
+            &:last-child{
+                border-radius: 0 0 5px 5px;
+            }
+            .task_title{
+                display: flex;
+                align-items: center;
+                .task-info{
+                    background-color:inherit;
+                    border: 0;
+                    margin-bottom: 5px;
+                }
+                h5{
+                    font-size: 16px;
+                    margin: 0;
+                }
+            }
+            .task_footer{
+                display: flex;
+                align-items: center;
+                .delete-task{
+                    border: 0;
+                }
+                .label{
+                    background-color: green;
+                    border-radius: 50px;
+                    color: $white;
+                    margin-left: 10px;
+                    padding: 2px 10px;
+                    font-size:14px;
+                }
+                .Late-label{
+                    background-color:$red;
+                }
+                .Urgent-label{
+                    background-color:yellow;
+                }
+                .Up-Coming{
+                    background-color: green;
+                }
+                .No-Due-Date-label{
+                    background-color:$black;
+                }
+            }
+        }
+    }
+  }
+}
+// Board view Styling
+
+.cols-container {
+    display: flex;
+
+    .col-container {
+        width: 350px;
+        margin: 1rem;
+        .col-container__title{
+            background-color: $text-color-3;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0.5rem;
+            margin: 1rem 0;
+            h4{ 
+                padding: 0.5rem;
+                font-size: 16px;
+                margin: 0;
+                color: $white;
+            }
+            span{
+                background-color: inherit;
+                color:black;
+                border-radius:50%;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+        }
+        .col-container__title.TODO-title{
+            background-color: #9a9aef;
+        }
+        .col-container__title.PROGRESS-title{
+            background-color:#7cd0f1;
+        }
+        .col-container__title.inreview-title{
+            background-color:#ebcb6c;
+        }
+        .col-container__title.COMPLETED-title{
+            background-color:rgb(11, 117, 59);
+        }
+    }
+
+    .col-task {
+        min-height: 100px;
+        height: fit-content;
+        border: 1px solid #d1d1d1;
+        box-shadow: $box-shadow;
+        border-radius: 10px;
+        background-color: #fafafa;
+        .task {
+            background-color: $white;
+            min-height: 40px;
+            margin: 1rem 1rem;
+            border: 1px solid #d1d1d1;
+            padding: 0.5rem;
+            border-radius: 5px;
+            .task-header{
+                display:flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                .task_title{
+                    font-size: 18px;
+                    max-width:75%;
+                }
+                div {
+                    width:25%;
+                    display: flex;
+                    justify-content: space-between;
+                    button{
+                        background-color:inherit;
+                        border: 0;
+                        margin-bottom: 5px;
+                        svg{
+                            color: $white;
+                            width: 0.8em;
+                            height: 0.8em;
+                            background-color: #2A265F;
+                        } 
+                    }
+                    .delete-task{
+                        svg{
+                            border-radius: 50%;
+                            background-color:$black ;
+                        }
+                    }
+                }
+            }
+            .task-content{
+                display:flex;
+                justify-content: space-between;
+                align-items: baseline;
+                .label{
+                    height:10px;
+                    width:30px;
+                    margin-right: 3px;
+                    border-radius:8px;
+                    background-color:green;
+                    position:relative;
+                }
+                .Late-label{
+                    background-color:$red;
+                }
+                .Urgent-label{
+                    background-color:yellow;
+                }
+                .Up-Coming{
+                    background-color: cyan;
+                }
+                .No-Due-Date-label{
+                    background-color:$black;
+                }
+                .Completed-label{
+                    background-color: green;
+                }
+            }
+            
+            
+            .task_description{
+                font-size: 14px;
+                color: $text-color-2;
+            }
+            .task_footer{
+                display: flex;
+                justify-content: space-between;
+            }
+            .task_assignees{
+                display: flex;
+                span{
+                    background-color: $main-color;
+                    border-radius:50%;
+                    height: 20px;
+                    width: 20px;
+                    display: flex;
+                    padding: 15px;
+                    color: $white;
+                    justify-content: center;
+                    align-items: center;
+                    border: 0.25px solid $text-color-3;
+                    margin: 0 1px
+                };
+            }
+        }
+    }  
+}
