@@ -11,12 +11,29 @@ Task mangment system.
 
 ### `Features`
 
--Feature 1\
--Feature 2\
-..etc.
+-Flexibly organize projects and tasks\
+-Multi-Views\
+-User-friendly board\
+-Hierarchy\
+-Todo-list
 
-### `Services`
 
--Service 1\
--Service 2\
-..etc.
+### `Competitors`
+
+-Trello\
+-Jira software\
+-Bitrix24\
+-ClickUp
+
+### `Tools`
+
+-React.js\
+-Bootstrap\
+-Sass\
+-Firebase\
+-React-player\
+-Formik\
+-Yup\
+-Aos\
+-Redux\
+-React beautiful dnd
