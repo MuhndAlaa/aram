@@ -73,7 +73,6 @@ export default function ToDo() {
         >
           <Tab className="tab_title"  label="about" {...a11yProps(0)} />
           <Tab className="tab_title" label="Demo" {...a11yProps(1)} />
-          <Tab className="tab_title" label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -81,7 +80,6 @@ export default function ToDo() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        {/* <TabPanel className="tab_body" value={value} index={0} dir={theme.direction}> */}
 
 
         <section className="ToDo-lists" id="ToDo-lists">
@@ -111,10 +109,6 @@ export default function ToDo() {
                 </div>
             </section>
 
-
- 
-        {/* </TabPanel> */}
-        {/* <TabPanel className="tab_body" value={value} index={1} dir={theme.direction}> */}
         <div className='player-wrapper col-lg-12 col-md-12 float-end' data-aos="fade-left">
                             <ReactPlayer
                                 playing={true}
@@ -122,14 +116,10 @@ export default function ToDo() {
                                 loop
                                 className='react-player'
                                 url={todoapp}
-                                width='100%'
-                                height='100%'
+                                width='80%'
+                                height='80%'
                             />
                         </div>
-        {/* </TabPanel> */}
-        <TabPanel className="tab_body" value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
       </SwipeableViews>
     </Box>
   );

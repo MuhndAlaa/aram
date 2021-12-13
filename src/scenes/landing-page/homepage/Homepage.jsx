@@ -6,7 +6,6 @@ import {Devises} from '../Devices/Devises';
 import { Header } from '../header/Header';
 import {Navigation} from '../navbar/Navigation';
 import {DateNow} from '../Date/Date';
-import Features from '../Features/Features';
 import {Services} from '../services/Services';
 import { FaArrowUp } from 'react-icons/fa';
 import "./Homepage.scss";
@@ -20,11 +19,8 @@ export default function Homepage() {
             <Header/>
             <CountUpComp/>
             <Services/>
-            
             <Devises/>
             <ToDToDoappo/>
-
-            <Features/>
             <FeaturesMobile/>
             <DateNow/>
             <Teams/>
