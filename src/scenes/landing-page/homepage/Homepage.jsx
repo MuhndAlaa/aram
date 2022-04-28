@@ -9,7 +9,6 @@ import {DateNow} from '../Date/Date';
 import {Services} from '../services/Services';
 import { FaArrowUp } from 'react-icons/fa';
 import "./Homepage.scss";
-import ToDToDoappo from '../ToDoapp/ToDoapp';
 import FeaturesMobile from '../FeaturesMobile/FeaturesMobile';
 
 export default function Homepage() {
@@ -20,7 +19,6 @@ export default function Homepage() {
             <CountUpComp/>
             <Services/>
             <Devises/>
-            <ToDToDoappo/>
             <FeaturesMobile/>
             <DateNow/>
             <Teams/>
